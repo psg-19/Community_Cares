@@ -7,7 +7,7 @@ exports.BootUp=async(req,res)=>{
 
         
     for(let i=0;i<donors.length;i++){
-      if(donors[i].posts.expiresAt.getTime()<new Date(Date.now()).getTime()){
+      if(donors[i].posts.expiresAt.getTime()<new Date(Date.now()).getTime()||donors[i].posts.status==true){
         await DonorPosts.findByIdAndDelete(donors[i]._id)
       }
     }
@@ -17,14 +17,14 @@ exports.BootUp=async(req,res)=>{
 
 
     for(let i=0;i<recievers.length;i++){
-      if(recievers[i].posts.expiresAt.getTime()<new Date(Date.now()).getTime()){
-        await DonorPosts.findByIdAndDelete(recievers[i]._id)
+      if(recievers[i].posts.expiresAt.getTime()<new Date(Date.now()).getTime()||recievers[i].posts.status==true){
+        await RecieverPosts.findByIdAndDelete(recievers[i]._id)
       }
     }
    
         return res.status(200).json({
             success:true,
-            message:"Expired Donor Posts and reciever's posts deleted successfully !!!"
+            message:"Expired or completed posts Donor Posts and reciever's posts deleted successfully !!!"
         });
     } catch (error) {
         console.log('bootup controller fata hai ---->  ',error)

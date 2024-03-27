@@ -105,6 +105,7 @@ exports.signUp=async(req,res)=>{
         })
         
     }
+// console.log(recentOtp)
 
     if(password!==confirmPassword){
         return res.status(401).json({
@@ -113,10 +114,10 @@ exports.signUp=async(req,res)=>{
         })
     }
 // console.log((recentOtp.createdAt).getTime())
-// console.log(new Date(new Date(recentOtp.createdAt).getTime()+2*60*1000).getTime())
+// console.log(new Date(new Date(recentOtp.createdAt).getTime()+10*60*1000).getTime())
 // console.log(new Date(new Date(Date.now()).getTime()).getTime())
 
-    if(new Date(new Date(recentOtp.createdAt).getTime()+2*60*1000).getTime()<new Date(new Date(Date.now()).getTime()).getTime()){
+    if(new Date(new Date(recentOtp.createdAt).getTime()+10*60*1000).getTime()<new Date(new Date(Date.now()).getTime()).getTime()){
         return res.status(403).json({
             success:false,
             message:"OTP expired !!!"
@@ -205,7 +206,7 @@ exports.login=async(req,res)=>{
 
     const payload={
         email:user.email,
-        id:user._id,
+        _id:user._id,
        
         role:user.role
 
@@ -219,7 +220,7 @@ exports.login=async(req,res)=>{
     user.password=undefined;
 
     const option={
-        expire:Date.now()+3*24*60*60*1000,
+        expire:Date.now()+24*60*60*1000,
         httpOnly:true
     }
 

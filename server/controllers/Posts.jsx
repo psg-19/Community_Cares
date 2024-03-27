@@ -16,7 +16,7 @@ exports.createPost=async(req,res)=>{
     if(!token){
         return res.status(401).json({
             success:false,
-             message:'token is missing'
+             message:'token is missing ,Please Login !!!'
         })
     }
 
@@ -86,4 +86,63 @@ else{
             error:error.message
         })
    }
+}
+
+//------------------------------------Like post--------------------------------------
+
+exports.likePost=async(req,res)=>{
+    try {
+
+     const {postId}=   req.body;
+     const token=req.body.token||req.cookies.token||req.header('Authorization').replace('Bearer ',"");
+
+     if(!postId){
+        return res.status(200).json({
+            success:false,
+            message:"Post is not available !!!"
+        })
+     }
+
+
+     const user=jwt.verify(token,process.env.JWT_SECRET);
+    //  console.log(user)
+    const unlikePost=await Post.findById(postId);
+
+    if(unlikePost.likes.includes(user._id)){
+        const likedPost=await Post.findByIdAndUpdate(postId,{
+            $pull:{
+                likes:user._id
+            }
+            
+         },{new:true})
+    
+         return res.status(200).json({
+            success:true,
+            message:'Post Unliked !!!'
+         })
+    }
+
+   else{
+    const likedPost=await Post.findByIdAndUpdate(postId,{
+        $push:{
+            likes:user._id
+        }
+        
+     },{new:true})
+
+     return res.status(200).json({
+        success:true,
+        message:'Post Liked !!!'
+     })
+   }
+        
+    } catch (error) {
+        console.log('likepost controller fata hai ----> ',error)
+        return res.status(400).json({
+    
+            success:false,
+            message:'something went wrong while liking the Post',
+            error:error.message
+        })
+    }
 }
