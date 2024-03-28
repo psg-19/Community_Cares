@@ -9,7 +9,7 @@ exports.connectedPosts=async(req,res)=>{
 try {
     
     const {reciverPostId}=req.body;
-    const token=req.cookies.token||req.body.token||req.header('Authorization').replace('Bearer ',"");
+    const token=req.cookies.token||req.body.token||(req.header('Authorization').replace('Bearer ',""));
 
     if(!token){
         return res.status(402).json({
@@ -105,7 +105,28 @@ Enjoy your meal !!!
 
     
 } catch (error) {
-    console.log('error occured while sending confirmation mail : ',error);
+    console.log('error occured while sending confirmation mail to reciever: ',error);
+    throw error;
+}
+   try {
+
+    const  mailResponse=await mailSender(donorEmail,`Congratulations !!! </br> Reciever Found @Community Cares`,`
+    Dear ${donorUser.firstName},<br/>
+    You have your Reciever for todays Food.
+    Here are their contact details 
+    Name: ${recieverEmail.firstName} ${recieverEmail.lastName} <br/>
+    Email :${recieverEmail.email} <br/>
+    Phone Number : ${recieverEmail.phoneNo}
+</br>
+Please coordinate accordingly for proper disbursal of food
+</br>
+Enjoy your Day !!!
+    `);
+    console.log('email sent successfully',mailResponse);
+
+    
+} catch (error) {
+    console.log('error occured while sending confirmation mail to donor: ',error);
     throw error;
 }
 

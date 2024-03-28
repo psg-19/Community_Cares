@@ -58,16 +58,16 @@ return res.status(200).json({
 
 exports.signUp=async(req,res)=>{
    try {
-    const {firstName,lastName,phoneNo,email,password,confirmPassword,role,otp}=req.body;
+    const {firstName,lastName,phoneNo,email,password,confirmPassword,district,address,role,otp}=req.body;
 
-    if(!firstName||!lastName||!phoneNo||!email||!password||!confirmPassword||!role||!otp){
+    if(!firstName||!district||!address||!lastName||!phoneNo||!email||!password||!confirmPassword||!role||!otp){
         return res.status(400).json({
             success:false,
             message:'All fields are mandatory !!!'
         })
     }
 
-    if(firstName.trim()==''||lastName.trim()==''||phoneNo.trim()==''||email.trim()==''||password.trim()==''||confirmPassword.trim()==''||role.trim()==''||otp.trim()==''){
+    if(address.trim()==''||district.trim()==''||firstName.trim()==''||lastName.trim()==''||phoneNo.trim()==''||email.trim()==''||password.trim()==''||confirmPassword.trim()==''||role.trim()==''||otp.trim()==''){
         return res.status(400).json({
             success:false,
             message:'All fields are mandatory !!!'
@@ -144,6 +144,8 @@ const newUser=await User.create({
     phoneNo,
     password:hashedPass,
     role,
+    district,
+    address,
     profileUrl:`https://api.dicebear.com/5.x/initials/svg?seed=${firstName} ${lastName}`
 })
 
@@ -207,8 +209,8 @@ exports.login=async(req,res)=>{
     const payload={
         email:user.email,
         _id:user._id,
-       
-        role:user.role
+        role:user.role,
+        district:user.district
 
     }
 

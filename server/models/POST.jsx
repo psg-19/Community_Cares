@@ -1,5 +1,5 @@
 const mongoose=require('mongoose');
-
+const mailSender=require('../utils/mailSender.jsx')
 const postSchema=new mongoose.Schema({
     email:{
         type:String,
@@ -43,6 +43,11 @@ const postSchema=new mongoose.Schema({
             ref:'User'
         }
     ],
+    address:{
+        type:String,
+        required:true,
+        trim:true
+    },
     district:{
         type:String,
         trim:true,
@@ -57,6 +62,19 @@ const postSchema=new mongoose.Schema({
         type:Number,
         required:true,
         trim:true
+    }
+});
+
+postSchema.post('save',async function(){
+    try {
+
+        const  mailResponse=await mailSender(this.email,'POST CREATED SUCCESSFULLY !!! @Community Cares',`Your Post </br> <h4>${this.title} - ${this.description}</h4> </br> was created successfully on our platform !!!`);
+        console.log('email for post creation sent successfully',mailResponse);
+    
+        
+    } catch (error) {
+        console.log('error occured while sending post creation mail : ',error);
+        throw error;
     }
 })
 
