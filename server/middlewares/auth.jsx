@@ -6,7 +6,7 @@ exports.isDonor=async(req,res,next)=>{
         const token=req.cookies.token||req.body.token||req.header('Authorization').replace('Bearer ',"");
 
     const user= jwt.verify(token,process.env.JWT_SECRET);
-    console.log(user);
+    // console.log(user);
 if(user.role!='Donor'){
     return res.status(400).json({
         success:false,
@@ -31,7 +31,7 @@ exports.isReciever=async(req,res)=>{
         const token=req.cookies.token||req.body.token||req.header('Authorization').replace('Bearer ',"");
 
     const user= jwt.verify(token,process.env.JWT_SECRET);
-    console.log(user);
+    // console.log(user);
 if(user.role!='Reciever'){
     return res.status(400).json({
         success:false,

@@ -161,7 +161,7 @@ exports.updatePost=async(req,res)=>{
        if(req.files){
 
         const image=req.files.image;
-
+// console.log(await Post.findById(postId));
     if(image)   {
          const  newImage=await uploadToCloudinary.uploadToCloudinary(image,process.env.FOLDER_NAME);
          const updatedPost=await Post.findByIdAndUpdate(postId,{

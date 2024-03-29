@@ -206,8 +206,17 @@ return res.status(200).json({
 }
  }
 
+ //---------------------get all donor pposts-----------------------------
  exports.getAllDonorPosts=async(req,res)=>{
     try {
+
+        const donorPosts=await DonorPosts.find({});
+
+        return res.status(200).json({
+            success:true,
+            message:"Donor posts fetched successsully !!!",
+            donorPosts:donorPosts
+        })
         
     } catch (error) {
         console.log('getAllDonorPosts fata hai ----> ',error)
@@ -215,6 +224,27 @@ return res.status(200).json({
     
             success:false,
             message:'something went wrong while fetching donor posts !!!',
+            error:error.message
+        })
+    }
+ }
+ exports.getAllRecieverPosts=async(req,res)=>{
+    try {
+
+        const recieverPosts=await RecieverPosts.find({});
+
+        return res.status(200).json({
+            success:true,
+            message:"Reciever Posts fetched successsully !!!",
+            recieverPosts:recieverPosts
+        })
+        
+    } catch (error) {
+        console.log('getAllRecieverPosts fata hai ----> ',error)
+        return res.status(400).json({
+    
+            success:false,
+            message:'something went wrong while fetching reciever posts !!!',
             error:error.message
         })
     }

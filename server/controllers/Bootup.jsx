@@ -1,5 +1,6 @@
 const DonorPosts=require('../models/DONOR_POSTS.jsx');
 const RecieverPosts=require('../models/RECIEVER_POSTS.jsx');
+const ConnectedPosts=require('../models/ConnectedPosts.jsx');
 
 exports.BootUp=async(req,res)=>{
     try {
@@ -21,11 +22,24 @@ exports.BootUp=async(req,res)=>{
         await RecieverPosts.findByIdAndDelete(recievers[i]._id)
       }
     }
+
+
+    const connectedPosts=await ConnectedPosts.find({});
+
+    for(let i=0;i<connectedPosts.length;i++){
+      if(connectedPosts[i].expiresAt.getTime()<new Date(Date.now()).getTime()){
+        await ConnectedPosts.findByIdAndDelete(connectedPosts[i]._id);
+      }
+    }
+
+
    
         return res.status(200).json({
             success:true,
-            message:"Expired or completed posts Donor Posts and reciever's posts deleted successfully !!!"
+            message:"Expired or completed posts Donor Posts, reciever's posts and connected posts deleted successfully !!!"
         });
+
+
     } catch (error) {
         console.log('bootup controller fata hai ---->  ',error)
         return res.status(402).json({
