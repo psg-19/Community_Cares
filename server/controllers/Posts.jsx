@@ -100,7 +100,15 @@ exports.likePost=async(req,res)=>{
     try {
 
      const {postId}=   req.body;
-     const token=req.body.token||req.cookies.token||req.header('Authorization').replace('Bearer ',"");
+
+     const token=req.body.token||req.cookies.token;
+
+     if(!token){
+        return res.status(400).json({
+            success:false,
+            message:'Please login to like a post'
+        })
+     }
 
      if(!postId){
         return res.status(200).json({

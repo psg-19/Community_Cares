@@ -26,7 +26,7 @@ router.post('/likePost',likePost);
 router.put('/updatePost',updatePost);
 router.get('/getUserPosts',getUserPosts);
 router.delete('/deletePost',deletePost);
-router.get('/getUser',getUser);
+router.post('/getUser',getUser);
 router.put('/updateUser',updateUser);
 router.delete('/deleteUser',deleteUser);
 router.get('/getAllRecieverPosts',getAllRecieverPosts);

@@ -46,15 +46,16 @@ exports.getUserPosts=async(req,res)=>{
     
     exports.getUser=async(req,res)=>{
         try {
+            // console.log('--------------',token);
             const token=req.body.token||req.cookies.token||req.header('Authorization').replace('Bearer ',"");
- 
-            if(!token){
+            
+            if(!token||token==''){
                 return res.status(400).json({
                     success:false,
                     message:"Please login to view your posts or create a new post !!!"
                 })
             }
-        
+        // console.log(token);
             const userid=jwt.verify(token, process.env.JWT_SECRET);
             const userData = await User.findById(userid._id);
 
@@ -97,12 +98,12 @@ exports.getUserPosts=async(req,res)=>{
             const user=jwt.verify(token,process.env.JWT_SECRET)
 
             const{firstName,lastName,phoneNo,address,district}=req.body;
-
+            console.log(req.body,req.files)
             if(req.files){
                 const image=req.files.image;
 
                 const  newImage=await uploadToCloudinary.uploadToCloudinary(image,process.env.FOLDER_NAME);
-
+                console.log('--------------',newImage)
                 
                 const updatedUser=await User.findByIdAndUpdate(user._id,{
                     firstName:firstName,

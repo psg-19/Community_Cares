@@ -16,7 +16,11 @@ app.use(fileUpload(
     
     app.use(express.json());
     app.use(cookieParser());
-app.use(cors());
+app.use(cors({
+    origin: true,
+  optionsSuccessStatus: 200,
+  credentials: true
+  }));
 const router=require('./route/routes.jsx')
 app.use('/api/v1',router)
 
@@ -33,7 +37,7 @@ app.listen(process.env.PORT,()=>{
     console.log(`server started at port ${process.env.PORT}`)
 })
 
-//---------dummy route
+//---------dummy route----------------
 app.get('/',(req,res)=>{
-   res.send("welcome to home page")  
+   res.cookie('hii',"yyyy").send("welcome to home page")  
 });

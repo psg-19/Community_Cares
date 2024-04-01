@@ -223,7 +223,10 @@ exports.login=async(req,res)=>{
 
     const option={
         expire:Date.now()+24*60*60*1000,
-        httpOnly:true
+        // expires: new Date(Date.now() + "1440m"),
+          secure: true ,
+          httpOnly: true,
+          sameSite: 'None'
     }
 
      res.cookie('token',token,option).header('Authorization', 'Bearer '+ token).status(200).json({
