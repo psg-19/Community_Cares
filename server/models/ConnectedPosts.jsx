@@ -26,7 +26,11 @@ const connectedPostsSchema=mongoose.Schema({
         required:true,
         default:new Date(new Date(new Date()).getTime()+(24+7-new Date((Date.now())).getHours())*60*60*1000 -(new Date((Date.now())).getMinutes()*60*1000)).getTime()
      
-    }
+    },
+    likes:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'User'
+    }]
 });
 
 module.exports=mongoose.model('ConnectedPosts',connectedPostsSchema)

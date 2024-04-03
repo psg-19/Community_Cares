@@ -1,14 +1,27 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../context/AppContext'
+import { useNavigate } from 'react-router-dom';
+
+
+
 export const ViewProfile = ({setChange}) => {
   const {user}=useContext(AppContext);
-  console.log(user)
+  // console.log(user)
+
+const navigate=useNavigate()
+
+
   return (
-    <div className=''>
+    <div className=' flex flex-col gap-y-6'>
         
         <div>
           <img className='rounded-full h-20 w-20' src={user.profileUrl} alt="Profile picture" />
         </div>
+
+       <div className='flex gap-x-4'>
+       <div onClick={()=> navigate('/userPosts')}>Your Posts</div>
+        <div onClick={()=> navigate('/userConnectedPosts')}>Posts Connected To You</div>
+       </div>
 
         <div>
     <p>  Name : {user.firstName} {user.lastName}</p>

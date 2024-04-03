@@ -4,9 +4,24 @@ const jwt=require('jsonwebtoken');
 exports.isDonor=async(req,res,next)=>{
     try {
         const token=req.cookies.token||req.body.token||req.header('Authorization').replace('Bearer ',"");
-
-    const user= jwt.verify(token,process.env.JWT_SECRET);
+let user;
+ jwt.verify(token,process.env.JWT_SECRET,function(err, token) {
+        // console.log(token);
+        if(token){
+            user=token
+        }
+       
+      });
     // console.log(user);
+    if(!user){
+        return res.status(403).json({
+            success:false,
+            message:'Please login again ,Token Expired'
+        })
+    }
+
+   
+
 if(user.role!='Donor'){
     return res.status(400).json({
         success:false,

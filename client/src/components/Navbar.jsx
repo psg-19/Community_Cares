@@ -3,34 +3,39 @@ import logo from '../assets/Community.png'
 import {NavLink} from 'react-router-dom'
 import { AppContext } from '../context/AppContext';
 import axios from 'axios'
+import {toast} from 'react-hot-toast'
 
 
 export const Navbar = () => {
 
     const{isLogged,setIsLogged,user,token1,setToken1,setUser}=useContext(AppContext)
-   
-    const getUserInfo=async()=>{
-        try {
-            const response = await axios.post('http://localhost:4000/api/v1/getUser', {
-                token: token1
-            });
-           
-            setUser(response.data.userData);
-          
-            // Once user data is set, update the image URL
-            setImageUrl(response.data.userData.profileUrl);
-        } catch (error) {
-            // Handle errors here
-            console.error('Error fetching user:', error);
-        }
+
+
+    const logoutHandler=()=>{
+   try {
+         
+    setIsLogged(false)
+setToken1('')
+setUser('')
+console.log('logged out ')
+console.log(isLogged)
+console.log(user);
+console.log(token1)
+   } catch (error) {
+    toast.error("Cannot Logout !!!")
+   }
     }
-const [imageUrl,setImageUrl]=useState('')
+
+
+   
+    const [imageUrl,setImageUrl]=useState('')
     useEffect(()=>{
-       getUserInfo();
-    // console.log(user)
+       
+    setImageUrl(user.profileUrl)
+    // console.log('hiii')
     
        
-    },[isLogged])
+    },[user])
 
   return (
     <div className='flex justify-center items-center'>
@@ -47,6 +52,7 @@ const [imageUrl,setImageUrl]=useState('')
                 <li><NavLink to='/'>Home</NavLink></li>
                 <li><NavLink to='/donorPost'>Donor Posts</NavLink></li>
                 <li><NavLink to='/recieverPost'>Reciever Posts</NavLink></li>
+                <li><NavLink to='/connectedPosts'>Connected Posts</NavLink></li>
                 
             </ul>
 
@@ -57,13 +63,10 @@ const [imageUrl,setImageUrl]=useState('')
 {
    isLogged  ? (<ul className='flex gap-x-4 justify-center items-center'>
 
-   <li><NavLink to='/' onClick={()=>{
-    setIsLogged(false)
-    setToken1('')
-    setUser(null)
-    console.log('logged out ')
-   }
-}>Log out</NavLink></li>
+   <li onClick={()=>{
+logoutHandler()
+}
+}><NavLink to='/' >Log out</NavLink></li>
          
    <li><NavLink to='/profile'><img src={imageUrl} className='w-10 rounded-full' alt="jfn"></img></NavLink></li>
      </ul>):(<ul className='flex gap-x-4'>

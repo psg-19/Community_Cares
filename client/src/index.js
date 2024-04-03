@@ -14,7 +14,9 @@ root.render(
     <AppContextProvider>
     <App />
   </AppContextProvider>
-    <Toaster></Toaster>
+    <Toaster>
+  
+    </Toaster>
   </BrowserRouter>
 );
 

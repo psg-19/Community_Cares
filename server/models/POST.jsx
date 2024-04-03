@@ -62,6 +62,11 @@ const postSchema=new mongoose.Schema({
         type:Number,
         required:true,
         trim:true
+    },
+    connectedTo:{
+        type:String,
+        required:true,
+        default:'none'
     }
 });
 

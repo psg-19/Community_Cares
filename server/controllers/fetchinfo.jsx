@@ -47,16 +47,28 @@ exports.getUserPosts=async(req,res)=>{
     exports.getUser=async(req,res)=>{
         try {
             // console.log('--------------',token);
-            const token=req.body.token||req.cookies.token||req.header('Authorization').replace('Bearer ',"");
+            const token=req.body.token||req.cookies.token;
             
             if(!token||token==''){
-                return res.status(400).json({
+                return res.status(403).json({
                     success:false,
                     message:"Please login to view your posts or create a new post !!!"
                 })
             }
+            let userid;
         // console.log(token);
-            const userid=jwt.verify(token, process.env.JWT_SECRET);
+            jwt.verify(token, process.env.JWT_SECRET,function(err, token) {
+                // console.log(token);
+ userid=token
+             
+              });
+            //   console.log(userid)
+            if(!userid){
+                return res.status(401).json({
+                    success:false,
+                    message:"Invalid Token !!!"
+                })
+            }
             const userData = await User.findById(userid._id);
 
             // console.log(userData)
@@ -210,8 +222,11 @@ return res.status(200).json({
  //---------------------get all donor pposts-----------------------------
  exports.getAllDonorPosts=async(req,res)=>{
     try {
-
-        const donorPosts=await DonorPosts.find({});
+        
+        
+       
+       const donorPosts=await DonorPosts.find({}).populate("posts").exec();
+    
 
         return res.status(200).json({
             success:true,
@@ -232,7 +247,7 @@ return res.status(200).json({
  exports.getAllRecieverPosts=async(req,res)=>{
     try {
 
-        const recieverPosts=await RecieverPosts.find({});
+        const recieverPosts=await RecieverPosts.find({}).populate('posts').exec();
 
         return res.status(200).json({
             success:true,
