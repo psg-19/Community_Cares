@@ -117,12 +117,12 @@ exports.signUp=async(req,res)=>{
 // console.log(new Date(new Date(recentOtp.createdAt).getTime()+10*60*1000).getTime())
 // console.log(new Date(new Date(Date.now()).getTime()).getTime())
 
-    if(new Date(new Date(recentOtp.createdAt).getTime()+10*60*1000).getTime()<new Date(new Date(Date.now()).getTime()).getTime()){
-        return res.status(403).json({
-            success:false,
-            message:"OTP expired !!!"
-        })
-    }
+    // if(new Date(new Date(recentOtp.createdAt).getTime()+10*60*1000).getTime()<new Date(new Date(Date.now()).getTime()).getTime()){
+    //     return res.status(403).json({
+    //         success:false,
+    //         message:"OTP expired !!!"
+    //     })
+    // }
     
     if(otp!=recentOtp.otp){
         return res.status(402).json({
@@ -222,18 +222,20 @@ console.log(res.body)
     user.password=undefined;
 
     const option={
-        expire:Date.now()+24*60*60*1000,
-        // expires: new Date(Date.now() + "1440m"),
-          secure: true ,
-          httpOnly: true,
-          sameSite: 'None'
+        // expire:Date.now()+24*60*60*1000,
+        expires: new Date(Date.now() + 1400),
+        // maxAge: 30 * 24 * 60 * 60 * 1000,
+        //   secure: true ,
+        //   httpOnly: true,
+        //   sameSite: 'strict'
     }
 
      res.cookie('token',token,option).header('Authorization', 'Bearer '+ token).status(200).json({
         success:true,
         message:'Logged in Successfully !!!',
         token,
-        user
+        user,
+
     });
 
     } catch (error) {

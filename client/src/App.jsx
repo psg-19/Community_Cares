@@ -13,6 +13,7 @@ import { AppContext } from './context/AppContext';
 import PrivateRoute from './components/PrivateRoute';
 import { ConnectedPosts } from './pages/ConnectedPosts';
 import {PrivateRoute2} from './components/PrivateRoute2'
+import { CreatePost } from './pages/CreatePost';
 
 
 
@@ -39,6 +40,16 @@ function App() {
         }></Route>
         <Route path='/userPosts' element={
         <PrivateRoute ><UserPosts/></PrivateRoute>}></Route>
+      
+      <Route path='/createPosts' element={
+       
+          <CreatePost/>
+        
+      }>
+
+
+      </Route>
+
       </Routes>
     </div>
   );

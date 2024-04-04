@@ -19,8 +19,11 @@ const navigate=useNavigate()
         </div>
 
        <div className='flex gap-x-4'>
-       <div onClick={()=> navigate('/userPosts')}>Your Posts</div>
-        <div onClick={()=> navigate('/userConnectedPosts')}>Posts Connected To You</div>
+       <div className='border-2 p-2 bg-slate-400 border-black rounded-lg' onClick={()=> navigate('/userPosts')}>Your Posts</div>
+        <div className='border-2 p-2 bg-slate-400 border-black rounded-lg' onClick={()=> navigate('/userConnectedPosts')}>Posts Connected To You</div>
+
+<div className='border-2 p-2 bg-slate-400 border-black rounded-lg' onClick={()=> navigate('/createPosts')}>Create New Post</div>
+
        </div>
 
         <div>

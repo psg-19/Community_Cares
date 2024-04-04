@@ -53,7 +53,14 @@ try {
 
 
                     const recieversPost=await RecieverPosts.findById(reciverPostId).populate('posts').exec();
-                    console.log(recieversPost)
+                    // console.log(recieversPost)
+
+                    if(recieversPost.posts.quantity>donorPost.posts.quantity){
+                        return res.status(402).json({
+                            success:false,
+                            message:`Cannot Donate, Reciever needs food for ${recieversPost.posts.quantity} people`
+                        })
+                    }
 
 
 const recieverUpdatedPostId=recieversPost.posts._id;

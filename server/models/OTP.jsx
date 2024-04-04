@@ -23,9 +23,11 @@ const otpSchema=new mongoose.Schema({
 otpSchema.pre('save',async function(){
     try {
 
-        const  mailResponse=await mailSender(this.email,'Verification Email from Community Cares',this.otp);
-        console.log('email sent successfully',mailResponse);
-    
+        await mailSender(this.email,'Verification Email from Community Cares',this.otp)
+        .then((res)=> console.log('email sent successfully',res)
+        )
+        .catch((e)=>console.log(e))
+       
         
     } catch (error) {
         console.log('error occured while sending mail : ',error);

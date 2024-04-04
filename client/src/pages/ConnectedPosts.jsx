@@ -75,8 +75,10 @@ No posts available
     </div>):
     
     //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
     (connectedPosts.map((data)=>{
-        return <div className='flex flex-row gap-x-6 '>
+        return <div className='flex flex-col items-center justify-center border-2 border-black p-2 gap-y-4' >
+          <div className='flex flex-row gap-x-6 '>
             {/* //======================donor posts----------- */}
            <div className='flex flex-col border-2 items-center justify-center w-[50%]'>
 
@@ -110,17 +112,17 @@ No posts available
 
 
 </div>
+</div>
 
-
-<div onClick={()=>likeHandler(data._id)}>
+<div className='text-4xl ' >
       {
         
-        data.likes.includes(user._id) ? ( <AiFillHeart  onClick={()=> likeHandler()} />):(<AiOutlineHeart
-      onClick={()=> likeHandler()}
+        data.likes.includes(user._id) ? ( <AiFillHeart  onClick={()=>likeHandler(data._id)} />):(<AiOutlineHeart
+          onClick={()=>likeHandler(data._id)}
     />)
       }
-      <p>{data.likes.length}</p>
     </div>
+      <p>{data.likes.length}</p>
 
         </div>
 }))

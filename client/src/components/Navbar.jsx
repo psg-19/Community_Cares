@@ -4,6 +4,7 @@ import {NavLink} from 'react-router-dom'
 import { AppContext } from '../context/AppContext';
 import axios from 'axios'
 import {toast} from 'react-hot-toast'
+import { RxHamburgerMenu } from "react-icons/rx";
 
 
 export const Navbar = () => {
@@ -68,8 +69,14 @@ logoutHandler()
 }
 }><NavLink to='/' >Log out</NavLink></li>
          
-   <li><NavLink to='/profile'><img src={imageUrl} className='w-10 rounded-full' alt="jfn"></img></NavLink></li>
-     </ul>):(<ul className='flex gap-x-4'>
+   <li><NavLink to='/profile'><img src={imageUrl} className='w-10 rounded-full' alt="profile"></img></NavLink></li>
+
+
+     </ul>
+    
+
+     ):
+     (<ul className='flex gap-x-4'>
 
    <li><NavLink to='/login'>Login</NavLink></li>
    <li><NavLink to='/signUp'>Sign Up</NavLink></li>

@@ -85,7 +85,7 @@ getUser(response.data.token);
 const getUser=async(token)=>{
   await axios.post('http://localhost:4000/api/v1/getUser',{
     token:token
-  })
+  },  {withCredentials: true, credentials: 'include'})
   .then((response)=>{
     setUser(response.data.userData)
    
@@ -126,7 +126,7 @@ navigate('/')
 
 <label htmlFor="">
   Password 
-<input type="password" className='ml-2 border-2 border-black' name='password' onChange={(e)=>changeHandler(e)}/>
+<input type="password" className='ml-2 border-2 border-black'  name='password' onChange={(e)=>changeHandler(e)}/>
 
 </label>
 

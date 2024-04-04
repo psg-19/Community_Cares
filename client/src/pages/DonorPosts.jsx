@@ -8,7 +8,7 @@ import {  useNavigate } from 'react-router-dom';
 
 
 export const DonorPosts = () => {
-  const {user,token1}=useContext(AppContext);
+  const {user,token1,Districts}=useContext(AppContext);
  let ct=0;
 const {donorPosts,setDonorPosts}=useContext(AppContext)
 const navigate=useNavigate()
@@ -19,10 +19,6 @@ const districtHandler=(e)=>{
 setDistrict(e.target.value);
 }
 
-const Districts=[
-  'Ujjain', 'Gorakhpur', 'Mumbai', 'Chennai', 'Kolkata', 'Delhi', 'Bangalore', 'Hyderabad', 'Ahmedabad', 'Pune', 'Jaipur', 'Lucknow', 'Kanpur', 'Nagpur', 'Patna', 'Indore', 'Thane', 'Bhopal', 'Visakhapatnam', 'Agra', 'Ghaziabad', 'Ludhiana', 'Coimbatore', 'Madurai', 'Nashik', 'Faridabad', 'Meerut', 'Rajkot', 'Varanasi', 'Srinagar', 'Aurangabad', 'Dhanbad', 'Amritsar', 'Allahabad', 'Howrah', 'Gwalior', 'Vadodara', 'Ranchi', 'Raipur', 'Jodhpur', 'Guwahati', 'Chandigarh', 'Mysore', 'Tiruchirappalli', 'Bhubaneswar', 'Salem', 'Warangal', 'Kota', 'Jalandhar', 'Jamshedpur', 'Bhilai', 'Gurgaon', 'Bareilly', 'Aligarh', 'Jammu', 'Moradabad', 'Kolhapur', 'Durgapur', 'Ajmer', 'Gulbarga', 'Jamnagar', 'Ujjain', 'Loni', 'Siliguri', 'Jhansi', 'Ulhasnagar', 'Nellore', 'Jammu', 'Sangli-Miraj & Kupwad', 'Belgaum', 'Mangalore', 'Ambattur', 'Tirunelveli', 'Malegaon', 'Gaya', 'Jalgaon', 'Udaipur', 'Maheshtala', 'Tirupur', 'Davanagere', 'Kozhikode', 'Akola', 'Kurnool', 'Bokaro Steel City', 'Rajahmundry', 'Ballari', 'Agartala', 'Bhagalpur', 'Latur', 'Dhule', 'Korba', 'Bhilwara', 'Brahmapur', 'Mysore', 'Muzaffarpur', 'Ahmednagar', 'Kollam', 'Raghunathganj', 'Bilaspur', 'Shahjahanpur', 'Thrissur', 'Alwar', 'Kakinada', 'Nizamabad', 'Sagar', 'Tumkur', 'Hisar', 'Rohtak', 'Panipat', 'Darbhanga', 'Kharagpur', 'Aizawl', 'Ichalkaranji', 'Tirupati', 'Karnal', 'Bathinda', 'Rampur', 'Shivamogga', 'Ratlam', 'Modinagar', 'Durg', 'Shillong', 'Imphal', 'Hapur', 'Ranipet', 'Anantapur', 'Arrah', 'Karimnagar', 'Parbhani', 'Etawah', 'Bharatpur', 'Begusarai', 'New Delhi', 'Chhapra', 'Kadapa', 'Ramagundam', 'Pali', 'Satna', 'Vizianagaram', 'Katihar', 'Hardwar', 'Sonipat', 'Nagercoil', 'Thanjavur', 'Murwara (Katni)', 'Naihati', 'Sambhal', 'Nadiad', 'Yamunanagar', 'English Bazar', 'Eluru', 'Munger', 'Panchkula', 'Raayachuru', 'Panvel', 'Deoghar', 'Ongole', 'Nandyal', 'Morena', 'Bhiwani', 'Porbandar', 'Palakkad', 'Anand', 'Purnia', 'Baharampur', 'Barmer', 'Morvi', 'Orai', 'Bahraich', 'Sikar', 'Vellore', 'Kumbakonam', 'Pudukkottai', 'Hazaribagh', 'Nalgonda', 'Godhra', 'Madanapalle', 'Haldia', 'Sasaram', 'Hajipur', 'Bhimavaram', 'Karwar', 'Suryapet', 'Jind', 'Tonk', 'Vellore', 'Adoni', 'Giridih', 'Bhuj', 'Alappuzha', 'Karaikudi', 'Khammam', 'Kaithal', 'Malegaon', 'Machilipatnam', 'Shimla', 'Phagwara', 'Rajapalayam', 'Batala', 'Kapurthala', 'Chilakaluripet', 'Bargarh', 'Pathankot', 'Proddatur', 'Sirkali', 'Pilibhit', 'Dimapur', 'Rajnandgaon', 'Godda', 'Vizianagaram', 'Palanpur', 'Kullu', 'Sirsaganj', 'Baripada', 'Puducherry', 'Sawai Madhopur', 'Navsari', 'Srikakulam', 'Sangamner', 'Bijnor', 'Tiruvannamalai', 'Parbhani', 'Siwan', 'Kamareddy', 'Rishikesh', 'Dhaulpur', 'Narasaraopet', 'Kothagudem', 'Thiruvalla', 'Madikeri', 'Firozpur', 'Adilabad', 'Sehore', 'Alibag', 'Narnaul', 'Nawada',
-  
-]
 //----------------------------------functions-------------------------------------------------
   const postCaller=async()=>{
   try {
@@ -112,7 +108,7 @@ donorPosts.length==0 ? (<div>No Posts Found</div>):(
     <p>{data.posts.description}</p>
     <p>Requirement : {data.posts.quantity} People</p>
 
-    <div className='text-4xl animate-bounce' >
+    <div className='text-4xl ' >
       {
         
         data.posts.likes.includes(user._id) ? ( <AiFillHeart  onClick={()=> likeHandler(data.posts._id)} />):(<AiOutlineHeart

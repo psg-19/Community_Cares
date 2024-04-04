@@ -80,22 +80,22 @@ console.log(res.data.allPosts)
   },[])
 
   return (
-    <div className='flex flex-col gap-y-4 '>
+    <div className='flex flex-col gap-y-4 items-center justify-center'>
 
 {
   userPosts.map((data)=>{
     return (
-      <div className='flex flex-col  border-black border-2'>
+      <div className='flex flex-col  border-black border-2 w-[70%] p-2 items-center justify-center gap-y-4'>
         
-<p>{data.title}</p>
+<p className='text-bold'>{data.title}</p>
 
-<div><img src={data.imageUrl} className='w-40' alt="" /></div>
+<div><img src={data.imageUrl} className='w-60' alt="" /></div>
 
 <p>{data.description}</p>
 <p>{data.quantity}</p>
 
 
-<div >
+<div className='text-4xl '>
     {
       
       data.likes.includes(user._id) ? ( <AiFillHeart  onClick={()=> likeHandler(data._id)} />):(<AiOutlineHeart
