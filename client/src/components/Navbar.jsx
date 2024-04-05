@@ -39,7 +39,7 @@ console.log(token1)
     },[user])
 
   return (
-    <div className='flex justify-center items-center'>
+    <div className='flex  justify-center items-center'>
 
 <div className='flex  items-center justify-between w-[90%] h-24' >
         

@@ -1,12 +1,26 @@
 import React, { useContext, useState } from 'react'
 import { AppContext } from '../context/AppContext'
+import {toast} from 'react-hot-toast'
+import axios from 'axios'
+
+
 
 export const CreatePost = () => {
 
 const [isLoading,setIsLoading]=useState(false)
-const {user,Districts}=useContext(AppContext)
+const {user,Districts,token1}=useContext(AppContext)
 
-const x=FormData()
+const [formData,setFormData]=useState({
+  title:'',
+  description:'',
+  district:user.district,
+  address:'',
+  quantity:'',
+  image:null
+})
+
+// const [isLoading,setIsLoading]=useState(false)
+
 
   
 //---------------------funv---------------------------------
@@ -15,21 +29,64 @@ const changeHandler=(e)=>{
     setFormData((prev)=>({
       ...prev,
       [e.target.name]:e.target.value
+
+      
     
-    }))
+    }))  
     // console.log(formData)
+  }  
+
+  const imageHandler=(e)=>{
+    setFormData((prev)=>({
+      ...prev,
+      image:e.target.files[0]
+
+      
+    
+    })) 
+    // console.log(e.target.files[0])
   }
-
-
-
-  const [formData,setFormData]=useState({
-    title:'',
-    description:'',
-    district:'',
-    address:'',
-    quantity:''
-  })
   
+
+const submitHandler=async(e)=>{
+  setIsLoading(true)
+  e.preventDefault();
+  
+  // console.log(formData)
+
+
+
+  try {
+    await axios.post('http://localhost:4000/api/v1/createPost',{
+      ...formData,
+      token:token1
+    },{
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+
+    .then((res)=>{ 
+      console.log(res);
+      toast.success(res.response.data.msg)
+    })
+
+
+    .catch((e)=> {
+      console.log(e);
+      toast.error(e.response.data.message)
+    })
+
+setIsLoading(false)
+
+  } catch (error) {
+    // console.log(error);
+    toast.error(error.message);
+  }
+  
+  setIsLoading(false)
+
+}
 
 
 
@@ -51,13 +108,16 @@ const changeHandler=(e)=>{
 
 <h1 className='font-bold'>Create A New {user.role} Post </h1>
 
-<form action="" className='flex flex-col gap-y-4'>
+<form action="" className='flex flex-col gap-y-4 items-center justify-center'>
 
 
 {/* --------------------------------------------titlr-------------------------- */}
 <label htmlFor="">
   Title 
-<input type="text" className='ml-2 border-2 border-black'  name='title'  onChange={(e)=>changeHandler(e)}/>
+<input type="text" className='ml-2 border-2 border-black'  name='title'  onChange={(e)=>changeHandler(e)}
+
+value={formData.title}
+/>
 
 </label>
 
@@ -65,7 +125,10 @@ const changeHandler=(e)=>{
 
 <label htmlFor="">
   Description 
-<input type="text" className='ml-2 border-2 border-black'  name='description'  onChange={(e)=>changeHandler(e)}/>
+<input type="text" className='ml-2 border-2 border-black'  name='description'  onChange={(e)=>changeHandler(e)}
+
+value={formData.description}
+/>
 
 </label>
 
@@ -73,16 +136,46 @@ const changeHandler=(e)=>{
 
 <label htmlFor="">
 Address 
-<input type="text" className='ml-2 border-2 border-black'  name='address'  onChange={(e)=>changeHandler(e)}/>
+<input type="text" className='ml-2 border-2 border-black'  name='address'  onChange={(e)=>changeHandler(e)}
+
+value={formData.address}
+/>
 
 </label>
 {/* ------------------------------------quantity------------------------------- */}
 
 <label htmlFor="">
 Quantity 
-<input type="text" className='ml-2 border-2 border-black'  name='quantity'  onChange={(e)=>changeHandler(e)}/>
+<input type="text" className='ml-2 border-2 border-black'  name='quantity'  onChange={(e)=>changeHandler(e)}
+
+value={formData.quantity}
+/>
 
 </label>
+
+
+{/* -------------------------image---------------------------------------------------- */}
+
+<label htmlFor="">
+Organisation Image
+
+
+<input type="file" 
+name='image'
+onChange={(e)=>{
+  imageHandler(e)
+}}
+
+
+/>
+
+
+</label>
+
+
+
+
+
 
 {/* -------------------district--------------------------------------- */}
 
@@ -91,7 +184,7 @@ Quantity
   Select your District 
 
  
-<select name='district' className='w-[40%] border-2 border-black' id='district' onChange={(e)=>{
+<select name='district' className='w-[40%] border-2 border-black' value={formData.district} id='district' onChange={(e)=>{
   changeHandler(e)
 }}>
   
@@ -104,7 +197,7 @@ Quantity
 </label>
 
 
-
+<input type="submit" className='border-2 border-black rounded-lg w-20' onClick={(e)=> submitHandler(e)} />
 
 </form>
 
