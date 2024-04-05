@@ -2,14 +2,14 @@ import React, { useContext, useState } from 'react'
 import { AppContext } from '../context/AppContext'
 import {toast} from 'react-hot-toast'
 import axios from 'axios'
-
+import {useNavigate} from 'react-router-dom'
 
 
 export const CreatePost = () => {
 
 const [isLoading,setIsLoading]=useState(false)
 const {user,Districts,token1}=useContext(AppContext)
-
+const navigate=useNavigate()
 const [formData,setFormData]=useState({
   title:'',
   description:'',
@@ -68,13 +68,15 @@ const submitHandler=async(e)=>{
 
     .then((res)=>{ 
       console.log(res);
-      toast.success(res.response.data.msg)
+      toast.success(res.data.message)
+      navigate('/userPosts');
     })
 
 
     .catch((e)=> {
       console.log(e);
-      toast.error(e.response.data.message)
+      toast.error(e.response.data.message);
+      
     })
 
 setIsLoading(false)

@@ -17,7 +17,7 @@ const mailSender=async (email,title,body)=>{
         });
 
         let info=transporter.sendMail({
-            from:'Cpmmunity Cares',
+            from:'Community Cares',
             to:`${email}`,
             subject:`${title}`,
             html:`${body}`

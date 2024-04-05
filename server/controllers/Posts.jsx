@@ -38,14 +38,39 @@ if(await DonorPosts.findOne({email:`${email}`})||await RecieverPosts.findOne({em
 const {title,description,district,address,quantity}=req.body;
 // console.log(req.body)
 // console.log(title,description,district,address)
-const image=req.files.image;
-
-if(!title||!description||!image||!district||!address||district.trim()==''||address.trim()==''||title.trim()==''||description.trim()==''||!quantity||quantity.trim()==''){
-    return res.status(400).json({
+// console.log('lllllll',req.files.image)
+if(!req.files){
+    return res.status(401).json({
         success:false,
         message:'All fields are mandatory'
     })
 }
+const image=req.files.image;
+
+if(!req.files){
+    return res.status(401).json({
+        success:false,
+        message:'All fields are mandatory'
+    })
+}
+
+if(!title||!description||!image||!district||!address||district.trim()==''||address.trim()==''||title.trim()==''||description.trim()==''||!quantity||quantity.trim()==''){
+    // console.log('hiiii')
+    return res.status(401).json({
+        success:false,
+        message:'All fields are mandatory'
+    })
+}
+
+
+// if(!title||!address ||!quantity||!postId||title.trim()=='' ||description.trim()=='' ||district.trim()=='' ||address.trim()==''  ||quantity.trim()=='' ||postId.trim()==''){
+//     return res.status(401).json({
+//         success:false,
+//         message:'All Fields Are Mandatory !!!'
+//     })
+// }
+
+
 
 const  newImage=await uploadToCloudinary.uploadToCloudinary(image,process.env.FOLDER_NAME);
 

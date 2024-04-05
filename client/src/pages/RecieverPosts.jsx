@@ -6,6 +6,7 @@ import { AiFillHeart,AiOutlineHeart } from "react-icons/ai";
 import { useNavigate } from 'react-router-dom';
 
 import { LuFileEdit } from "react-icons/lu";
+import { RiDeleteBin6Line } from 'react-icons/ri';
 
 
 
@@ -48,6 +49,20 @@ const postCaller=async()=>{
 }
 
 
+
+
+  const deleteHandler =async(id)=>{
+
+    await axios.put('http://localhost:4000/api/v1/deletePost',{
+      postId:id,
+      token:token1
+    })
+    .then((res)=> toast.success(res.data.message))
+    .catch((e)=> toast.error(e.response.data.message))
+    postCaller();
+
+  }
+    
 
 
 const likeHandler=async(id)=>{
@@ -153,8 +168,11 @@ useEffect(()=>{
 data.posts.email==user.email && <div>
 <LuFileEdit className='text-xl' onClick={()=>{
   setCurrentPostEdit(data.posts);
+
   navigate('/editPost');
 }}/>
+<RiDeleteBin6Line className='text-xl' onClick={()=> deleteHandler(data._id)} />
+
 </div>
   }
   </div>
@@ -173,15 +191,31 @@ Donate
         <p>{data.posts.description}</p>
         <p>{data.posts.quantity}</p>
 
-        <div onClick={()=>likeHandler(data.posts._id)}>
-          {
-            
-            data.posts.likes.includes(user._id) ? ( <AiFillHeart  onClick={()=> likeHandler()} />):(<AiOutlineHeart
-          onClick={()=> likeHandler()}
-        />)
-          }
-        </div>
-      <p>{data.posts.likes.length}</p>
+        <div  className='flex flex-row gap-x-10 items-center justify-center'>
+    <div className='flex gap-x-2'>
+      
+      <div className=' text-4xl'>{
+      
+      data.posts.likes.includes(user._id) ? ( <AiFillHeart  onClick={()=>likeHandler(data.posts._id)} />):(<AiOutlineHeart
+        onClick={()=>likeHandler(data.posts._id)}
+  />)
+}  </div>
+
+<p className='text-2xl'>{data.posts.likes.length}</p>
+</div>
+
+{
+data.posts.email==user.email && <div>
+<LuFileEdit className='text-xl' onClick={()=>{
+  setCurrentPostEdit(data.posts);
+
+  navigate('/editPost');
+}}/>
+<RiDeleteBin6Line className='text-xl' onClick={()=> deleteHandler(data._id)} />
+
+</div>
+  }
+  </div>
 
       <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full w-[12%]" onClick={()=>connectHandler(data._id)}>
 Donate
