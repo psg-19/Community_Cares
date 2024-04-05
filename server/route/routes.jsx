@@ -25,7 +25,7 @@ router.post('/connectedPosts',isDonor,connectedPosts);
 router.post('/likePost',likePost);
 router.put('/updatePost',updatePost);
 router.post('/getUserPosts',getUserPosts);
-router.delete('/deletePost',deletePost);
+router.put('/deletePost',deletePost);
 router.post('/getUser',getUser);
 router.put('/updateUser',updateUser);
 router.delete('/deleteUser',deleteUser);

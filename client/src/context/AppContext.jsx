@@ -15,6 +15,8 @@ const [user,setUser]=useState({})
 
 const [donorPosts,setDonorPosts]=useState('')
 
+const [currentPostEdit,setCurrentPostEdit]=useState('')
+
 
 
 const Districts=[
@@ -30,7 +32,8 @@ const value={
     user,setUser,
     token1,setToken1,
     donorPosts,setDonorPosts
-    ,Districts
+    ,Districts,
+    currentPostEdit,setCurrentPostEdit
    
 }
 return <AppContext.Provider value={value}>

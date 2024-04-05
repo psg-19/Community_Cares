@@ -5,9 +5,14 @@ import { AppContext } from '../context/AppContext'
 import { AiFillHeart,AiOutlineHeart } from "react-icons/ai";
 import { useNavigate } from 'react-router-dom';
 
+import { LuFileEdit } from "react-icons/lu";
+
+
+
+
 export const RecieverPosts = () => {
   
-  const {user,token1,Districts}=useContext(AppContext)
+  const {user,token1,Districts,setCurrentPostEdit,currentPostEdit}=useContext(AppContext)
   const navigate=useNavigate()
 
 
@@ -126,20 +131,34 @@ useEffect(()=>{
         return (
           district=='All' ? (<div className='flex flex-col p-2 border-black justify-center items-center w-[70%] border-2 gap-y-4'>
           <h3 className='font-bold text-xl'>{data.posts.title}</h3>
-          <div><img src={data.posts.imageUrl} className='w-96' alt="" /></div>
+          <div><img src={data.posts.imageUrl} className='w-96 rounded-lg' alt="" /></div>
 
         <p>{data.posts.description}</p>
         <p>Requirement : {data.posts.quantity} People</p>
 
-        <div className='text-4xl '>
-          {
-            
-            data.posts.likes.includes(user._id) ? ( <AiFillHeart  onClick={()=> likeHandler(data.posts._id)} />):(<AiOutlineHeart
-          onClick={()=> likeHandler(data.posts._id)}
-        />)
-          }
-        </div>
-      <p >{data.posts.likes.length}</p>
+        <div  className='flex flex-row gap-x-10 items-center justify-center'>
+    <div className='flex gap-x-2'>
+      
+      <div className=' text-4xl'>{
+      
+      data.posts.likes.includes(user._id) ? ( <AiFillHeart  onClick={()=>likeHandler(data.posts._id)} />):(<AiOutlineHeart
+        onClick={()=>likeHandler(data.posts._id)}
+  />)
+}  </div>
+
+<p className='text-2xl'>{data.posts.likes.length}</p>
+</div>
+
+{
+data.posts.email==user.email && <div>
+<LuFileEdit className='text-xl' onClick={()=>{
+  setCurrentPostEdit(data.posts);
+  navigate('/editPost');
+}}/>
+</div>
+  }
+  </div>
+    
 
       <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full w-[12%]" onClick={()=>connectHandler(data._id)}>
 Donate
@@ -149,7 +168,7 @@ Donate
           //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
           (data.posts.district==district &&<div className='flex flex-col border-2 gap-y-4'>
           <h3>{data.posts.title}</h3>
-          <div><img src={data.posts.imageUrl} className='w-96' alt="" /></div>
+          <div><img src={data.posts.imageUrl} className='w-96 rounded-lg' alt="" /></div>
 
         <p>{data.posts.description}</p>
         <p>{data.posts.quantity}</p>

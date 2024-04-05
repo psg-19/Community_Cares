@@ -166,11 +166,18 @@ exports.updatePost=async(req,res)=>{
         
         const{title,description,district,address ,quantity,postId}=req.body;
 
+        if(!title||!address ||!quantity||!postId||title.trim()=='' ||description.trim()=='' ||district.trim()=='' ||address.trim()==''  ||quantity.trim()=='' ||postId.trim()==''){
+            return res.status(401).json({
+                success:false,
+                message:'All Fields Are Mandatory !!!'
+            })
+        }
+
        if(req.files){
 
+           // console.log(await Post.findById(postId));
+           if(req.files)   {
         const image=req.files.image;
-// console.log(await Post.findById(postId));
-    if(image)   {
          const  newImage=await uploadToCloudinary.uploadToCloudinary(image,process.env.FOLDER_NAME);
          const updatedPost=await Post.findByIdAndUpdate(postId,{
              title:title,
@@ -180,7 +187,14 @@ exports.updatePost=async(req,res)=>{
              imageUrl:newImage.secure_url,
              address:address
              
-         },{new:true})
+         },{new:true});
+
+
+         return res.status(200).json({
+            success:true,
+            message:"Post updated successfully !!!",
+            updatedPost:updatedPost
+        })
 
 }
        }
@@ -194,13 +208,14 @@ const updatedPost=await Post.findByIdAndUpdate(postId,{
     address:address
     
 },{new:true})
+return res.status(200).json({
+    success:true,
+    message:"Post updated successfully !!!",
+    updatedPost:updatedPost
+})
 }
 
 
-return res.status(200).json({
-    success:true,
-    message:"Post updated successfully !!!"
-})
 
 
     } catch (error) {
@@ -218,9 +233,9 @@ exports.deletePost=async(req,res)=>{
     try {
 
         const {postId}=req.body;
-        const token=req.cookies.token||req.body.token||req.header('Authorisation').replace('Bearer ',"");
-
-        if(!token){
+        const token=req.body.token||req.cookies.token;
+console.log(postId)
+        if(!token||token==''){
             return res.status(401).json({
                 success:false,
                  message:'token is missing ,Please Login !!!'

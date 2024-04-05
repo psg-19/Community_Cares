@@ -14,6 +14,7 @@ import PrivateRoute from './components/PrivateRoute';
 import { ConnectedPosts } from './pages/ConnectedPosts';
 import {PrivateRoute2} from './components/PrivateRoute2'
 import { CreatePost } from './pages/CreatePost';
+import { EditPost } from './pages/EditPost';
 
 
 
@@ -49,6 +50,8 @@ function App() {
 
 
       </Route>
+
+      <Route path='editPost' element={<EditPost/>}></Route>
 
       </Routes>
     </div>

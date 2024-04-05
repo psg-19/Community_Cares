@@ -5,10 +5,12 @@ import { AiFillHeart,AiOutlineHeart } from "react-icons/ai";
 import {toast} from 'react-hot-toast'
 import {  useNavigate } from 'react-router-dom';
 
+import { LuFileEdit } from "react-icons/lu";
+
 
 
 export const DonorPosts = () => {
-  const {user,token1,Districts}=useContext(AppContext);
+  const {user,token1,Districts,setCurrentPostEdit,currentPostEdit}=useContext(AppContext);
  let ct=0;
 const {donorPosts,setDonorPosts}=useContext(AppContext)
 const navigate=useNavigate()
@@ -103,41 +105,71 @@ donorPosts.length==0 ? (<div>No Posts Found</div>):(
       district=='All' ? ( <div className='flex flex-col border-2 p-4 justify-center items-center border-black w-[70%] gap-y-4'>
           
       <h3 className='font-bold text-xl'>{data.posts.title}</h3>
-      <div><img src={data.posts.imageUrl} className='w-96' alt="" /></div>
+      <div><img src={data.posts.imageUrl} className='w-96 rounded-lg' alt="" /></div>
 
     <p>{data.posts.description}</p>
     <p>Requirement : {data.posts.quantity} People</p>
 
-    <div className='text-4xl ' >
-      {
-        
-        data.posts.likes.includes(user._id) ? ( <AiFillHeart  onClick={()=> likeHandler(data.posts._id)} />):(<AiOutlineHeart
-      onClick={()=> likeHandler(data.posts._id)}
-    />)
-      }
-    </div>
-      <p >{data.posts.likes.length}</p>
+   
+  <div  className='flex flex-row gap-x-10 items-center justify-center'>
+    <div className='flex gap-x-2'>
+      
+      <div className=' text-4xl'>{
+      
+      data.posts.likes.includes(user._id) ? ( <AiFillHeart  onClick={()=>likeHandler(data.posts._id)} />):(<AiOutlineHeart
+        onClick={()=>likeHandler(data.posts._id)}
+  />)
+}  </div>
+
+<p className='text-2xl'>{data.posts.likes.length}</p>
+</div>
+
+{
+data.posts.email==user.email && <div>
+<LuFileEdit className='text-xl' onClick={()=>{
+  setCurrentPostEdit(data.posts);
+  navigate('/editPost');
+}}/>
+</div>
+  }
+  </div>
     </div>):
 
     ( 
         data.posts.district==district && (
           
-          <div className='flex flex-col border-2 gap-y-4'>
-    <h3>{data.posts.title}</h3>
-    <div><img src={data.posts.imageUrl} className='w-96' alt="" /></div>
+          <div className='flex flex-col border-2 p-4 justify-center items-center border-black w-[70%] gap-y-4'>
+          
+          <h3 className='font-bold text-xl'>{data.posts.title}</h3>
+          <div><img src={data.posts.imageUrl} className='w-96 rounded-lg' alt="" /></div>
+    
+        <p>{data.posts.description}</p>
+        <p>Requirement : {data.posts.quantity} People</p>
+    
 
-  <p>{data.posts.description}</p>
-  <p>{data.posts.quantity}</p>
-
-  <div onClick={()=>likeHandler(data.posts._id)}>
-    {
+    
+  <div  className='flex flex-row gap-x-10 items-center justify-center'>
+    <div className='flex gap-x-2'>
       
-      data.posts.likes.includes(user._id) ? ( <AiFillHeart  onClick={()=> likeHandler()} />):(<AiOutlineHeart
-    onClick={()=> likeHandler()}
+      <div className=' text-4xl'>{
+      
+      data.posts.likes.includes(user._id) ? ( <AiFillHeart  onClick={()=>likeHandler(data.posts._id)} />):(<AiOutlineHeart
+        onClick={()=>likeHandler(data.posts._id)}
   />)
-    }
+}  </div>
+
+<p className='text-2xl'>{data.posts.likes.length}</p>
+</div>
+
+{
+data.posts.email==user.email && <div>
+<LuFileEdit className='text-xl' onClick={()=>{
+  setCurrentPostEdit(data.posts._id);
+  navigate('/editPost');
+}}/>
+</div>
+  }
   </div>
-    <p>{data.posts.likes.length}</p>
     </div>
         )
         

@@ -4,13 +4,14 @@ import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import axios from 'axios'
 import { AiFillHeart,AiOutlineHeart } from "react-icons/ai";
-
+import { LuFileEdit } from 'react-icons/lu'
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 
 
 
 export const UserPosts = () => {
-  const {isLogged,token1,user}=useContext(AppContext)
+  const {isLogged,token1,user,setCurrentPostEdit}=useContext(AppContext)
 const navigate=useNavigate();
 
 const[userPosts,setUserPosts]=useState([])
@@ -23,6 +24,20 @@ const[userPosts,setUserPosts]=useState([])
   //   toast.error("Please login to view this page")
   // }
 
+
+  const deleteHandler =async(id)=>{
+
+    await axios.put('http://localhost:4000/api/v1/deletePost',{
+      postId:id,
+      token:token1
+    })
+    .then((res)=> toast.success(res.data.message))
+    .catch((e)=> toast.error(e.response.data.message))
+    postCaller();
+
+  }
+    
+  
 
 
   
@@ -62,12 +77,12 @@ await axios.post('http://localhost:4000/api/v1/getUserPosts',{
   token:token1
 })
 .then((res)=>{
-console.log(res.data.allPosts)
+// console.log(res.data.allPosts)
   setUserPosts(res.data.allPosts)
 
 })
 .catch((err)=>{
-  console.log(err);
+  // console.log(err);
   toast.error(err.response.data.message)
 })
   }
@@ -85,26 +100,38 @@ console.log(res.data.allPosts)
 {
   userPosts.map((data)=>{
     return (
-      <div className='flex flex-col  border-black border-2 w-[70%] p-2 items-center justify-center gap-y-4'>
+      <div className='flex flex-col  border-black border-2 w-[50%] p-2 items-center justify-center gap-y-4'>
         
 <p className='text-bold'>{data.title}</p>
 
-<div><img src={data.imageUrl} className='w-60' alt="" /></div>
+<img src={data.imageUrl} className='w-[100%] rounded-lg' alt="" />
 
 <p>{data.description}</p>
 <p>{data.quantity}</p>
 
-
-<div className='text-4xl '>
-    {
+<div  className='flex flex-row gap-x-10 items-center justify-center'>
+    <div className='flex gap-x-2'>
       
-      data.likes.includes(user._id) ? ( <AiFillHeart  onClick={()=> likeHandler(data._id)} />):(<AiOutlineHeart
-    onClick={()=> likeHandler(data._id)}
+      <div className=' text-4xl'>{
+      
+      data.likes.includes(user._id) ? ( <AiFillHeart  onClick={()=>likeHandler(data._id)} />):(<AiOutlineHeart
+        onClick={()=>likeHandler(data._id)}
   />)
-    }
-  </div>
+}  </div>
 
-<p>{data.likes.length}</p>
+<p className='text-2xl'>{data.likes.length}</p>
+</div>
+
+{
+data.email==user.email &&data.status==false && <div className='flex gap-2'>
+<LuFileEdit className='text-xl' onClick={()=>{
+  setCurrentPostEdit(data);
+  navigate('/editPost');
+}}/>
+<RiDeleteBin6Line className='text-xl' onClick={()=> deleteHandler(data._id)} />
+</div>
+  }
+  </div>
 
 <p>Created At  {new Date(data.createdAt).getHours()}:{new Date(data.createdAt).getMinutes()}</p>
 <br />

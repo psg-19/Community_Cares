@@ -109,7 +109,19 @@ exports.getUserPosts=async(req,res)=>{
 
             const user=jwt.verify(token,process.env.JWT_SECRET)
 
+
+
             const{firstName,lastName,phoneNo,address,district}=req.body;
+
+            if(!firstName||!lastName||!phoneNo||!address||!district||firstName.trim()==''||lastName.trim()==''||phoneNo.trim()==''||address.trim()==''||district.trim()==''){
+return res.status(401).json({
+    success:false,
+    message:"All Fields Are Mandatory"
+})
+            }
+
+
+
             console.log(req.body,req.files)
             if(req.files){
                 const image=req.files.image;
