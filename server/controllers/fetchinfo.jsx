@@ -20,7 +20,7 @@ exports.getUserPosts=async(req,res)=>{
          })
      }
  
-     const user= jwt.verify(token,process.env.JWT_Secret);
+     const user= jwt.verify(token,process.env.JWT_SECRET);
  
      const allPosts=await Post.find({email:user.email});
      // console.log(allPosts)
