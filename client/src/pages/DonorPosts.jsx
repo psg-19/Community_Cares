@@ -24,7 +24,7 @@ setDistrict(e.target.value);
 //----------------------------------functions-------------------------------------------------
   const postCaller=async()=>{
   try {
-    const response =await axios.get('http://localhost:4000/api/v1/getAllDonorPosts');
+    const response =await axios.get('https://community-cares.onrender.com/api/v1/getAllDonorPosts');
     setDonorPosts(response.data.donorPosts);
   
     
@@ -51,7 +51,7 @@ if(!user._id){
 
 try {
   
-  await axios.post('http://localhost:4000/api/v1/LikePost',{
+  await axios.post('https://community-cares.onrender.com/api/v1/LikePost',{
     postId:id,
     token:token1
   });

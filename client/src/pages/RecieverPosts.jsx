@@ -35,9 +35,10 @@ setDistrict(e.target.value);
 const postCaller=async()=>{
 
   try {
-    const response=await axios.get('http://localhost:4000/api/v1/getAllRecieverPosts')
+    const response=await axios.get('https://community-cares.onrender.com/api/v1/getAllRecieverPosts')
 // console.log(response)
     if(response){
+      console.log('hiiiii',response)
       setRecieverPosts(response.data.recieverPosts);
     // console.log(recieverPosts)
     }
@@ -54,7 +55,7 @@ const postCaller=async()=>{
 
   const deleteHandler =async(id)=>{
 
-    await axios.put('http://localhost:4000/api/v1/deletePost',{
+    await axios.put('https://community-cares.onrender.com/api/v1/deletePost',{
       postId:id,
       token:token1
     })
@@ -78,7 +79,7 @@ const likeHandler=async(id)=>{
   
   try {
     
-    await axios.post('http://localhost:4000/api/v1/LikePost',{
+    await axios.post('https://community-cares.onrender.com/api/v1/LikePost',{
       postId:id,
       token:token1
     });
@@ -109,7 +110,7 @@ setIsLoading(true);
 
 try {
   
-  const response=await axios.post('http://localhost:4000/api/v1/connectedPosts',{
+  const response=await axios.post('https://community-cares.onrender.com/api/v1/connectedPosts',{
     reciverPostId:id,
     token:token1
   });

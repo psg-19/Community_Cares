@@ -43,7 +43,7 @@ const submitHandler=async(e)=>{
   setIsLoading(true)
   e.preventDefault();
   console.log(formData)
- await axios.post('http://localhost:4000/api/v1/signUp',formData)
+ await axios.post('https://community-cares.onrender.com/api/v1/signUp',formData)
  .then((res)=>{
   
   toast.success(res.data.message);
@@ -70,7 +70,7 @@ const sendOtp=async(e)=>{
   // }
 
   setIsLoading(true)
-  await axios.post('http://localhost:4000/api/v1/sendOtp',formData)
+  await axios.post('https://community-cares.onrender.com/api/v1/sendOtp',formData)
   .then((e)=> {
     toast.success(e.data.message)
   })

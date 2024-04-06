@@ -58,7 +58,7 @@ if(isLoading){
   return
 }
 
-    await axios.put('http://localhost:4000/api/v1/updatePost',{
+    await axios.put('https://community-cares.onrender.com/api/v1/updatePost',{
         ...formData,
         postId:currentPostEdit._id
     },{

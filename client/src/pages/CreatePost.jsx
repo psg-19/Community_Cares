@@ -75,7 +75,7 @@ const submitHandler=async(e)=>{
 
 
   try {
-    await axios.post('http://localhost:4000/api/v1/createPost',{
+    await axios.post('https://community-cares.onrender.com/api/v1/createPost',{
       ...formData,
       token:token1
     },{

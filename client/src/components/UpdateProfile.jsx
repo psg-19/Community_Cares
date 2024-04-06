@@ -55,7 +55,7 @@ const imageHandler=(e)=>{
 const reloadUser=async()=>{
 
   
-    await axios.post('http://localhost:4000/api/v1/getUser',{
+    await axios.post('https://community-cares.onrender.com/api/v1/getUser',{
       token:token1
     })
  .then((res)=>{
@@ -97,7 +97,7 @@ const submitHandler=async(e)=>{
 // console.log(formData)
 
 
-    await axios.put('http://localhost:4000/api/v1/updateUser',{
+    await axios.put('https://community-cares.onrender.com/api/v1/updateUser',{
       ...formData,
       token:token1
     },{

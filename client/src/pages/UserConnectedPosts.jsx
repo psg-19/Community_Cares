@@ -23,7 +23,7 @@ const navigate=useNavigate()
     //funcs--------------------------------------------------
 const postCaller=async()=>{
     try {
-        const response=await axios.post('http://localhost:4000/api/v1/getConnectedPostsUser',{
+        const response=await axios.post('https://community-cares.onrender.com/api/v1/getConnectedPostsUser',{
           token:token1
         })
 
@@ -49,7 +49,7 @@ const likeHandler =async(id)=>{
     
     try {
       
-      await axios.post('http://localhost:4000/api/v1/likeConnectedPost',{
+      await axios.post('https://community-cares.onrender.com/api/v1/likeConnectedPost',{
         postId:id,
         token:token1
       });

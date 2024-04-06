@@ -27,7 +27,7 @@ const[userPosts,setUserPosts]=useState([])
 
   const deleteHandler =async(id)=>{
 
-    await axios.put('http://localhost:4000/api/v1/deletePost',{
+    await axios.put('https://community-cares.onrender.com/api/v1/deletePost',{
       postId:id,
       token:token1
     })
@@ -53,7 +53,7 @@ const likeHandler =async(id)=>{
   
   try {
     
-    await axios.post('http://localhost:4000/api/v1/LikePost',{
+    await axios.post('https://community-cares.onrender.com/api/v1/LikePost',{
       postId:id,
       token:token1
     });
@@ -73,7 +73,7 @@ const likeHandler =async(id)=>{
 
 
   const postCaller=async()=>{
-await axios.post('http://localhost:4000/api/v1/getUserPosts',{
+await axios.post('https://community-cares.onrender.com/api/v1/getUserPosts',{
   token:token1
 })
 .then((res)=>{

@@ -16,6 +16,7 @@ const check=()=>{
  
 }
 
+const [isLoading,setIsLoading]=useState(false);
 
 const [formData,setFormData]=useState({
   email:'',
@@ -37,16 +38,24 @@ const changeHandler=(e)=>{
 
 const submitHandler=async(e)=>{
 e.preventDefault();
+
+if(isLoading){
+  toast.error('Please wait ...');
+  return;
+}
+
+setIsLoading(true)
 // console.log(formData)
 
 try {
-await axios.get('http://localhost:4000/api/v1/BootUp')
+await axios.get('https://community-cares.onrender.com/api/v1/BootUp')
+
 } catch (error) {
   toast.error(error.message)
 }
 
 
-await axios.post('http://localhost:4000/api/v1/login',formData)
+await axios.post('https://community-cares.onrender.com/api/v1/login',formData)
   .then((response)=>{
     setToken1(response.data.token);
     
@@ -60,16 +69,16 @@ await axios.post('http://localhost:4000/api/v1/login',formData)
 getUser(response.data.token);
 // console.log('hiiii',response)
 
+})
 
-  })
-
-  .catch((error)=>{
-    console.log(error)
+.catch((error)=>{
+  console.log(error)
   toast.error(error.response.data.message);
-  })
-  // console.log(response)
- 
+})
+// console.log(response)
 
+
+setIsLoading(false)
 
 // try {
 
@@ -83,7 +92,7 @@ getUser(response.data.token);
 
 
 const getUser=async(token)=>{
-  await axios.post('http://localhost:4000/api/v1/getUser',{
+  await axios.post('https://community-cares.onrender.com/api/v1/getUser',{
     token:token
   },  {withCredentials: true, credentials: 'include'})
   .then((response)=>{
@@ -115,7 +124,7 @@ navigate('/')
 
 
 
-<form action="" className='flex flex-col gap-y-4' >
+<form action="" className='flex flex-col gap-y-4 items-center justify-center gap-y-4' >
   
 <label htmlFor="">
   Email 
@@ -131,7 +140,9 @@ navigate('/')
 </label>
 
 
-<input type="submit" onClick={(e)=>submitHandler(e)}/>
+<button className='border-2 border-black px-4 py-1' type="submit" onClick={(e)=>submitHandler(e)}>
+  {isLoading ? 'Please Wait ...':'login'}
+</button>
 
 </form>
 
