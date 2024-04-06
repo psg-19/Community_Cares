@@ -9,10 +9,6 @@
       {
         "src": "/(.*)", 
         "dest": "/route/routes.jsx" 
-      },
-      {
-        "src": "/(.*)",
-        "dest": "./route/routes.jsx"
       }
     ]
   }
