@@ -9,6 +9,10 @@
       {
         "src": "/(.*)", 
         "dest": "/route/routes.jsx" 
+      },
+      {
+        "src": "/(.*)",
+        "dest": "./index.jsx"
       }
     ]
   }
