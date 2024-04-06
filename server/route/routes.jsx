@@ -15,7 +15,9 @@ const {deleteUser,getUserPosts,updateUser,getUser,getAllRecieverPosts,getAllDono
 
 
 
-
+router.get('/',(req,res)=>{
+    res.cookie('hii',"yyyy").send("welcome to home page")  
+})
 router.post('/sendOtp',sendOtp);
 router.post('/signUp',signUp);
 router.post('/login',login);

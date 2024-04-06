@@ -38,9 +38,9 @@ app.listen(process.env.PORT,()=>{
 })
 
 //---------dummy route----------------
-app.get('/',(req,res)=>{
-   res.cookie('hii',"yyyy").send("welcome to home page")  
-});
+// app.get('/',(req,res)=>{
+//    res.cookie('hii',"yyyy").send("welcome to home page")  
+// });
 
 
 module.exports= app;
