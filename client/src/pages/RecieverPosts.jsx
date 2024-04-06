@@ -35,7 +35,7 @@ setDistrict(e.target.value);
 const postCaller=async()=>{
 
   try {
-    const response=await axios.get('http://localhost:4000/api/v1/getAllRecieverPosts')
+    const response=await axios.get('https://community-cares.vercel.app/getAllRecieverPosts')
 // console.log(response)
     if(response){
       setRecieverPosts(response.data.recieverPosts);
@@ -43,6 +43,7 @@ const postCaller=async()=>{
     }
 
   } catch (error) {
+    console.log(error)
     console.log('error while loading recievers post !!!')
   }
 
