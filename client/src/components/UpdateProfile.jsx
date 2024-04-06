@@ -78,6 +78,12 @@ const reloadUser=async()=>{
 
 const submitHandler=async(e)=>{
 
+  e.preventDefault();
+
+
+  
+
+
   if(isLoading){
     toast.error('Please Wait, Image upload in progress !!!');
     return
@@ -85,7 +91,6 @@ const submitHandler=async(e)=>{
 
 
   setIsLoading(true)
-  e.preventDefault();
   
   // console.log('submit',formData)
 
@@ -102,7 +107,7 @@ const submitHandler=async(e)=>{
     })
 
     .then((res)=>{ 
-      console.log(res.data);
+      // console.log(res.data);
       toast.success(res.data.message);
 
       reloadUser()
@@ -112,7 +117,7 @@ const submitHandler=async(e)=>{
 
 
     .catch((e)=> {
-      console.log(e);
+      // console.log(e);
       toast.error(e.response.data.message)
     })
 

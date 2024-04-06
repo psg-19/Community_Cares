@@ -15,7 +15,7 @@ export const RecieverPosts = () => {
   
   const {user,token1,Districts,setCurrentPostEdit,currentPostEdit}=useContext(AppContext)
   const navigate=useNavigate()
-
+const [isLoading,setIsLoading]=useState(false)
 
 
   //---------------------------vars------------------------------
@@ -35,7 +35,7 @@ setDistrict(e.target.value);
 const postCaller=async()=>{
 
   try {
-    const response=await axios.get('https://community-cares.vercel.app/getAllRecieverPosts')
+    const response=await axios.get('http://localhost:4000/api/v1/getAllRecieverPosts')
 // console.log(response)
     if(response){
       setRecieverPosts(response.data.recieverPosts);
@@ -94,7 +94,18 @@ const likeHandler=async(id)=>{
 
 
 
-const connectHandler=async(id)=>{
+const connectHandler=async(e,id)=>{
+e.preventDefault();
+
+if(isLoading){
+
+  toast.error('Please Wait ,Connecting Your Post ...');
+  return;
+
+}
+
+setIsLoading(true);
+
 
 try {
   
@@ -103,7 +114,7 @@ try {
     token:token1
   });
 postCaller()
-  console.log(response)
+  // console.log(response)
   console.log('Post connected successfully')
   postCaller()
 
@@ -112,6 +123,10 @@ postCaller()
  
   console.log('cannot connect posts !!!')
 }
+
+
+
+setIsLoading(false)
 
 }
 
@@ -130,7 +145,7 @@ useEffect(()=>{
   Select your District
 </label>
 
-<select name='districts' className='w-[40%]' id='districts' onChange={(e)=>{
+<select name='districts' className='w-[40%] border-2 border-black' id='districts' onChange={(e)=>{
   districtHandler(e)
 }}>
   <option value='All'>All</option>
@@ -179,9 +194,9 @@ data.posts.email==user.email && <div>
   </div>
     
 
-      <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full w-[12%]" onClick={()=>connectHandler(data._id)}>
-Donate
-</button>
+    { user.role=='Donor'&& <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full w-[12%]" onClick={(e)=>connectHandler(e,data._id)}>
+    {isLoading ? 'Please Wait ...':'Donate'}
+</button>}
         </div>) :
           
           //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -217,10 +232,10 @@ data.posts.email==user.email && <div>
 </div>
   }
   </div>
-
-      <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full w-[12%]" onClick={()=>connectHandler(data._id)}>
-Donate
-</button>
+{
+   user.role=='Donor' &&  <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full w-[12%]" onClick={(e)=>connectHandler(e,data._id)}>
+{isLoading ? 'Please Wait ...':'Donate'}
+</button>}
         </div>)
             
         )

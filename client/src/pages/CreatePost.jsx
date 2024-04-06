@@ -49,8 +49,26 @@ const changeHandler=(e)=>{
   
 
 const submitHandler=async(e)=>{
-  setIsLoading(true)
+
   e.preventDefault();
+
+  if((isNaN(parseInt(formData.quantity)))){
+    toast.error('Quantity must be a number !!!');
+    return;
+  }
+  if(formData.quantity<1){
+    toast.error('Quantity must be a positive number !!!');
+    return;
+  }
+  // console.log()
+
+  if(isLoading){
+    toast.error('Please Wait ,Image upload in progress ...');
+    return;
+  }
+  // e.preventDefault();
+
+  setIsLoading(true)
   
   // console.log(formData)
 
@@ -67,14 +85,14 @@ const submitHandler=async(e)=>{
     })
 
     .then((res)=>{ 
-      console.log(res);
+      // console.log(res);
       toast.success(res.data.message)
       navigate('/userPosts');
     })
 
 
     .catch((e)=> {
-      console.log(e);
+      // console.log(e);
       toast.error(e.response.data.message);
       
     })
@@ -199,7 +217,9 @@ onChange={(e)=>{
 </label>
 
 
-<input type="submit" className='border-2 border-black rounded-lg w-20' onClick={(e)=> submitHandler(e)} />
+<button type="submit" className='border-2 border-black rounded-lg w-20' onClick={(e)=> submitHandler(e)} >
+  {isLoading ? 'Please Wait ...':'Submit' }
+  </button>
 
 </form>
 

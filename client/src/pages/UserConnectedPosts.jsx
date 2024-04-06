@@ -28,6 +28,7 @@ const postCaller=async()=>{
         })
 
        setUserConnectedPosts(response.data.postDetails)
+      //  console.log(response.data.postDetails)
     } catch (error) {
         toast.error("Something went wrong while fetching Posts")
     }
@@ -71,7 +72,7 @@ console.log(userConnectedPosts)
     },[])
 
   return (
-    <div className='flex flex-col gap-y-6 items-center justify-center'>
+    <div className='flex flex-col gap-y-6 items-center justify-center  '>
 
 
 {
@@ -83,9 +84,11 @@ No posts available
     
     //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     (userConnectedPosts.map((data)=>{
-        return <div className='flex flex-row gap-x-6 '>
+        return <div className='flex flex-col gap-y-6  items-center justify-center border-2 border-black p-2'>
             {/* //======================donor posts----------- */}
-           <div className='flex flex-col border-2 items-center justify-center w-[50%]'>
+
+            <div className='flex flex-row gap-x-6'>
+           <div className='flex flex-col border-2 items-center justify-center w-[50%] p-4'>
 
 <h1 className='font-bold'>Donor</h1>
            <div>{data.donorPost.title}</div>
@@ -102,7 +105,7 @@ No posts available
 {/* =====================================Recievr posts================ */}
 
 
-<div className='flex flex-col border-2 items-center justify-center w-[50%]'>
+<div className='flex flex-col border-2 items-center justify-center w-[50%] p-2 '>
 
 <h1 className='font-bold'>Reciever</h1>
 <div>{data.recieverPost.title}</div>
@@ -117,16 +120,19 @@ No posts available
 
 
 </div>
+</div>
 
+<div className='flex gap-x-4 items-center justify-center'>
+  <div className='text-4xl'>
 
-<div onClick={()=>likeHandler(data._id)}>
       {
         
-        data.likes.includes(user._id) ? ( <AiFillHeart  onClick={()=> likeHandler()} />):(<AiOutlineHeart
-      onClick={()=> likeHandler()}
-    />)
-      }
-      <p>{data.likes.length}</p>
+        data.likes.includes(user._id) ? ( <AiFillHeart  onClick={()=>likeHandler(data._id)} />):(<AiOutlineHeart 
+          onClick={()=>likeHandler(data._id)}
+          />)
+        }
+        </div>
+      <p className='text-2xl'>{data.likes.length}</p>
     </div>
 
         </div>

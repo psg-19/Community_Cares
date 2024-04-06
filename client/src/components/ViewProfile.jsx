@@ -12,10 +12,10 @@ const navigate=useNavigate()
 
 
   return (
-    <div className=' flex flex-col gap-y-6'>
+    <div className=' flex flex-col gap-y-6 items-center justify-center'>
         
         <div>
-          <img className='rounded-full h-20 w-20' src={user.profileUrl} alt="Profile picture" />
+          <img className='rounded-full  h-52 w-52' src={user.profileUrl} alt="Profile picture" />
         </div>
 
        <div className='flex gap-x-4'>
@@ -26,13 +26,13 @@ const navigate=useNavigate()
 
        </div>
 
-        <div>
-    <p>  Name : {user.firstName} {user.lastName}</p>
-    <p>Email : {user.email}</p>
-       <p>Contact Number : {user.phoneNo}</p>
-    <p>Address : {user.address}</p>
-    <p>District : {user.district}</p>
-    <p>Role : {user.role}</p>
+        <div className='flex flex-col items-center justify-center gap-y-4'>
+    <p> <b> Name :</b> {user.firstName} {user.lastName}</p>
+    <p><b>Email :</b> {user.email}</p>
+       <p><b>Contact Number :</b> {user.phoneNo}</p>
+    <p><b>Address :</b> {user.address}</p>
+    <p><b>District :</b> {user.district}</p>
+    <p><b>Role : </b>{user.role}</p>
         </div>
 
 

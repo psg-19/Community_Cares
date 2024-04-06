@@ -40,8 +40,23 @@ const [isLoading,setIsLoading]=useState(false);
       }
 
 const submitHandler=async(e)=>{
+  e.preventDefault()
     setIsLoading(true)
-    e.preventDefault()
+
+
+    
+  if((isNaN(parseInt(formData.quantity)))){
+    toast.error('Quantity must be a number !!!');
+    return;
+  }
+  if(formData.quantity<1){
+    toast.error('Quantity must be a positive number !!!');
+    return;
+  }
+if(isLoading){
+  toast.error('Please Wait ,image upload in progress !!!');
+  return
+}
 
     await axios.put('http://localhost:4000/api/v1/updatePost',{
         ...formData,
@@ -94,7 +109,7 @@ const imageHandler=(e)=>{
 
 
 
-<form action="" className='flex flex-col gap-y-6 border-2 border-black p-6 max-w-[50%]'>
+<form action="" className='flex flex-col gap-y-6 border-2 border-black p-6 '>
 
 
 
@@ -190,7 +205,7 @@ value={formData.address}
 <button className='border-2 border-black py-1 px-3'
 
 onClick={(e)=> submitHandler(e)}
->Save</button>
+>{isLoading ? 'Please Wait':'Save'}</button>
 <button className='border-2 border-black py-1 px-3' onClick={()=>{
     navigate('/userPosts')
 }} >Cancel</button>
