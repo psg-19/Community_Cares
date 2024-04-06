@@ -41,3 +41,6 @@ app.listen(process.env.PORT,()=>{
 app.get('/',(req,res)=>{
    res.cookie('hii',"yyyy").send("welcome to home page")  
 });
+
+
+module.exports= app;
