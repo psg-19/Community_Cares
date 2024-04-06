@@ -140,10 +140,10 @@ Enjoy your meal !!!
     Dear ${donorUser.firstName},<br/>
     You have your Reciever for todays Food.
     Here are their contact details 
-    Name: ${recieverEmail.firstName} ${recieverEmail.lastName} <br/>
-    Email :${recieverEmail.email} <br/>
-    Phone Number : ${recieverEmail.phoneNo}
-</br>
+    Name: ${recieverUser.firstName} ${recieverUser.lastName} <br/>
+    Email :${recieverUser.email} <br/>
+    Phone Number : ${recieverUser.phoneNo}
+<br/>
 Please coordinate accordingly for proper disbursal of food
 </br>
 Enjoy your Day !!!
@@ -190,8 +190,15 @@ exports.getConnectedPostsUser=async(req,res)=>{
         }
         
         const user=jwt.verify(token,process.env.JWT_SECRET);
+        // console.log(user)
 
-        const postDetails=(await ConnectedPosts.find({donorEmail:user.email}).populate('donorPost').populate('recieverPost').exec()||await ConnectedPosts.find({recieverEmail:user.email}).populate('donorPost').populate('recieverPost').exec());
+        let postDetails=await ConnectedPosts.find({donorEmail:user.email}).populate('donorPost').populate('recieverPost').exec();
+
+        if(postDetails.length==0){
+            postDetails=await ConnectedPosts.find({recieverEmail:user.email}).populate('donorPost').populate('recieverPost').exec()
+        }
+
+        // console.log(postDetails)
         
 
         return res.status(200).json({

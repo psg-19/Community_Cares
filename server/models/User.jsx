@@ -64,7 +64,7 @@ const userSchema=new mongoose.Schema({
 userSchema.post('save',async function(){
     try {
 
-        const  mailResponse=await mailSender(this.email,'ACCOUNT CREATED SUCCESSFULLY !!! @Community Cares',`Dear ${this.firstName} </br> Welcome to Community Cares ! We're thrilled to have you join our community and embark on this exciting journey with us`);
+        const  mailResponse=await mailSender(this.email,'ACCOUNT CREATED SUCCESSFULLY !!! @Community Cares',`Dear ${this.firstName} <br/> Welcome to Community Cares ! We're thrilled to have you join our community and embark on this exciting journey with us`);
         console.log('email for account creation sent successfully',mailResponse);
     
         

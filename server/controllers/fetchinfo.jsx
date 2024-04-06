@@ -126,6 +126,36 @@ return res.status(401).json({
             if(req.files){
                 const image=req.files.image;
 
+
+
+
+                
+const supportedTypes=['jpg','jpeg','png']
+
+        
+const fileType=image.name.split('.')[1].toLowerCase();
+// console.log('fileType  ----->',fileType)
+// const checkFormat=require('./fileUpload.jsx');
+
+
+//function
+function checkFormat(supportedTypes,fileType){
+    if(supportedTypes.includes(fileType)){
+     return true;
+    }
+    else return false;
+ }
+
+if(!( checkFormat(supportedTypes,fileType) )){
+return res.status(400).json({
+    success:false,
+    message:'File format not supported'
+})
+}
+
+
+
+
                 const  newImage=await uploadToCloudinary.uploadToCloudinary(image,process.env.FOLDER_NAME);
                 console.log('--------------',newImage)
                 
