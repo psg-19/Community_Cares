@@ -60,14 +60,14 @@ exports.signUp=async(req,res)=>{
    try {
     const {firstName,lastName,phoneNo,email,password,confirmPassword,district,address,role,otp}=req.body;
 
-    if(!firstName||!district||!address||!lastName||!phoneNo||!email||!password||!confirmPassword||!role||!otp){
+    if(!firstName||!district||!lastName||!phoneNo||!email||!password||!confirmPassword||!role||!otp){
         return res.status(400).json({
             success:false,
             message:'All fields are mandatory !!!'
         })
     }
 
-    if(address.trim()==''||district.trim()==''||firstName.trim()==''||lastName.trim()==''||phoneNo.trim()==''||email.trim()==''||password.trim()==''||confirmPassword.trim()==''||role.trim()==''||otp.trim()==''){
+    if(district.trim()==''||firstName.trim()==''||lastName.trim()==''||phoneNo.trim()==''||email.trim()==''||password.trim()==''||confirmPassword.trim()==''||role.trim()==''||otp.trim()==''){
         return res.status(400).json({
             success:false,
             message:'All fields are mandatory !!!'
