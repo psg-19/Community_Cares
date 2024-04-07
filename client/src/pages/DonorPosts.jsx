@@ -76,12 +76,13 @@ useEffect(()=>{
 
 
   return (
-    <div className='flex flex-col items-center space-y-4 h-[100vh]'>
+    <div className='flex flex-col items-center space-y-4 h-[88vh] overflow-y-scroll bg-green1-light py-10
+    '>
 {/* //----------------------------------------------- */}
-<div>
+<div className='flex gap-x-4'>
 
 <label htmlFor="districts">
-  Select your District
+  <p><b>Select your District</b></p>
 </label>
 
 
@@ -100,7 +101,7 @@ useEffect(()=>{
 
 
 {/* //------------------------------------------------- */}
-<div className='h-[100vh] flex  justify-center'>
+<div className='h-[100vh] flex flex-row gap-y-10 w-[80%] gap-x-10 flex-wrap justify-center'>
 
 
 {
@@ -108,10 +109,10 @@ donorPosts.length==0 ? (<Spinner/>):(
   donorPosts.map((data)=>{
     return (
       
-      district=='All' ? ( <div className='flex flex-col border-2  max-h-[70%] p-4 justify-center items-center border-black w-[70%] gap-y-4'>
+      district=='All' ? ( <div className='flex flex-col border-2  max-h-[700px] max-w-[400px] w-[50%]  p-4 justify-center items-center border-black  gap-y-4'>
           
       <h3 className='font-bold text-xl'>{data.posts.title}</h3>
-      <div><img src={data.posts.imageUrl} className='w-96 rounded-lg' alt="" /></div>
+      <div className='flex justify-center items-center w-[80%] h-[100%]' ><img src={data.posts.imageUrl} className='w-[100%] h-[100%] rounded-lg' alt="" /></div>
 
     <p>{data.posts.description}</p>
     <p>Requirement : {data.posts.quantity} People</p>

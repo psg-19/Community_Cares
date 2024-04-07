@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import logo from '../assets/Community.png'
 import {NavLink} from 'react-router-dom'
 import { AppContext } from '../context/AppContext';
-
 import {toast} from 'react-hot-toast'
 
 
@@ -39,7 +38,7 @@ console.log(token1)
     },[user])
 
   return (
-    <div className='flex  justify-center items-center'>
+    <div className='flex bg-white  justify-center items-center'>
 
 <div className='flex  items-center justify-between w-[90%] h-24' >
         
