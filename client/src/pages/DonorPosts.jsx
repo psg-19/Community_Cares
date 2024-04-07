@@ -8,6 +8,10 @@ import { Spinner } from '../components/Spinner';
 import { LuFileEdit } from "react-icons/lu";
 
 
+  
+import { RiDeleteBin6Line } from 'react-icons/ri';
+
+
 
 export const DonorPosts = () => {
   const {user,token1,Districts,backendUrl,setCurrentPostEdit}=useContext(AppContext);
@@ -37,6 +41,19 @@ setDistrict(e.target.value);
   
     // console.log(e.target.value);
   }
+
+
+const deleteHandler =async(id)=>{
+
+  await axios.put(backendUrl+'/deletePost',{
+    postId:id,
+    token:token1
+  })
+  .then((res)=> toast.success(res.data.message))
+  .catch((e)=> toast.error(e.response.data.message))
+  postCaller();
+
+}
 
 
 const likeHandler =async(id)=>{
@@ -76,7 +93,7 @@ useEffect(()=>{
 
 
   return (
-    <div className='flex flex-col items-center space-y-4 h-[88vh] overflow-y-scroll bg-green1-light py-10
+    <div className='flex flex-col items-center space-y-4 h-[88vh] overflow-y-scroll bg-green1-light pt-10
     '>
 {/* //----------------------------------------------- */}
 <div className='flex gap-x-4'>
@@ -109,13 +126,15 @@ donorPosts.length==0 ? (<Spinner/>):(
   donorPosts.map((data)=>{
     return (
       
-      district=='All' ? ( <div className='flex flex-col border-2  max-h-[700px] max-w-[400px] w-[50%]  p-4 justify-center items-center border-black  gap-y-4'>
+      district=='All' ? ( <div className='flex flex-col border-2  max-h-[700px] max-w-[400px] min-w-[250px] min-h-[550px] w-[50%] h-[65%] p-4 justify-center items-center border-black  gap-y-4 bg-slate-100 rounded-lg overflow-hidden
+      hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] hover:scale-105 transition-all linear 
+      '>
           
       <h3 className='font-bold text-xl'>{data.posts.title}</h3>
-      <div className='flex justify-center items-center w-[80%] h-[100%]' ><img src={data.posts.imageUrl} className='w-[100%] h-[100%] rounded-lg' alt="" /></div>
+      <div className='flex justify-center items-center w-[14rem] h-[19rem]' ><img src={data.posts.imageUrl} className='w-[100%] h-[100%] rounded-lg' alt="" /></div>
 
-    <p>{data.posts.description}</p>
-    <p>Requirement : {data.posts.quantity} People</p>
+    <p className='w-[100%] flex itc justify-center'>{data.posts.description}</p>
+    <p >Requirement : {data.posts.quantity} People</p>
 
    
   <div  className='flex flex-row gap-x-10 items-center justify-center'>
@@ -137,6 +156,8 @@ donorPosts.length==0 ? (<Spinner/>):(
   setCurrentPostEdit(data.posts);
   navigate('/editPost');
 }}/>
+
+<RiDeleteBin6Line className='text-xl' onClick={()=> deleteHandler(data._id)} />
 </div>
   }
   </div>
@@ -153,12 +174,14 @@ donorPosts.length==0 ? (<Spinner/>):(
 ( 
   data.posts.district==district && (
     
-    <div className='flex flex-col border-2 p-4 justify-center items-center border-black w-[70%] max-h-[70%] gap-y-4'>
+    <div className='flex flex-col border-2  max-h-[700px] max-w-[400px] min-w-[250px] min-h-[550px] w-[50%] h-[65%] p-4 justify-center items-center border-black  gap-y-4 bg-slate-100 rounded-lg overflow-hidden
+      hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] hover:scale-105 transition-all linear 
+      '>
           
-          <h3 className='font-bold text-xl'>{data.posts.title}</h3>
-          <div><img src={data.posts.imageUrl} className='w-96 rounded-lg' alt="" /></div>
+      <h3 className='font-bold text-xl'>{data.posts.title}</h3>
+      <div className='flex justify-center items-center w-[14rem] h-[19rem]' ><img src={data.posts.imageUrl} className='w-[100%] h-[100%] rounded-lg' alt="" /></div>
     
-        <p>{data.posts.description}</p>
+        <p className='flex justify-center items-center'>{data.posts.description}</p>
         <p>Requirement : {data.posts.quantity} People</p>
     
 
@@ -182,6 +205,8 @@ donorPosts.length==0 ? (<Spinner/>):(
   setCurrentPostEdit(data.posts._id);
   navigate('/editPost');
 }}/>
+
+<RiDeleteBin6Line className='text-xl' onClick={()=> deleteHandler(data._id)} />
 </div>
   }
   </div>

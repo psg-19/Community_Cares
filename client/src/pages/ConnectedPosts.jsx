@@ -65,7 +65,7 @@ console.log(connectedPosts)
     },[])
 
   return (
-    <div className='flex flex-col gap-y-6 items-center justify-center'>
+    <div className='flex flex-col gap-y-6 bg-green1-light overflow-y-scroll h-[88vh] items-center justify-center  pt-24'>
 
 
 {
@@ -78,7 +78,11 @@ console.log(connectedPosts)
     //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
     (connectedPosts.map((data)=>{
-        return <div className='flex flex-col items-center justify-center border-2 border-black p-2 gap-y-4' >
+        return <div className='flex flex-col items-center justify-center border-2 border-black p-2  gap-y-4 rounded-lg
+        
+        max-w-[8200px] max-h-[1000px] h-[90rem] w-[20rem]
+        
+        ' >
           <div className='flex flex-row gap-x-6 '>
             {/* //======================donor posts----------- */}
            <div className='flex flex-col border-2 items-center justify-center w-[50%]'>
@@ -90,7 +94,7 @@ console.log(connectedPosts)
 
 
 <p>{data.donorPost.description}</p>
-<p>{data.donorPost.quantity}</p>
+<p><b>Requirement : </b>{data.donorPost.quantity} People</p>
 
 
            </div>
@@ -107,7 +111,7 @@ console.log(connectedPosts)
 
 
 <p>{data.recieverPost.description}</p>
-<p>{data.recieverPost.quantity}</p>
+<p><b>Requirement : </b>{data.donorPost.quantity} People</p>
 
 
 

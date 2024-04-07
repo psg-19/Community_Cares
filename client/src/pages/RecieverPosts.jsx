@@ -141,12 +141,13 @@ useEffect(()=>{
 
 
   return (
-    <div className='flex flex-col justify-center items-center space-y-4'>
+    <div className='flex flex-col items-center space-y-4 h-[88vh] overflow-y-scroll bg-green1-light pt-10 pb-10
+    '>
 
-<div>
+<div className='flex gap-x-4'>
   
 <label htmlFor="districts">
-  Select your District
+<p><b>Select your District</b></p>
 </label>
 
 <select name='districts' className='w-[40%] border-2 border-black' id='districts' onChange={(e)=>{
@@ -161,17 +162,19 @@ useEffect(()=>{
 </select>
   </div>
 
-<div className='flex justify-center h-[100vh]  '>
+  <div className='h-[100vh] flex flex-row gap-y-10 w-[80%] gap-x-10 flex-wrap justify-center'>
 
     {
       recieverPosts=='' ? (<Spinner/>):(
         recieverPosts.map((data)=>{
           return (
-            district=='All' ? (<div className='flex flex-col max-h-[60%] max-w-[80%]  p-2 border-black justify-center items-center w-[70%] border-2 gap-y-4'>
+            district=='All' ? (<div className='flex flex-col border-2  max-h-[700px] max-w-[400px] min-w-[250px] min-h-[550px] w-[50%] h-[65%] p-4 justify-center items-center border-black  gap-y-4 bg-slate-100 rounded-lg overflow-hidden
+            hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] hover:scale-105 transition-all linear 
+            '>
           <h3 className='font-bold text-xl'>{data.posts.title}</h3>
-          <div><img src={data.posts.imageUrl} className='w-96 rounded-lg' alt="" /></div>
+          <div className='flex justify-center items-center w-[14rem] h-[19rem]' ><img src={data.posts.imageUrl} className='w-[100%] h-[100%] rounded-lg' alt="" /></div>
 
-        <p>{data.posts.description}</p>
+        <p className='w-[100%] flex itc justify-center'>{data.posts.description}</p>
         <p>Requirement : {data.posts.quantity} People</p>
 
         <div  className='flex flex-row gap-x-10 items-center justify-center'>
@@ -215,11 +218,13 @@ useEffect(()=>{
         </div>) :
           
           //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-          (data.posts.district==district &&<div className='flex flex-col border-2 gap-y-4 max-w-[50%]'>
+          (data.posts.district==district &&<div className='flex flex-col border-2  max-h-[700px] max-w-[400px] min-w-[250px] min-h-[550px] w-[50%] h-[65%] p-4 justify-center items-center border-black  gap-y-4 bg-slate-100 rounded-lg overflow-hidden
+          hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] hover:scale-105 transition-all linear 
+          '>
           <h3>{data.posts.title}</h3>
-          <div><img src={data.posts.imageUrl} className='w-96 rounded-lg' alt="" /></div>
+          <div className='flex justify-center items-center w-[14rem] h-[19rem]' ><img src={data.posts.imageUrl} className='w-[100%] h-[100%] rounded-lg' alt="" /></div>
 
-        <p>{data.posts.description}</p>
+        <p className='w-[100%] flex itc justify-center'>{data.posts.description}</p>
         <p>{data.posts.quantity}</p>
 
         <div  className='flex flex-row gap-x-10 items-center justify-center'>
