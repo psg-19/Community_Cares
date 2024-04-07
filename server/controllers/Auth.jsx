@@ -58,7 +58,7 @@ return res.status(200).json({
 
 exports.signUp=async(req,res)=>{
    try {
-    const {firstName,lastName,phoneNo,email,password,confirmPassword,district,address,role,otp}=req.body;
+    const {firstName,lastName,phoneNo,email,password,confirmPassword,district,role,otp}=req.body;
 
     if(!firstName||!district||!lastName||!phoneNo||!email||!password||!confirmPassword||!role||!otp){
         return res.status(400).json({
@@ -145,7 +145,6 @@ const newUser=await User.create({
     password:hashedPass,
     role,
     district,
-    address,
     profileUrl:`https://api.dicebear.com/5.x/initials/svg?seed=${firstName} ${lastName}`
 })
 
