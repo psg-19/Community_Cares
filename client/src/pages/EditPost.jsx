@@ -9,7 +9,7 @@ import {toast} from 'react-hot-toast'
 
 export const EditPost = () => {
 
-    const {currentPostEdit,setCurrentPostEdit,Districts}=useContext(AppContext)
+    const {currentPostEdit,backendUrl,setCurrentPostEdit,Districts}=useContext(AppContext)
 
     const navigate=useNavigate()
 
@@ -58,7 +58,7 @@ if(isLoading){
   return
 }
 
-    await axios.put('https://community-cares.onrender.com/api/v1/updatePost',{
+    await axios.put(backendUrl+'/updatePost',{
         ...formData,
         postId:currentPostEdit._id
     },{

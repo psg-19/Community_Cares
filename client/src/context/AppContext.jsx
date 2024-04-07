@@ -17,6 +17,8 @@ const [donorPosts,setDonorPosts]=useState('')
 
 const [currentPostEdit,setCurrentPostEdit]=useState('')
 
+const backendUrl='https://community-cares.onrender.com/api/v1';
+
 
 
 const Districts=[
@@ -33,7 +35,8 @@ const value={
     token1,setToken1,
     donorPosts,setDonorPosts
     ,Districts,
-    currentPostEdit,setCurrentPostEdit
+    currentPostEdit,setCurrentPostEdit,
+    backendUrl
    
 }
 return <AppContext.Provider value={value}>

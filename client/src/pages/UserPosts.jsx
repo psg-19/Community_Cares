@@ -11,7 +11,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 
 
 export const UserPosts = () => {
-  const {isLogged,token1,user,setCurrentPostEdit}=useContext(AppContext)
+  const {backendUrl,token1,user,setCurrentPostEdit}=useContext(AppContext)
 const navigate=useNavigate();
 
 const[userPosts,setUserPosts]=useState([])
@@ -27,7 +27,7 @@ const[userPosts,setUserPosts]=useState([])
 
   const deleteHandler =async(id)=>{
 
-    await axios.put('https://community-cares.onrender.com/api/v1/deletePost',{
+    await axios.put(backendUrl+'/deletePost',{
       postId:id,
       token:token1
     })
@@ -53,7 +53,7 @@ const likeHandler =async(id)=>{
   
   try {
     
-    await axios.post('https://community-cares.onrender.com/api/v1/LikePost',{
+    await axios.post(backendUrl+'/LikePost',{
       postId:id,
       token:token1
     });
@@ -73,7 +73,7 @@ const likeHandler =async(id)=>{
 
 
   const postCaller=async()=>{
-await axios.post('https://community-cares.onrender.com/api/v1/getUserPosts',{
+await axios.post(backendUrl+'/getUserPosts',{
   token:token1
 })
 .then((res)=>{

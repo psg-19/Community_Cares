@@ -15,7 +15,7 @@ export const UserConnectedPosts = () => {
 
     const [userConnectedPosts,setUserConnectedPosts]=useState([]);
 
-    const {user,token1}=useContext(AppContext)
+    const {user,token1,backendUrl}=useContext(AppContext)
 
 const navigate=useNavigate()
 
@@ -23,7 +23,7 @@ const navigate=useNavigate()
     //funcs--------------------------------------------------
 const postCaller=async()=>{
     try {
-        const response=await axios.post('https://community-cares.onrender.com/api/v1/getConnectedPostsUser',{
+        const response=await axios.post(backendUrl+'/getConnectedPostsUser',{
           token:token1
         })
 
@@ -49,7 +49,7 @@ const likeHandler =async(id)=>{
     
     try {
       
-      await axios.post('https://community-cares.onrender.com/api/v1/likeConnectedPost',{
+      await axios.post(backendUrl+'/likeConnectedPost',{
         postId:id,
         token:token1
       });

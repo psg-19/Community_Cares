@@ -7,13 +7,14 @@ import { useNavigate } from 'react-router-dom';
 
 import { LuFileEdit } from "react-icons/lu";
 import { RiDeleteBin6Line } from 'react-icons/ri';
+import { Spinner } from '../components/Spinner';
 
 
 
 
 export const RecieverPosts = () => {
   
-  const {user,token1,Districts,setCurrentPostEdit,currentPostEdit}=useContext(AppContext)
+  const {user,token1,Districts,setCurrentPostEdit,backendUrl}=useContext(AppContext)
   const navigate=useNavigate()
 const [isLoading,setIsLoading]=useState(false)
 
@@ -35,7 +36,7 @@ setDistrict(e.target.value);
 const postCaller=async()=>{
 
   try {
-    const response=await axios.get('https://community-cares.onrender.com/api/v1/getAllRecieverPosts')
+    const response=await axios.get(backendUrl+'/getAllRecieverPosts')
 // console.log(response)
     if(response){
       console.log('hiiiii',response)
@@ -55,7 +56,7 @@ const postCaller=async()=>{
 
   const deleteHandler =async(id)=>{
 
-    await axios.put('https://community-cares.onrender.com/api/v1/deletePost',{
+    await axios.put(backendUrl+'/deletePost',{
       postId:id,
       token:token1
     })
@@ -79,7 +80,7 @@ const likeHandler=async(id)=>{
   
   try {
     
-    await axios.post('https://community-cares.onrender.com/api/v1/LikePost',{
+    await axios.post(backendUrl+'/LikePost',{
       postId:id,
       token:token1
     });
@@ -110,7 +111,7 @@ setIsLoading(true);
 
 try {
   
-  const response=await axios.post('https://community-cares.onrender.com/api/v1/connectedPosts',{
+  const response=await axios.post(backendUrl+'/connectedPosts',{
     reciverPostId:id,
     token:token1
   });
@@ -142,6 +143,8 @@ useEffect(()=>{
   return (
     <div className='flex flex-col justify-center items-center space-y-4'>
 
+<div>
+  
 <label htmlFor="districts">
   Select your District
 </label>
@@ -156,12 +159,15 @@ useEffect(()=>{
     })
   }
 </select>
+  </div>
+
+<div className='flex justify-center h-[100vh]  '>
 
     {
-    recieverPosts=='' ? (<div>No Posts Found  </div>):(
-      recieverPosts.map((data)=>{
-        return (
-          district=='All' ? (<div className='flex flex-col p-2 border-black justify-center items-center w-[70%] border-2 gap-y-4'>
+      recieverPosts=='' ? (<Spinner/>):(
+        recieverPosts.map((data)=>{
+          return (
+            district=='All' ? (<div className='flex flex-col max-h-[60%] max-w-[80%]  p-2 border-black justify-center items-center w-[70%] border-2 gap-y-4'>
           <h3 className='font-bold text-xl'>{data.posts.title}</h3>
           <div><img src={data.posts.imageUrl} className='w-96 rounded-lg' alt="" /></div>
 
@@ -172,20 +178,20 @@ useEffect(()=>{
     <div className='flex gap-x-2'>
       
       <div className=' text-4xl'>{
-      
-      data.posts.likes.includes(user._id) ? ( <AiFillHeart  onClick={()=>likeHandler(data.posts._id)} />):(<AiOutlineHeart
-        onClick={()=>likeHandler(data.posts._id)}
-  />)
+        
+        data.posts.likes.includes(user._id) ? ( <AiFillHeart  onClick={()=>likeHandler(data.posts._id)} />):(<AiOutlineHeart
+          onClick={()=>likeHandler(data.posts._id)}
+          />)
 }  </div>
 
 <p className='text-2xl'>{data.posts.likes.length}</p>
 </div>
 
 {
-data.posts.email==user.email && <div>
+  data.posts.email==user.email && <div>
 <LuFileEdit className='text-xl' onClick={()=>{
   setCurrentPostEdit(data.posts);
-
+  
   navigate('/editPost');
 }}/>
 <RiDeleteBin6Line className='text-xl' onClick={()=> deleteHandler(data._id)} />
@@ -195,13 +201,21 @@ data.posts.email==user.email && <div>
   </div>
     
 
-    { user.role=='Donor'&& <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full w-[12%]" onClick={(e)=>connectHandler(e,data._id)}>
+    { user.role=='Donor'&& <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full w-[90px]" onClick={(e)=>connectHandler(e,data._id)}>
     {isLoading ? 'Please Wait ...':'Donate'}
 </button>}
+
+<div className='flex justify-evenly'>
+
+<div><pre><b>District : </b>{data.posts.district}</pre></div>
+{/* <div><p><b>By - </b>{data.name}</p></div> */}
+
+</div>
+
         </div>) :
           
           //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-          (data.posts.district==district &&<div className='flex flex-col border-2 gap-y-4'>
+          (data.posts.district==district &&<div className='flex flex-col border-2 gap-y-4 max-w-[50%]'>
           <h3>{data.posts.title}</h3>
           <div><img src={data.posts.imageUrl} className='w-96 rounded-lg' alt="" /></div>
 
@@ -212,20 +226,20 @@ data.posts.email==user.email && <div>
     <div className='flex gap-x-2'>
       
       <div className=' text-4xl'>{
-      
-      data.posts.likes.includes(user._id) ? ( <AiFillHeart  onClick={()=>likeHandler(data.posts._id)} />):(<AiOutlineHeart
-        onClick={()=>likeHandler(data.posts._id)}
-  />)
+        
+        data.posts.likes.includes(user._id) ? ( <AiFillHeart  onClick={()=>likeHandler(data.posts._id)} />):(<AiOutlineHeart
+          onClick={()=>likeHandler(data.posts._id)}
+          />)
 }  </div>
 
 <p className='text-2xl'>{data.posts.likes.length}</p>
 </div>
 
 {
-data.posts.email==user.email && <div>
+  data.posts.email==user.email && <div>
 <LuFileEdit className='text-xl' onClick={()=>{
   setCurrentPostEdit(data.posts);
-
+  
   navigate('/editPost');
 }}/>
 <RiDeleteBin6Line className='text-xl' onClick={()=> deleteHandler(data._id)} />
@@ -234,17 +248,25 @@ data.posts.email==user.email && <div>
   }
   </div>
 {
-   user.role=='Donor' &&  <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full w-[12%]" onClick={(e)=>connectHandler(e,data._id)}>
+  user.role=='Donor' &&  <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full w-[90px]" onClick={(e)=>connectHandler(e,data._id)}>
 {isLoading ? 'Please Wait ...':'Donate'}
 </button>}
+
+<div className='flex justify-evenly'>
+
+<div><pre><b>District : </b>{data.posts.district}</pre></div>
+{/* <div><p><b>By - </b>{data.name}</p></div> */}
+
+</div>
         </div>)
             
-        )
-      })
-    )
+          )
+        })
+      )
     }
 
    
+    </div>
         </div>
   )
 }

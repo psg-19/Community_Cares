@@ -3,11 +3,14 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 import { AppContext } from '../context/AppContext'
 import axios from 'axios'
+import loginBg from '../assets/loginbg1.png'
+
+
 
 
 export const SignUp = () => {
   const navigate=useNavigate()
-const {isLogged,Districts}=useContext(AppContext)
+const {backendUrl,Districts}=useContext(AppContext)
 
 
 
@@ -26,6 +29,7 @@ const [formData,setFormData]=useState({
 
 
 const [isLoading,setIsLoading]=useState(false)
+const [isLoading1,setIsLoading1]=useState(false)
 
 //-----------------------------------------------funcs----------------------------------
 
@@ -43,7 +47,7 @@ const submitHandler=async(e)=>{
   setIsLoading(true)
   e.preventDefault();
   console.log(formData)
- await axios.post('https://community-cares.onrender.com/api/v1/signUp',formData)
+ await axios.post(backendUrl+'/signUp',formData)
  .then((res)=>{
   
   toast.success(res.data.message);
@@ -62,21 +66,24 @@ setIsLoading(false);
 
 const sendOtp=async(e)=>{
   e.preventDefault();
-
+if(isLoading1){
+  toast.error("Please Wait , Sending OTP")
+  return;
+}
   // if(!e.target.value.includes('@')||!e.target.value.includes('.')){
 
   //   toast.error('Please enter a valid email !!!')
   //   return;
   // }
 
-  setIsLoading(true)
-  await axios.post('https://community-cares.onrender.com/api/v1/sendOtp',formData)
+  setIsLoading1(true)
+  await axios.post(backendUrl+'/sendOtp',formData)
   .then((e)=> {
     toast.success(e.data.message)
   })
   .catch((e)=>console.log(e))
 
-  setIsLoading(false)
+  setIsLoading1(false)
 }
 
 
@@ -85,70 +92,117 @@ const sendOtp=async(e)=>{
 
 
   return (
-    <div className='flex items-center justify-center'>
-     <form action="" className='flex flex-col items-center justify-center gap-y-4'>
+    <div className='flex items-center justify-center bg-green1-light h-[88vh]'>
+     
+     
+     <div className='relative '>
 
 
+     <div className='w-[730px] h-[730px] flex items-center justify-center '>
+<img src={loginBg}  alt="" className='lg:w-[100%] lg:h-[100%] sm:w-[70%] sm:h-[70%] md:w-[100%] md:h-[100%]' />
+</div>
+     
+     
+     
+     <form action="" className='flex  flex-col   justify-center items-center gap-y-10 absolute lg:top-[22%] lg:left-[20%] md:top-[22%] md:left-[20%] 
+     sm:top-[25%] sm:left-[25%]
+     '>
 
+
+<div className='flex lg:gap-x-24 md:gap-x-16 sm:gap-x-10'>
+{/* ------------------first div---------------------------- */}
+<div className='flex flex-col items-center justify-center gap-y-6'>
 {/* --------------------------fname-------------------------- */}
+<div>
 <label htmlFor="">
-  First Name
-<input type="text" className='ml-2 border-2 border-black'  name='firstName' onChange={(e)=>changeHandler(e)}/>
-
+  <p><b>First Name</b></p>
 </label>
+<input type="text" className=' border-2 border-black py-1 px-3 bg-input-200
+rounded-lg'  placeholder='Enter first Name' name='firstName' onChange={(e)=>changeHandler(e)}/>
 
+
+</div>
 {/* //-----------------------lname----------------------------- */}
+<div>
 <label htmlFor="">
-  Last Name 
-<input type="text" className='ml-2 border-2 border-black'  name='lastName' onChange={(e)=>changeHandler(e)}/>
-
+ <p><b> Last Name </b></p>
 </label>
+<input type="text" className='  border-2 border-black py-1 px-3 bg-input-200
+rounded-lg'  placeholder='Enter last Name'  name='lastName' onChange={(e)=>changeHandler(e)}/>
+
+</div>
 
 {/* //------------------------email------------------------
  */}
-
+<div className=''>
+  
 <label htmlFor="">
-  Email 
-<input type="email" className='ml-2 border-2 border-black'  name='email' onChange={(e)=>changeHandler(e)}/>
-
-
-<button className='ml-2 border-2 border-black rounded-lg p-1' onClick={(e)=>sendOtp(e)}>{isLoading ? 'Please Wait ...':'Send OTP'}</button>
-
-
+ <p><b>Email</b></p>
 </label>
+<input type="email" className='  border-2 border-black py-1 px-3 bg-input-200
+rounded-lg'  placeholder='Enter Email' name='email' onChange={(e)=>changeHandler(e)}/>
+<br />
+<button className='mt-1 className=bg-transparent hover:bg-cyan-500 text-cyan-700  font-semibold hover:text-white py-2 px-4 border border-cyan-500  hover:border-transparent rounded-lg 
+rounded-lg  p-1' onClick={(e)=>sendOtp(e)}>{isLoading1 ? 'Please Wait ...':'Send OTP'}</button>
 
+
+</div>
+{/* ---------------------------------------------otp---------------------------------- */}
+
+<div>
+<label htmlFor="">
+<p><b>  OTP </b></p>
+</label>
+<input type="text" className='   border-2 border-black py-1 px-3 bg-input-200
+rounded-lg'  placeholder='Enter OTP'  name='otp' onChange={(e)=>changeHandler(e)}/>
+
+</div>
+</div>
+
+
+
+
+
+
+{/* --------------------------------second div ----------------------- */}
+
+
+
+<div className='flex flex-col items-center justify-center gap-y-9'>
 
 {/* -----------------------------------phone no-----------------
  */}
+ <div>
+  
 <label htmlFor="">
-  Phone Number 
-<input type="text" className='ml-2 border-2 border-black'  name='phoneNo' onChange={(e)=>changeHandler(e)}/>
-
+  <p><b>Phone Number </b></p>
 </label>
+<input type="text" className='   border-2 border-black py-1 px-3 bg-input-200
+rounded-lg' placeholder='Enter Phone Number'  name='phoneNo' onChange={(e)=>changeHandler(e)}/>
 
-{/* -----------------------------role------------------- */}
-<select name="role" className='w-[40%] border-2 border-black'  id="role" onChange={(e)=> changeHandler(e)}>
-  <option value="Donor">Donor</option>
-  <option value="Reciever">Reciever</option>
-</select>
+ </div>
 
 {/* -------------------------------address------------------ */}
-
+{/* 
 <label htmlFor="">
- Address
-<input type="text" className='ml-2 border-2 border-black'  name='address' onChange={(e)=>changeHandler(e)}/>
+Address
+<input type="text" className='   border-2 border-black py-1 px-3 bg-input-200
+rounded-lg'  name='address' onChange={(e)=>changeHandler(e)}/>
 
-</label>
+</label> */}
 
 {/* ----------------------------------district------------------ */}
 
 
-
+<div>
+  
 <label htmlFor="district">
-  Select your District 
+  <p><b>Select your District </b></p>
 
+  </label>
  
-<select name='district' className='w-[40%] border-2 border-black' id='district' onChange={(e)=>{
+<select name='district' className='w-[80%]  border-2 border-black py-1 px-3 bg-input-200
+rounded-lg'  id='district' onChange={(e)=>{
   changeHandler(e)
 }}>
   
@@ -158,37 +212,53 @@ const sendOtp=async(e)=>{
     })
   }
 </select>
-</label>
+</div>
 
 
 
 {/* ----------------------------------password------- */}
+<div>
 <label htmlFor="">
-  Password 
-<input type="password" className='ml-2 border-2 border-black'  name='password' onChange={(e)=>changeHandler(e)}/>
-
+<p><b>  Password </b></p>
 </label>
+<input type="password" className='   border-2 border-black py-1 px-3 bg-input-200
+rounded-lg'  placeholder='Enter Password' name='password' onChange={(e)=>changeHandler(e)}/>
+
+</div>
 
 {/* ------------------------------------conf pass----------- */}
-<label htmlFor="">
-  Confirm Password 
-<input type="password" className='ml-2 border-2 border-black'  name='confirmPassword' onChange={(e)=>changeHandler(e)}/>
-
+<div>
+  <label htmlFor="">
+<p><b>  Confirm Password </b></p>
 </label>
+<input type="password" className='   border-2 border-black py-1 px-3 bg-input-200
+rounded-lg'  placeholder='Confirm Password'  name='confirmPassword' onChange={(e)=>changeHandler(e)}/>
 
-{/* ---------------------------------------------otp---------------------------------- */}
-<label htmlFor="">
-  OTP 
-<input type="text" className='ml-2 border-2 border-black'  name='otp' onChange={(e)=>changeHandler(e)}/>
+</div>
 
-</label>
+
+</div>
+</div>
+{/* -----------------------third div---------------- */}
+
+<div className='flex flex-col gap-y-6'>
+  
+{/* -----------------------------role------------------- */}
+<select name="role" className='w-[100%]  border-2 border-black py-1 px-3 bg-input-200
+rounded-lg'  id="role" onChange={(e)=> changeHandler(e)}>
+  <option value="Donor">Donor</option>
+  <option value="Reciever">Reciever</option>
+</select>
+
 
 
 {/* ------------submit-------------------------- */}
 
 {/* <button type="submit" value='hii' /> */}
-<button onClick={(e)=> submitHandler(e)}>{isLoading ? 'Please Wait ...':'Sign In'}</button>
+<button className="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500  hover:border-transparent rounded-lg " onClick={(e)=> submitHandler(e)}>{isLoading ? 'Please Wait ...':'Sign In'}</button>
+</div>
      </form>
+      </div>
 </div>
     
   )

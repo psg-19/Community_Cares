@@ -4,13 +4,14 @@ import { toast } from 'react-hot-toast';
 import { AiFillHeart,AiOutlineHeart } from "react-icons/ai";
 import { AppContext } from '../context/AppContext';
 import { useNavigate } from 'react-router-dom';
+import { Spinner } from '../components/Spinner';
 export const ConnectedPosts = () => {
     
     //--------------------------------------------vars--------------------------
 
     const [connectedPosts,setConnectedPosts]=useState([]);
 
-    const {user,token1}=useContext(AppContext)
+    const {user,token1,backendUrl}=useContext(AppContext)
 
 const navigate=useNavigate()
 
@@ -18,7 +19,7 @@ const navigate=useNavigate()
     //funcs--------------------------------------------------
 const postCaller=async()=>{
     try {
-        const response=await axios.get('https://community-cares.onrender.com/api/v1/getAllConnectedPosts')
+        const response=await axios.get(backendUrl+'/getAllConnectedPosts')
 
        setConnectedPosts(response.data.connectedPosts)
     } catch (error) {
@@ -41,7 +42,7 @@ const likeHandler =async(id)=>{
     
     try {
       
-      await axios.post('https://community-cares.onrender.com/api/v1/likeConnectedPost',{
+      await axios.post(backendUrl+'/likeConnectedPost',{
         postId:id,
         token:token1
       });
@@ -70,7 +71,7 @@ console.log(connectedPosts)
 {
     connectedPosts.length==0 ? (<div className='flex flex-row gap-x-6'>
 
-No posts available
+<Spinner/>
 
     </div>):
     
@@ -114,7 +115,7 @@ No posts available
 </div>
 </div>
 
-<div className='text-4xl ' >
+<div className='text-4xl' >
       {
         
         data.likes.includes(user._id) ? ( <AiFillHeart  onClick={()=>likeHandler(data._id)} />):(<AiOutlineHeart

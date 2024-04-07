@@ -8,7 +8,7 @@ import {useNavigate} from 'react-router-dom'
 export const CreatePost = () => {
 
 const [isLoading,setIsLoading]=useState(false)
-const {user,Districts,token1}=useContext(AppContext)
+const {user,Districts,token1,backendUrl}=useContext(AppContext)
 const navigate=useNavigate()
 const [formData,setFormData]=useState({
   title:'',
@@ -75,7 +75,7 @@ const submitHandler=async(e)=>{
 
 
   try {
-    await axios.post('https://community-cares.onrender.com/api/v1/createPost',{
+    await axios.post(backendUrl+'/createPost',{
       ...formData,
       token:token1
     },{

@@ -4,13 +4,13 @@ import axios from 'axios';
 import { AiFillHeart,AiOutlineHeart } from "react-icons/ai";
 import {toast} from 'react-hot-toast'
 import {  useNavigate } from 'react-router-dom';
-
+import { Spinner } from '../components/Spinner';
 import { LuFileEdit } from "react-icons/lu";
 
 
 
 export const DonorPosts = () => {
-  const {user,token1,Districts,setCurrentPostEdit,currentPostEdit}=useContext(AppContext);
+  const {user,token1,Districts,backendUrl,setCurrentPostEdit}=useContext(AppContext);
  let ct=0;
 const {donorPosts,setDonorPosts}=useContext(AppContext)
 const navigate=useNavigate()
@@ -24,7 +24,7 @@ setDistrict(e.target.value);
 //----------------------------------functions-------------------------------------------------
   const postCaller=async()=>{
   try {
-    const response =await axios.get('https://community-cares.onrender.com/api/v1/getAllDonorPosts');
+    const response =await axios.get(backendUrl+'/getAllDonorPosts');
     setDonorPosts(response.data.donorPosts);
   
     
@@ -51,7 +51,7 @@ if(!user._id){
 
 try {
   
-  await axios.post('https://community-cares.onrender.com/api/v1/LikePost',{
+  await axios.post(backendUrl+'/LikePost',{
     postId:id,
     token:token1
   });
@@ -76,8 +76,10 @@ useEffect(()=>{
 
 
   return (
-    <div className='flex flex-col justify-center items-center space-y-4'>
+    <div className='flex flex-col items-center space-y-4 h-[100vh]'>
 {/* //----------------------------------------------- */}
+<div>
+
 <label htmlFor="districts">
   Select your District
 </label>
@@ -94,15 +96,19 @@ useEffect(()=>{
     })
   }
 </select>
+  </div>
 
 
 {/* //------------------------------------------------- */}
+<div className='h-[100vh] flex  justify-center'>
+
+
 {
-donorPosts.length==0 ? (<div>No Posts Found</div>):(
+donorPosts.length==0 ? (<Spinner/>):(
   donorPosts.map((data)=>{
     return (
       
-      district=='All' ? ( <div className='flex flex-col border-2 p-4 justify-center items-center border-black w-[70%] gap-y-4'>
+      district=='All' ? ( <div className='flex flex-col border-2  max-h-[70%] p-4 justify-center items-center border-black w-[70%] gap-y-4'>
           
       <h3 className='font-bold text-xl'>{data.posts.title}</h3>
       <div><img src={data.posts.imageUrl} className='w-96 rounded-lg' alt="" /></div>
@@ -115,17 +121,17 @@ donorPosts.length==0 ? (<div>No Posts Found</div>):(
     <div className='flex gap-x-2'>
       
       <div className=' text-4xl'>{
-      
-      data.posts.likes.includes(user._id) ? ( <AiFillHeart  onClick={()=>likeHandler(data.posts._id)} />):(<AiOutlineHeart
-        onClick={()=>likeHandler(data.posts._id)}
-  />)
+        
+        data.posts.likes.includes(user._id) ? ( <AiFillHeart  onClick={()=>likeHandler(data.posts._id)} />):(<AiOutlineHeart
+          onClick={()=>likeHandler(data.posts._id)}
+          />)
 }  </div>
 
 <p className='text-2xl'>{data.posts.likes.length}</p>
 </div>
 
 {
-data.posts.email==user.email && <div>
+  data.posts.email==user.email && <div>
 <LuFileEdit className='text-xl' onClick={()=>{
   setCurrentPostEdit(data.posts);
   navigate('/editPost');
@@ -133,12 +139,20 @@ data.posts.email==user.email && <div>
 </div>
   }
   </div>
+
+  
+<div className='flex justify-evenly'>
+
+<div><pre><b>District : </b>{data.posts.district}</pre></div>
+{/* <div><p><b>By - </b>{data.name}</p></div> */}
+
+</div>
     </div>):
 
-    ( 
-        data.posts.district==district && (
-          
-          <div className='flex flex-col border-2 p-4 justify-center items-center border-black w-[70%] gap-y-4'>
+( 
+  data.posts.district==district && (
+    
+    <div className='flex flex-col border-2 p-4 justify-center items-center border-black w-[70%] max-h-[70%] gap-y-4'>
           
           <h3 className='font-bold text-xl'>{data.posts.title}</h3>
           <div><img src={data.posts.imageUrl} className='w-96 rounded-lg' alt="" /></div>
@@ -152,17 +166,17 @@ data.posts.email==user.email && <div>
     <div className='flex gap-x-2'>
       
       <div className=' text-4xl'>{
-      
-      data.posts.likes.includes(user._id) ? ( <AiFillHeart  onClick={()=>likeHandler(data.posts._id)} />):(<AiOutlineHeart
-        onClick={()=>likeHandler(data.posts._id)}
-  />)
+        
+        data.posts.likes.includes(user._id) ? ( <AiFillHeart  onClick={()=>likeHandler(data.posts._id)} />):(<AiOutlineHeart
+          onClick={()=>likeHandler(data.posts._id)}
+          />)
 }  </div>
 
 <p className='text-2xl'>{data.posts.likes.length}</p>
 </div>
 
 {
-data.posts.email==user.email && <div>
+  data.posts.email==user.email && <div>
 <LuFileEdit className='text-xl' onClick={()=>{
   setCurrentPostEdit(data.posts._id);
   navigate('/editPost');
@@ -170,20 +184,28 @@ data.posts.email==user.email && <div>
 </div>
   }
   </div>
+  
+<div className='flex justify-evenly'>
+
+<div><pre><b>District : </b>{data.posts.district}</pre></div>
+{/* <div><p><b>By - </b>{data.name}</p></div> */}
+
+</div>
     </div>
         )
         
         // --------------------
         
         
-  )
-
-
-       
+      )
+      
+      
+      
     )
   })
 )
 }
+</div>
     </div>
   )
 }

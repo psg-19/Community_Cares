@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useState } from 'react'
 import logo from '../assets/Community.png'
 import {NavLink} from 'react-router-dom'
 import { AppContext } from '../context/AppContext';
-import axios from 'axios'
+
 import {toast} from 'react-hot-toast'
-import { RxHamburgerMenu } from "react-icons/rx";
+
 
 
 export const Navbar = () => {

@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 
 
 export const UpdateProfile = ({setChange}) => {
-  const {user,Districts,setUser,token1}=useContext(AppContext)
+  const {user,backendUrl,Districts,setUser,token1}=useContext(AppContext)
 // console.log(user)
 const [isLoading,setIsLoading]=useState(false)
 
@@ -55,7 +55,7 @@ const imageHandler=(e)=>{
 const reloadUser=async()=>{
 
   
-    await axios.post('https://community-cares.onrender.com/api/v1/getUser',{
+    await axios.post(backendUrl+'/getUser',{
       token:token1
     })
  .then((res)=>{
@@ -97,7 +97,7 @@ const submitHandler=async(e)=>{
 // console.log(formData)
 
 
-    await axios.put('https://community-cares.onrender.com/api/v1/updateUser',{
+    await axios.put(backendUrl+'/updateUser',{
       ...formData,
       token:token1
     },{
