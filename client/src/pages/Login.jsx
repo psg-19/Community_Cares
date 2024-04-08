@@ -113,7 +113,7 @@ navigate('/')
 
 
   return (
-    <div className='  h-[88vh]  flex items-center justify-center bg-green1-light' >
+    <div className='  h-[100vh]  flex items-center justify-center bg-green1-light' >
 {/* 
 {
   isLogged ? (check()):

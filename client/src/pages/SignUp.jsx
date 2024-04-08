@@ -92,7 +92,7 @@ if(isLoading1){
 
 
   return (
-    <div className='flex items-center justify-center bg-green1-light h-[88vh]'>
+    <div className='flex items-center justify-center bg-green1-light h-[100vh]'>
      
      
      <div className='relative '>
