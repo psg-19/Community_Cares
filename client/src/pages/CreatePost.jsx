@@ -3,6 +3,10 @@ import { AppContext } from '../context/AppContext'
 import {toast} from 'react-hot-toast'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
+import sidepic from '../assets/createPost.png'
+
+
+
 
 
 export const CreatePost = () => {
@@ -124,73 +128,105 @@ setIsLoading(false)
 
 
   return (
-    <div className='flex gap-y-6 items-center justify-center flex-col'>
+    <div className=' gap-y-6 bg-green1-light h-[88vh] 
+    flex items-center justify-center 
+    '>
 
-<h1 className='font-bold'>Create A New {user.role} Post </h1>
 
-<form action="" className='flex flex-col gap-y-4 items-center justify-center'>
+
+{/* ---------------------outer coiver---------------------------------
+ */}
+
+<div className='bg-white rounded-3xl w-[80%] h-[83%] flex flex-col gap-y-4 px-4 py-2 overflow-x-hidden'>
+
+
+
+<h1 className='font-bold flex flex-wrap justify-center mt-8'><b>Create A New {user.role} Post </b></h1>
+
+
+
+{/* --------------------2 ka div--------------------------------- */}
+<div className='flex flex-row flex-wrap justify-center items-center  gap-x-10 gap-y-10 w-[100%] mb-8 divide-x overflow-y-auto no-scrollbar  divide-gray-400'>
+
+
+
+<form action="" className='flex flex-col gap-y-4 items-center justify-center w-[45%] min-w-[200px] '>
 
 
 {/* --------------------------------------------titlr-------------------------- */}
+<div>
+  
 <label htmlFor="">
-  Title 
-<input type="text" className='ml-2 border-2 border-black'  name='title'  onChange={(e)=>changeHandler(e)}
+<p><b>  Title </b></p>
+  </label>
+<input type="text" className=' border-2 border-black py-1 px-3 bg-input-200
+rounded-lg'  name='title' placeholder='Enter Title' onChange={(e)=>changeHandler(e)}
 
 value={formData.title}
 />
 
-</label>
+</div>
 
 {/* ---------------------------------------description------------------------------------ */}
-
+<div>
 <label htmlFor="">
-  Description 
-<input type="text" className='ml-2 border-2 border-black'  name='description'  onChange={(e)=>changeHandler(e)}
+<p><b>  Description </b></p>
+  </label>
+<input type="text" className=' border-2 border-black py-1 px-3 bg-input-200
+rounded-lg' placeholder='Enter Description' name='description'  onChange={(e)=>changeHandler(e)}
 
 value={formData.description}
 />
-
-</label>
+</div>
 
 {/* ------------------------------------------address-------------------------- */}
-
+<div>
+  
 <label htmlFor="">
-Address 
-<input type="text" className='ml-2 border-2 border-black'  name='address'  onChange={(e)=>changeHandler(e)}
+<p><b>Address </b></p>
+</label>
+<input type="text" className=' border-2 border-black py-1 px-3 bg-input-200
+rounded-lg'  name='address' placeholder='Enter Address' onChange={(e)=>changeHandler(e)}
 
 value={formData.address}
 />
+</div>
 
-</label>
 {/* ------------------------------------quantity------------------------------- */}
-
+<div>
+  
 <label htmlFor="">
-Quantity 
-<input type="text" className='ml-2 border-2 border-black'  name='quantity'  onChange={(e)=>changeHandler(e)}
+<p><b>Quantity</b></p> 
+</label>
+<input type="text" className=' border-2 border-black py-1 px-3 bg-input-200
+rounded-lg'  name='quantity' placeholder='Enter Quantity'  onChange={(e)=>changeHandler(e)}
 
 value={formData.quantity}
 />
 
-</label>
+</div>
 
 
 {/* -------------------------image---------------------------------------------------- */}
-
+<div className='flex flex-col justify-center items-center'>
+  
 <label htmlFor="">
-Organisation Image
+  <p><b>Organisation Image</b></p>
 
+</label>
 
 <input type="file" 
 name='image'
+className='w-[80%]'
 onChange={(e)=>{
   imageHandler(e)
 }}
 
 
 />
+</div>
 
 
-</label>
 
 
 
@@ -199,12 +235,14 @@ onChange={(e)=>{
 
 {/* -------------------district--------------------------------------- */}
 
-
+<div>
 <label htmlFor="district">
-  Select your District 
+  <p><b>Select your District </b></p>
 
+  </label>
  
-<select name='district' className='w-[40%] border-2 border-black' value={formData.district} id='district' onChange={(e)=>{
+<select name='district' className='w-[100%]  border-2 border-black py-1 px-3 bg-input-200
+rounded-lg' value={formData.district} id='district' onChange={(e)=>{
   changeHandler(e)
 }}>
   
@@ -214,14 +252,23 @@ onChange={(e)=>{
     })
   }
 </select>
-</label>
+</div>
 
-
-<button type="submit" className='border-2 border-black rounded-lg w-20' onClick={(e)=> submitHandler(e)} >
+<button type="submit" className='bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded' onClick={(e)=> submitHandler(e)} >
   {isLoading ? 'Please Wait ...':'Submit' }
   </button>
 
 </form>
+
+
+{/* ------------------------image--------------------------------------- */}
+
+<div className='w-[45%] h-[100%] lg:max-h-[500px] min-w-[200px]'><img src={sidepic} alt="srgfsdg" className='w-[100%] h-[100%] ' /></div>
+
+
+</div>
+
+</div>
 
     </div>
   )

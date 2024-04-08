@@ -68,7 +68,7 @@ logoutHandler()
 }
 }><NavLink to='/' >Log out</NavLink></li>
          
-   <li><NavLink to='/profile'><img src={imageUrl} className='w-10 rounded-full' alt="profile"></img></NavLink></li>
+   <li><NavLink to='/profile'><img src={imageUrl} className='w-10 h-10 rounded-full' alt="profile"></img></NavLink></li>
 
 
      </ul>
