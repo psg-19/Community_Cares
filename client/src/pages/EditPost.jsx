@@ -4,7 +4,7 @@ import { MdEditSquare } from "react-icons/md";
 import {useNavigate} from 'react-router-dom'
 import  axios  from 'axios';
 import {toast} from 'react-hot-toast'
-
+import editPostBg from '../assets/update_post.png'
 
 
 export const EditPost = () => {
@@ -104,38 +104,54 @@ const imageHandler=(e)=>{
 
 
   return (
-    <div className='flex items-center justify-center'>
+    <div className='gap-y-6 bg-green1-light h-[88vh] 
+    flex items-center justify-center '>
+
+<div className='bg-white rounded-3xl w-[80%] h-[83%] flex flex-col gap-y-4 px-4 py-2 overflow-x-hidden'>
+
+
+<h1 className='font-bold flex flex-wrap justify-center mt-8'><b>EDIT POST</b></h1>
+
+
+
+<div className='flex flex-row flex-wrap justify-center items-center  gap-x-10 gap-y-10 w-[100%] mb-8 divide-x overflow-y-auto no-scrollbar  divide-gray-400'>
+ 
 
 
 
 
-<form action="" className='flex flex-col gap-y-6 border-2 border-black p-6 '>
+<form action="" className='flex flex-col gap-y-3 items-center justify-center w-[45%] min-w-[200px]  '>
 
 
 
 
 {/* //------------------title------------------------------------- */}
 
-
+<div>
+  
 <label htmlFor="">
-  Title 
-<input type="text" className='ml-2 border-2 border-black' name='title'  onChange={(e)=>changeHandler(e)}
+ <p><b> Title </b></p>
+  </label>
+<input type="text" className='border-2 border-black py-1 px-3 bg-input-200
+rounded-lg' name='title'  onChange={(e)=>changeHandler(e)}
+
+placeholder='Enter Title Of The Post'
 value={formData.title}
 />
-
-</label>
-
+</div>
 
 
-<div className='relative'>
+
+
+<div className='relative w-[80%]'>
 
 <img src={currentPostEdit.imageUrl}
 
-className='rounded-lg w-[99%]'
+className='rounded-lg w-[100%]'
 alt="post image" />
-<div className='absolute top-[92%] left-[92%]  bg-slate-200   w-10 h-10 rounded-full'></div>
-<MdEditSquare className='absolute top-[94.5%] left-[94.5%] text-2xl'/>
-<input type="file" className='absolute top-[93%] left-[94.5%] w-6 rounded-full opacity-0' onChange={(e)=> imageHandler(e)} />
+<div className='absolute top-[86%] left-[90%]  bg-slate-200   w-10 h-10 rounded-full'></div>
+<MdEditSquare className='absolute top-[90.6%] left-[93%] text-2xl'/>
+<input type="file" className='absolute top-[89.5%] left-[93%] w-6 rounded-full opacity-0' onChange={(e)=> imageHandler(e)} />
 
 </div>
 
@@ -147,47 +163,59 @@ alt="post image" />
 
 
 {/* -------------------------------------description------------------------ */}
-
+<div>
+  
 <label htmlFor="">
-Description 
-<input type="text" className='ml-2 border-2 border-black' name='description'  onChange={(e)=>changeHandler(e)}
+<p><b>Description </b></p>
+</label>
+<input type="text" className='border-2 border-black py-1 px-3 bg-input-200
+rounded-lg' name='description' placeholder='Enter Description'  onChange={(e)=>changeHandler(e)}
 value={formData.description}
 />
 
-</label>
+</div>
 
 {/* -------------------------------------------quantity----------------------------------- */}
+<div>
 
 <label htmlFor="">
-Quantity 
-<input type="text" className='ml-2 border-2 border-black' name='quantity'  onChange={(e)=>changeHandler(e)}
+<p><b>Quantity </b></p>
+</label>
+<input type="text" className='border-2 border-black py-1 px-3 bg-input-200
+rounded-lg' name='quantity' placeholder='Enter Quantity ' onChange={(e)=>changeHandler(e)}
 
 value={formData.quantity}
 />
+</div>
 
-</label>
 
 {/* ------------------------------address--------------------------------------------- */}
-
+<div>
+  
 <label htmlFor="">
-Address 
-<input type="text" className='ml-2 border-2 border-black' name='address'  onChange={(e)=>changeHandler(e)}
+<p><b>Address </b></p>
+</label>
+<input type="text" className='border-2 border-black py-1 px-3 bg-input-200
+rounded-lg' name='address'  onChange={(e)=>changeHandler(e)}
 
 value={formData.address}
 
 />
 
-</label>
+</div>
 
 
 
 
-
+<div>
+  
 <label htmlFor="district">
-  Select your District 
+<p><b>  Select your District </b></p>
 
+  </label>
  
-<select name='district' className='w-[40%] border-2 border-black' id='district' onChange={(e)=>{
+<select name='district' className=' border-2 border-black py-1 px-3 bg-input-200
+rounded-lg' id='district' onChange={(e)=>{
   changeHandler(e)
 }}>
   
@@ -197,8 +225,8 @@ value={formData.address}
     })
   }
 </select>
-</label>
-
+</div>
+ 
 
 <div className='flex justify-center items-center gap-x-2'>
 
@@ -215,6 +243,16 @@ onClick={(e)=> submitHandler(e)}
 
 
 </form>
+
+<div className='w-[45%] h-[100%] lg:max-h-[500px] min-w-[200px]'><img src={editPostBg} alt="srgfsdg" className='w-[100%] h-[100%] ' /></div>
+
+
+
+
+</div>
+
+
+</div>
 
 
 
