@@ -21,7 +21,7 @@ import { EditPost } from './pages/EditPost';
 function App() {
  const {isLogged}=useContext(AppContext)
   return (
-    <div className="h-[100vh] " >
+    <div className="h-[11.7vh] " >
 
 <Navbar ></Navbar>
       <Routes>

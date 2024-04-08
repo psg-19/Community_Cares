@@ -93,7 +93,7 @@ useEffect(()=>{
 
 
   return (
-    <div className='flex flex-col items-center space-y-4 h-[88vh] overflow-y-scroll bg-green1-light pt-10
+    <div className='flex flex-col items-center space-y-4 h-[100vh] overflow-y-scroll bg-green1-light pt-28
     '>
 {/* //----------------------------------------------- */}
 <div className='flex gap-x-4'>

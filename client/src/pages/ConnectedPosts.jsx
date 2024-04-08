@@ -65,11 +65,13 @@ postCaller()
     },[])
 
   return (
-    <div className='flex flex-col gap-y-6 bg-green1-light  items-center justify-center sm:pt-[57rem] 
-    lg:pt-[20rem] overflow-y-scroll
+    <div className='flex flex-col gap-y-6 bg-green1-light  items-center justify-center sm:pt-[2rem] 
+    lg:pt-[2rem] overflow-y-scroll no-scrollbar
+
+  
     '>
 
-
+<div className='h-20'></div>
 <h1 className='text-xl font-bold underline'>Connected Posts</h1>
 
 {
@@ -90,16 +92,30 @@ postCaller()
 
     
 p-6
-     sm:
+
+lg:max-w-720px lg:max-h-[500px] lg:w-[50%] lg:h-[30%]
+
+
+
+     
         
         ' >
           <div className='flex flex-row gap-x-6  gap-y-6 justify-center items-center
-          flex-wrap sm:max-h-[700px] sm:h-[100rem]'>
+          flex-wrap 
+          sm:max-h-[700px] sm:h-[100rem]
+
+          all:max-h-[700px] all:h-[80rem] 
+
+          lg:w-[100%] lg:h-[40rem]
+          '>
             {/* //======================donor posts----------- */}
            <div className='flex flex-col  items-center justify-center  bg-slate-100
 border-[1px] border-black
 rounded-lg gap-y-6
-sm:w-[90%] sm:h-[50%]
+sm:w-[90%] sm:h-[50%] 
+all:w-[90%] all:h-[50%] 
+lg:w-[48%] lg:h-[23rem]
+md:w-[90%] md:h-[50%] 
 
 
 '>
@@ -122,12 +138,15 @@ sm:w-[90%] sm:h-[50%]
 {/* =====================================Recievr posts================ */}
 
 
-<div className='flex flex-col border-2 items-center justify-center  bg-slate-100
+<div className='flex flex-col  items-center justify-center  bg-slate-100
 border-[1px] border-black
 rounded-lg 
 gap-y-6
 
 sm:w-[90%] sm:h-[50%]
+all:w-[90%] all:h-[50%]
+md:w-[90%] md:h-[50%]
+lg:w-[48%] lg:h-[23rem]
 
 '>
 

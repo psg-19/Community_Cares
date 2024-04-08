@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../context/AppContext'
 import { useNavigate } from 'react-router-dom';
-
+import profilebg from '../assets/profile.png'
 
 
 export const ViewProfile = ({setChange}) => {
@@ -12,19 +12,37 @@ const navigate=useNavigate()
 
 
   return (
-    <div className=' flex flex-col gap-y-6 items-center justify-center'>
+    <div className=' gap-y-6 bg-green1-light h-[88vh] 
+    flex items-center justify-center  '>
         
-        <div>
-          <img className='rounded-full  h-52 w-52' src={user.profileUrl} alt="Profile picture" />
+
+
+
+
+{/* -----------shell------------- */}
+<div className='bg-white rounded-3xl w-[80%] h-[83%] flex flex-col gap-y-4 px-4 py-2 overflow-x-hidden '>
+
+<h1 className='font-bold flex flex-wrap justify-center mt-8'><b>Your Profile</b></h1>
+
+
+<div className='flex flex-row flex-wrap justify-center items-center  gap-x-10 gap-y-10 w-[100%] mb-8 divide-x overflow-y-auto no-scrollbar  divide-gray-400'>
+
+
+
+<div className='w-[45%] h-[100%] lg:max-h-[500px] min-w-[200px]'><img src={profilebg} alt="srgfsdg" className='w-[100%] h-[100%] ' /></div>
+
+
+
+
+<div className='flex flex-col gap-y-4 items-center justify-center w-[45%] min-w-[200px]'>
+
+
+<div >
+          <img className='rounded-full   h-52 w-52 ' src={user.profileUrl} alt="Profile picture" />
         </div>
+       
 
-       <div className='flex gap-x-4'>
-       <div className='border-2 p-2 bg-slate-400 border-black rounded-lg' onClick={()=> navigate('/userPosts')}>Your Posts</div>
-        <div className='border-2 p-2 bg-slate-400 border-black rounded-lg' onClick={()=> navigate('/userConnectedPosts')}>Posts Connected To You</div>
-
-<div className='border-2 p-2 bg-slate-400 border-black rounded-lg' onClick={()=> navigate('/createPosts')}>Create New Post</div>
-
-       </div>
+      
 
         <div className='flex flex-col items-center justify-center gap-y-4'>
     <p> <b> Name :</b> {user.firstName} {user.lastName}</p>
@@ -41,6 +59,26 @@ const navigate=useNavigate()
 Edit Profile
 </span>
 </button>
+
+
+</div>
+
+
+{/* ----------------------img-0p0------------------------ */}
+<div className='flex gap-x-4'>
+       <div className='border-2 p-2 bg-slate-400 border-black rounded-lg' onClick={()=> navigate('/userPosts')}>Your Posts</div>
+        <div className='border-2 p-2 bg-slate-400 border-black rounded-lg' onClick={()=> navigate('/userConnectedPosts')}>Posts Connected To You</div>
+
+<div className='border-2 p-2 bg-slate-400 border-black rounded-lg' onClick={()=> navigate('/createPosts')}>Create New Post</div>
+
+       </div>
+
+
+</div>
+
+</div>
+
+       
     </div>
   )
 }

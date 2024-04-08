@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import logo from '../assets/Community.png'
-import {NavLink} from 'react-router-dom'
+import {NavLink,useNavigate} from 'react-router-dom'
 import { AppContext } from '../context/AppContext';
 import {toast} from 'react-hot-toast'
 
@@ -10,6 +10,10 @@ export const Navbar = () => {
 
     const{isLogged,setIsLogged,user,token1,setToken1,setUser}=useContext(AppContext)
 
+
+
+    const [click,setClick]=useState(null)
+ const navigate=useNavigate()
 
     const logoutHandler=()=>{
    try {
@@ -38,9 +42,9 @@ console.log(token1)
     },[user])
 
   return (
-    <div className='flex bg-white  justify-center items-center'>
+    <div className='flex  justify-center items-center backdrop-blur-sm backdrop-brightness-75 backdrop-contrast-75 fixed w-[100%] z-10'>
 
-<div className='flex  items-center justify-between w-[90%] h-24' >
+<div className='flex  items-center justify-between w-[90%] h-24 ' >
         
         <div>
         <img src={logo} className='h-20' alt="" />
@@ -49,10 +53,63 @@ console.log(token1)
         <nav className='flex items-center justify-center'>
 
             <ul className='flex gap-x-4 items-center justify-center'>
-                <li><NavLink to='/'>Home</NavLink></li>
-                <li><NavLink to='/donorPost'>Donor Posts</NavLink></li>
-                <li><NavLink to='/recieverPost'>Reciever Posts</NavLink></li>
-                <li><NavLink to='/connectedPosts'>Connected Posts</NavLink></li>
+                <li className={`text-black cursor-pointer font-mullish py-7 hover:text-yellow-900
+                transition-all duration-200   relative group
+                
+                ${click =="Home" ? ("text-yellow-900"):("")}
+                
+                `}
+                onClick={(e)=> {
+                  setClick(e.target.innerText);
+                  navigate('/')
+                }}
+                >
+                  <NavLink to='/'>Home</NavLink>
+                <div class={`h-1 absolute bottom-0 
+                 ${click =="Home" ? ("bg-yellow-900 block"):("hidden")}
+                w-full  bg-yellow-900 group-hover:block  `}></div>
+                </li>
+
+
+                <li className={`text-black cursor-pointer font-mullish py-7 hover:text-yellow-900
+                transition-all duration-200   relative group
+                
+                ${click =="Donor Posts" ? ("text-yellow-900"):("")}
+                
+                `}  onClick={(e)=> {
+                  setClick(e.target.innerText);
+                  navigate('/donorPost')
+                }}><NavLink to='/donorPost'>Donor Posts</NavLink>
+                
+                <div class={`h-1 absolute bottom-0 
+                 ${click =="Donor Posts" ? ("bg-yellow-900"):("hidden")}
+                w-full  bg-yellow-900 group-hover:block  `}></div></li>
+                <li className={`text-black cursor-pointer font-mullish py-7 hover:text-yellow-900
+                transition-all duration-200   relative group
+                
+                ${click =="Reciever Posts" ? ("text-yellow-900"):("")}
+                
+                `}  onClick={(e)=> {
+                  setClick(e.target.innerText);
+                  navigate('/recieverPost')
+                }}><NavLink to='/recieverPost'>Reciever Posts </NavLink>
+                   <div class={`h-1 absolute bottom-0  
+                 ${click =="Reciever Posts" ? ("bg-yellow-900"):("hidden")}
+                w-full  bg-yellow-900 group-hover:block  `}></div>
+                </li>
+                <li className={`text-black cursor-pointer font-mullish py-7 hover:text-yellow-900
+                transition-all duration-200   relative group
+                
+                ${click =="Connected Posts" ? ("text-yellow-900"):("")}
+                
+                `}  onClick={(e)=> {
+                  setClick(e.target.innerText);
+                  navigate('/connectedPosts')
+                }}><NavLink to='/connectedPosts'>Connected Posts</NavLink>
+                   <div class={`h-1 absolute bottom-0  
+                 ${click =="Connected Posts" ? ("bg-yellow-900"):("hidden")}
+                w-full  bg-yellow-900 group-hover:block  `}></div>
+                </li>
                 
             </ul>
 
@@ -77,8 +134,8 @@ logoutHandler()
      ):
      (<ul className='flex gap-x-4'>
 
-   <li><NavLink to='/login'>Login</NavLink></li>
-   <li><NavLink to='/signUp'>Sign Up</NavLink></li>
+   <li className='border-2 py-1 px-4 rounded-lg border-blue-600 flex items-center justify-center font-bold hover:bg-slate-50'><NavLink to='/login'>Login</NavLink></li>
+   <li className='border-2 py-1 px-4 rounded-lg border-blue-600 flex items-center bg-white hover:bg-slate-200 justify-center font-bold'><NavLink to='/signUp'>Sign Up</NavLink></li>
          
      </ul>)
 }
