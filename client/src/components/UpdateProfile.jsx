@@ -4,7 +4,7 @@ import { FaUserEdit } from "react-icons/fa";
 import {toast} from 'react-hot-toast'
 import  axios  from 'axios';
 import { useNavigate } from 'react-router-dom'
-
+import updateprofile from '../assets/updateprofile.png'
 
 
 export const UpdateProfile = ({setChange}) => {
@@ -142,9 +142,13 @@ setIsLoading(false)
 
 
   return (
-    <div className='flex flex-col items-center justify-center gap-y-6' >
+    <div className='gap-y-6 bg-green1-light h-[100vh] 
+    flex items-center justify-center pt-12' >
         
         <h1 className='font-bold text-xl'>Update Your Profile</h1>
+
+<div>
+
 
 <form action="" className='flex flex-col items-center justify-center gap-y-4'>
 
@@ -238,6 +242,14 @@ Cancel
 
 </form>
 
+
+<div>
+
+<img src={updateprofile} alt="updateProfile" />
+
+</div>
+
+  </ div>
         {/* ///--------last k buttons----------- */}
    
 
@@ -246,3 +258,4 @@ Cancel
     </div>
   )
 }
+

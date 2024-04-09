@@ -134,8 +134,16 @@ logoutHandler()
      ):
      (<ul className='flex gap-x-4'>
 
-   <li className='border-2 py-1 px-4 rounded-lg border-blue-600 flex items-center justify-center font-bold hover:bg-slate-50'><NavLink to='/login'>Login</NavLink></li>
-   <li className='border-2 py-1 px-4 rounded-lg border-blue-600 flex items-center bg-white hover:bg-slate-200 justify-center font-bold'><NavLink to='/signUp'>Sign Up</NavLink></li>
+   <li className={`border-2 py-1 px-4 rounded-lg border-blue-600 flex items-center justify-center font-bold hover:bg-slate-50 ${click=='Login' ? 'bg-white':''} `}    onClick={(e)=> {
+                  setClick(e.target.innerText);
+                  console.log(e.target.innerText);
+                  navigate('/login')
+                }} ><NavLink to='/login'>Login</NavLink></li>
+   <li onClick={(e)=> {
+                  setClick(e.target.innerText);
+                  console.log(e.target.innerText);
+                  navigate('/signUp')
+                }}  className={`border-2 py-1 px-4 rounded-lg border-blue-600 flex items-center  hover:bg-slate-200 justify-center font-bold ${click=='Sign Up' ? ' bg-slate-200 ':' bg-white '}`}><NavLink to='/signUp'>Sign Up</NavLink></li>
          
      </ul>)
 }

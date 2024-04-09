@@ -51,20 +51,21 @@ const image=req.files.image;
 const supportedTypes=['jpg','jpeg','png']
 
         
-const fileType=image.name.split('.')[1].toLowerCase();
+const fileType=image.name.split('.').slice(-1);
+// console.log(fileType[0],'--------')
 // console.log('fileType  ----->',fileType)
 // const checkFormat=require('./fileUpload.jsx');
-
+const fileType1=fileType[0];
 
 //function
-function checkFormat(supportedTypes,fileType){
-    if(supportedTypes.includes(fileType)){
+function checkFormat(supportedTypes,fileType1){
+    if(supportedTypes.includes(fileType1)){
      return true;
     }
     else return false;
  }
 
-if(!( checkFormat(supportedTypes,fileType) )){
+if(!( checkFormat(supportedTypes,fileType1) )){
 return res.status(400).json({
     success:false,
     message:'File format not supported'
@@ -232,26 +233,29 @@ exports.updatePost=async(req,res)=>{
         
 const supportedTypes=['jpg','jpeg','png']
 
-        
-const fileType=image.name.split('.')[1].toLowerCase();
+             
+const fileType=image.name.split('.').slice(-1);
+// console.log(fileType[0],'--------')
 // console.log('fileType  ----->',fileType)
 // const checkFormat=require('./fileUpload.jsx');
-
+const fileType1=fileType[0];
 
 //function
-function checkFormat(supportedTypes,fileType){
-    if(supportedTypes.includes(fileType)){
+function checkFormat(supportedTypes,fileType1){
+    if(supportedTypes.includes(fileType1)){
      return true;
     }
     else return false;
  }
 
-if(!( checkFormat(supportedTypes,fileType) )){
+if(!( checkFormat(supportedTypes,fileType1) )){
 return res.status(400).json({
     success:false,
     message:'File format not supported'
 })
 }
+
+
 
 
 

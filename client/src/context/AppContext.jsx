@@ -11,11 +11,11 @@ export default function AppContextProvider({children}){
 
 const [isLogged,setIsLogged]=useState(false);
 const[token1,setToken1]=useState('')
-const [user,setUser]=useState({})
+const [user,setUser]=useState({});
 
-const [donorPosts,setDonorPosts]=useState('')
+const [donorPosts,setDonorPosts]=useState('');
 
-const [currentPostEdit,setCurrentPostEdit]=useState('')
+const [currentPostEdit,setCurrentPostEdit]=useState('');
 
 const backendUrl='https://community-cares.onrender.com/api/v1';
 // const backendUrl='http://localhost:4000/api/v1';
