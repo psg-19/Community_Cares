@@ -28,10 +28,13 @@ module.exports = {
 
 
       green1:{
-        light:'#79ff0045'
+        light:'#79ff0045',
         // light:'#E4FEEC'
+        dark:'#FF1100'
 
       },
+      
+
       blue1:{
         light:"#ACE2E1"
       },

@@ -35,7 +35,8 @@ console.log(token1)
     const [imageUrl,setImageUrl]=useState('')
     useEffect(()=>{
        
-    setImageUrl(user.profileUrl)
+    setImageUrl(user.profileUrl);
+    setClick('Home')
     // console.log('hiii')
     
        
@@ -120,12 +121,15 @@ console.log(token1)
 {
    isLogged  ? (<ul className='flex gap-x-4 justify-center items-center'>
 
-   <li onClick={()=>{
+   <li className={`border-2 py-1 px-4 rounded-lg  flex items-center justify-center bg-white border-blue-600 font-bold hover:bg-green1-dark `}  onClick={()=>{
 logoutHandler()
+
 }
 }><NavLink to='/' >Log out</NavLink></li>
          
-   <li><NavLink to='/profile'><img src={imageUrl} className='w-10 h-10 rounded-full' alt="profile"></img></NavLink></li>
+   <li className='rounded-full bg-orange-400' onClick={()=>{
+    setClick('profile')
+   }}><NavLink to='/profile'><img src={imageUrl} className='w-14 h-14 rounded-full p-[2px]' alt="profile"></img></NavLink></li>
 
 
      </ul>
@@ -134,16 +138,16 @@ logoutHandler()
      ):
      (<ul className='flex gap-x-4'>
 
-   <li className={`border-2 py-1 px-4 rounded-lg border-blue-600 flex items-center justify-center font-bold hover:bg-slate-50 ${click=='Login' ? 'bg-white':''} `}    onClick={(e)=> {
+   <li className={`border-2 py-1 px-4 rounded-lg  flex items-center justify-center font-bold hover:bg-slate-50 ${click=='Login' ? ' bg-white border-yellow-900 ':' border-blue-600 '} `}    onClick={(e)=> {
                   setClick(e.target.innerText);
-                  console.log(e.target.innerText);
+                  // console.log(e.target.innerText);
                   navigate('/login')
                 }} ><NavLink to='/login'>Login</NavLink></li>
    <li onClick={(e)=> {
                   setClick(e.target.innerText);
-                  console.log(e.target.innerText);
+                  // console.log(e.target.innerText);
                   navigate('/signUp')
-                }}  className={`border-2 py-1 px-4 rounded-lg border-blue-600 flex items-center  hover:bg-slate-200 justify-center font-bold ${click=='Sign Up' ? ' bg-slate-200 ':' bg-white '}`}><NavLink to='/signUp'>Sign Up</NavLink></li>
+                }}  className={`border-2 py-1 px-4 rounded-lg  flex items-center  hover:bg-slate-200 justify-center font-bold ${click=='Sign Up' ? ' bg-slate-200 border-yellow-900':' bg-white  border-blue-600'}`}><NavLink to='/signUp'>Sign Up</NavLink></li>
          
      </ul>)
 }

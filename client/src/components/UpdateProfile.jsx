@@ -145,12 +145,19 @@ setIsLoading(false)
     <div className='gap-y-6 bg-green1-light h-[100vh] 
     flex items-center justify-center pt-12' >
         
+
+
+<div className='bg-white rounded-3xl w-[80%] h-[83%] flex flex-col gap-y-4 px-4 py-2 overflow-x-hidden'>
+
+
+
+
         <h1 className='font-bold text-xl'>Update Your Profile</h1>
 
-<div>
+<div  className='flex flex-row flex-wrap justify-center items-center  gap-x-10 gap-y-10 w-[100%] mb-8 divide-x overflow-y-auto no-scrollbar  divide-gray-400'>
 
 
-<form action="" className='flex flex-col items-center justify-center gap-y-4'>
+<form action="" className='flex flex-col gap-y-3 items-center justify-center w-[45%] min-w-[200px]  '>
 
   {/* -----------------img------------------------- */}
 <div className='relative'>
@@ -243,9 +250,9 @@ Cancel
 </form>
 
 
-<div>
+<div className='w-[45%] h-[100%] lg:max-h-[500px] min-w-[200px]'>
 
-<img src={updateprofile} alt="updateProfile" />
+<img src={updateprofile} className='w-[100%] h-[100%] ' alt="updateProfile" />
 
 </div>
 
@@ -253,7 +260,7 @@ Cancel
         {/* ///--------last k buttons----------- */}
    
 
-
+</div>
     {/* //container end */}
     </div>
   )
