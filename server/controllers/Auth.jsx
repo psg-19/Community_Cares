@@ -222,10 +222,10 @@ console.log(res.body)
 
     const option={
         // expire:Date.now()+24*60*60*1000,
-        expires: new Date(Date.now() + 1400),
+        // expires: new Date(Date.now() + 1400),
         // maxAge: 30 * 24 * 60 * 60 * 1000,
-        //   secure: true ,
-        //   httpOnly: true,
+          secure: process.env.NODE_ENV === "production" ,
+          httpOnly: true,
         //   sameSite: 'strict'
     }
 

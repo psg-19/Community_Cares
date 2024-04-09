@@ -19,7 +19,7 @@ exports.BootUp=async(req,res)=>{
 // console.log(new Date(Date.now()).getTime())
 
 
-      if(donors[i].posts.expiresAt.getTime()<new Date(Date.now()).getTime()||donors[i].posts.status==true){
+      if(Date.parse(donors[i].posts.expiresAt) < Date.now()||donors[i].posts.status==true){
         await DonorPosts.findByIdAndDelete(donors[i]._id)
       }
     }
