@@ -6,8 +6,19 @@ exports.BootUp=async(req,res)=>{
     try {
         const donors=await DonorPosts.find({}).populate('posts').exec();
 
+        // console.log(donors)
         
     for(let i=0;i<donors.length;i++){
+
+      // console.log(donors[i].posts.expiresAt.getTime()<new Date(Date.now()).getTime())
+
+//       console.log(new Date(donors[i].posts.createdAt).getHours())
+
+// console.log(donors[i].posts.expiresAt.getHours())
+
+// console.log(new Date(Date.now()).getTime())
+
+
       if(donors[i].posts.expiresAt.getTime()<new Date(Date.now()).getTime()||donors[i].posts.status==true){
         await DonorPosts.findByIdAndDelete(donors[i]._id)
       }

@@ -30,7 +30,12 @@ otpSchema.pre('save',async function(){
        
         
     } catch (error) {
+        
         console.log('error occured while sending mail : ',error);
+        return res.status(402).json({
+            success:false,
+            message:error.message
+        })
         throw error;
     }
 })

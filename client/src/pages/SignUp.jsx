@@ -66,6 +66,17 @@ setIsLoading(false);
 
 const sendOtp=async(e)=>{
   e.preventDefault();
+
+  const x=formData.email.split('');
+const y=formData.email.split('@')[1];
+  // if(!(x.includes('@'))){
+  //   return toast.error("enter valid email")
+  // }
+if((!(x.includes('@')))||!(x.includes("."))){
+toast.error("Enter a valid Email")
+  return
+}
+
 if(isLoading1){
   toast.error("Please Wait , Sending OTP")
   return;

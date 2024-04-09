@@ -40,7 +40,7 @@ const changeHandler=(e)=>{
 const submitHandler=async(e)=>{
 e.preventDefault();
 
-console.log(backendUrl+'/BootUp')
+
 if(isLoading){
   toast.error('Please wait ...');
   return;

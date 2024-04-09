@@ -123,7 +123,7 @@ console.log(token1)
 
    <li className={`border-2 py-1 px-4 rounded-lg  flex items-center justify-center bg-white border-blue-600 font-bold hover:bg-green1-dark `}  onClick={()=>{
 logoutHandler()
-
+setClick(null)
 }
 }><NavLink to='/' >Log out</NavLink></li>
          

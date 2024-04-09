@@ -17,8 +17,8 @@ app.use(fileUpload(
     app.use(express.json());
     app.use(cookieParser());
 app.use(cors({
-    // origin: 'http://localhost:3000',
-    origin: 'https://community-cares-2.onrender.com',
+    origin: 'http://localhost:3000',
+    // origin: 'https://community-cares-2.onrender.com',
   optionsSuccessStatus: 200,
   credentials: true
   }));
