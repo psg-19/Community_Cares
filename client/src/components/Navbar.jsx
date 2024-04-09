@@ -127,7 +127,7 @@ logoutHandler()
 }
 }><NavLink to='/' >Log out</NavLink></li>
          
-   <li className='rounded-full bg-gradient-to-r from-red-500 to-indigo-600 animate-pulse' onClick={()=>{
+   <li className={`rounded-full bg-gradient-to-r from-red-500 to-indigo-600 ${click=='profile' ? (" "):(" animate-pulse ")} `} onClick={()=>{
     setClick('profile')
    }}><NavLink to='/profile'><img src={imageUrl} className='w-14 h-14 rounded-full p-[2px]' alt="profile"></img></NavLink></li>
 
