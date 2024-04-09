@@ -29,7 +29,8 @@ const navigate=useNavigate()
 
 
 
-<div className='w-[45%] h-[100%] lg:max-h-[500px] min-w-[200px]'><img src={profilebg} alt="srgfsdg" className='w-[100%] h-[100%] ' /></div>
+<div className='w-[45%] h-[100%] md:min-h-[500px] lg:min-h-[500px]
+ min-w-[200px] '><img src={profilebg} alt="srgfsdg" className='w-[100%] h-[100%] ' /></div>
 
 
 
@@ -37,8 +38,8 @@ const navigate=useNavigate()
 <div className='flex flex-col gap-y-4 items-center justify-center w-[45%] min-w-[200px]'>
 
 
-<div >
-          <img className='rounded-full   h-52 w-52 ' src={user.profileUrl} alt="Profile picture" />
+<div className='rounded-full bg-gradient-to-r from-red-500 to-indigo-600'>
+          <img className='rounded-full p-[3px]  h-48 w-48 ' src={user.profileUrl} alt="Profile picture" />
         </div>
        
 
