@@ -29,8 +29,8 @@ const navigate=useNavigate()
 
 
 
-<div className='w-[45%] h-[100%] md:min-h-[500px] lg:min-h-[500px]
- min-w-[200px] '><img src={profilebg} alt="srgfsdg" className='w-[100%] h-[100%] ' /></div>
+<div className='w-[45%] flex items-center justify-center h-[100%] md:min-h-[500px] lg:min-h-[500px]
+ min:w-[200px]  '><img src={profilebg} alt="profilebg" className='w-[100%] h-[100%] lg:w-[150px] ' /></div>
 
 
 

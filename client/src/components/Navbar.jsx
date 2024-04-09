@@ -127,9 +127,9 @@ setClick(null)
 }
 }><NavLink to='/' >Log out</NavLink></li>
          
-   <li className={`rounded-full bg-gradient-to-r from-red-500 to-indigo-600 ${click=='profile' ? (" "):(" animate-pulse ")} `} onClick={()=>{
+   <li className={` w-14 h-14 rounded-full bg-gradient-to-r from-red-500 to-indigo-600 ${click=='profile' ? (" "):(" animate-pulse ")} `} onClick={()=>{
     setClick('profile')
-   }}><NavLink to='/profile'><img src={imageUrl} className='w-14 h-14 rounded-full p-[2px]' alt="profile"></img></NavLink></li>
+   }}><NavLink to='/profile'><img src={imageUrl} className=' rounded-full p-[2px] w-[100%] h-[100%] ' alt="profile"></img></NavLink></li>
 
 
      </ul>
@@ -138,7 +138,7 @@ setClick(null)
      ):
      (<ul className='flex gap-x-4'>
 
-   <li className={`border-2 py-1 px-4 rounded-lg  flex items-center justify-center font-bold hover:bg-slate-50 ${click=='Login' ? ' bg-white border-yellow-900 ':' border-blue-600 '} `}    onClick={(e)=> {
+   <li className={` py-1 px-4 rounded-lg  flex items-center justify-center font-bold hover:bg-slate-50 ${click=='Login' ? ' bg-white border-yellow-900 border-[3px] ':' border-blue-600 border-2 '} `}    onClick={(e)=> {
                   setClick(e.target.innerText);
                   // console.log(e.target.innerText);
                   navigate('/login')
@@ -147,7 +147,7 @@ setClick(null)
                   setClick(e.target.innerText);
                   // console.log(e.target.innerText);
                   navigate('/signUp')
-                }}  className={`border-2 py-1 px-4 rounded-lg  flex items-center  hover:bg-slate-200 justify-center font-bold ${click=='Sign Up' ? ' bg-slate-200 border-yellow-900':' bg-white  border-blue-600'}`}><NavLink to='/signUp'>Sign Up</NavLink></li>
+                }}  className={` py-1 px-4 rounded-lg  flex items-center  hover:bg-slate-200 justify-center font-bold ${click=='Sign Up' ? ' bg-slate-200 border-yellow-900 border-[3px] ':' bg-white border-2  border-blue-600'}`}><NavLink to='/signUp'>Sign Up</NavLink></li>
          
      </ul>)
 }

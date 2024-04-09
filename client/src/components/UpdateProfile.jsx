@@ -43,7 +43,7 @@ const imageHandler=(e)=>{
   
   }))
   // console.log(e.target)
-  console.log(formData)
+  // console.log(formData)
   console.log(e.target.files[0]);
 
 
@@ -96,6 +96,12 @@ const submitHandler=async(e)=>{
 
 // console.log(formData)
 
+if(formData.firstName===user.firstName&&formData.lastName===user.lastName&&formData.phoneNo===user.phoneNo&&formData.address===user.address&&formData.district==user.district){
+  toast.error("Make atleast one change to update profile !!!");
+  setIsLoading(false)
+  return;
+}
+
 
     await axios.put(backendUrl+'/updateUser',{
       ...formData,
@@ -121,7 +127,7 @@ const submitHandler=async(e)=>{
       toast.error(e.response.data.message)
     })
 
-setIsLoading(false)
+
 
 //   } catch (error) {
 //     // console.log(error);
@@ -176,40 +182,58 @@ setIsLoading(false)
   
   </div>
 {/* -------------fname----------- */}
-<label htmlFor="">
+<label htmlFor="" className=' lg:w-[80%]  justify-evenly flex flex-row flex-wrap gap-x-2 gap-y-2'>
+  <p><b>
   First Name 
-<input type="text" className='ml-2 border-2 border-black'  name='firstName' value={formData.firstName} onChange={(e)=>changeHandler(e)}/>
+    
+    </b></p>
+<input type="text" className=' border-2 border-black py-1 px-3 bg-input-200
+rounded-lg
+' name='firstName' value={formData.firstName} onChange={(e)=>changeHandler(e)}/>
 
 </label>
 
 {/* --------------------------lname--------------------- */}
-<label htmlFor="">
-  Last Name 
-<input type="text" className='ml-2 border-2 border-black'  name='lastName' value={formData.lastName} onChange={(e)=>changeHandler(e)}/>
+<label htmlFor="" className=' lg:w-[80%]   justify-evenly flex flex-row flex-wrap gap-x-2 gap-y-2'>
+   <p><b>
+  Last Name
+    
+    </b></p>
+<input type="text" className=' border-2 border-black py-1 px-3 bg-input-200
+rounded-lg
+'  name='lastName' value={formData.lastName} onChange={(e)=>changeHandler(e)}/>
 
 </label>
 {/* --------------------------------------phoneNo--------------------------- */}
 
-<label htmlFor="">
-  Phone Number 
-<input type="text" className='ml-2 border-2 border-black'  name='phoneNo' value={formData.phoneNo}  onChange={(e)=>changeHandler(e)}/>
+<label htmlFor="" className=' lg:w-[80%]   justify-evenly flex flex-row flex-wrap gap-x-2 gap-y-2'>
+  <p><b>
+    Phone Number 
+    </b></p>
+<input type="text" className='  border-2 border-black py-1 px-3 bg-input-200
+rounded-lg
+'  name='phoneNo' value={formData.phoneNo}  onChange={(e)=>changeHandler(e)}/>
 
 </label>
 
 {/* -------------------------------------address---------------------------------- */}
-<label htmlFor="">
-  Address 
-<input type="text" className='ml-2 border-2 border-black'  name='address' value={formData.address} onChange={(e)=>changeHandler(e)}/>
+<label htmlFor="" className=' lg:w-[85%]   justify-evenly flex flex-row flex-wrap gap-x-2 gap-y-2'>
+<p><b>  Address </b></p>
+<input type="text" className=' border-2 border-black py-1 px-3 bg-input-200
+rounded-lg
+'  name='address' value={formData.address} onChange={(e)=>changeHandler(e)}/>
 
 </label>
 
 {/* -----------------dist--------------------------------------------------- */}
 
-<label htmlFor="district">
-  Select your District 
+<label htmlFor="district" className=' lg:w-[75%]   flex flex-row flex-wrap gap-x-2 gap-y-2 justify-evenly'>
+  <p><b>Select your District </b></p>
 
  
-<select name='district' className='w-[40%] border-2 border-black' value={formData.district} id='district' onChange={(e)=>{
+<select name='district' className=' border-2 border-black py-1 px-3 bg-input-200
+rounded-lg
+' value={formData.district} id='district' onChange={(e)=>{
   changeHandler(e)
 }}>
   

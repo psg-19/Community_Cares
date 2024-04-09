@@ -150,7 +150,8 @@ useEffect(()=>{
 <p><b>Select your District</b></p>
 </label>
 
-<select name='districts' className='w-[40%] border-2 border-black' id='districts' onChange={(e)=>{
+<select name='districts' className=' border-2 border-black py-1 px-3 bg-input-200
+rounded-lg w-[40%] border-2 border-black' id='districts' onChange={(e)=>{
   districtHandler(e)
 }}>
   <option value='All'>All</option>
