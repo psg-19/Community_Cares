@@ -80,11 +80,11 @@ exports.logout=async(req,res)=>{
         const option={
             expire:Date.now()+24*60*60*1000,
             
-              secure: process.env.NODE_ENV === "production" ,
-              httpOnly: true, 
-            // secure: true, // required for cookies to work on HTTPS
-        //   httpOnly: false,
-        //   sameSite: 'none'
+            //   secure: process.env.NODE_ENV === "production" ,
+            //   httpOnly: true, 
+            secure: true, // required for cookies to work on HTTPS
+          httpOnly: false,
+          sameSite: 'none'
         }
         return res.cookie('token','expired',option).status(200).json({
             success:true,
