@@ -91,7 +91,7 @@ setIsLoading(false)
 
 const getUser=async(token)=>{
   await axios.post(backendUrl+'/getUser',{
-    
+    token:token
   },  {withCredentials: true, headers: {
     'Content-Type': 'multipart/form-data'
   }, credentials: 'include'})
