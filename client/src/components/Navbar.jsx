@@ -8,7 +8,7 @@ import axios from 'axios'
 
 export const Navbar = () => {
 
-    const{isLogged,backendUrl,setIsLogged,user,token1,setToken1,setUser}=useContext(AppContext)
+    const{isLogged,backendUrl,setIsLogged,user,setToken1,setUser}=useContext(AppContext)
 
 
 
@@ -20,7 +20,7 @@ export const Navbar = () => {
     
     await axios.post(backendUrl+'/logout',{},{withCredentials: true, headers: {
       'Content-Type': 'multipart/form-data'
-    }, credentials: 'include'})
+    }, credentials: 'same-origin'})
 
     setIsLogged(false)
 setToken1('')
