@@ -47,7 +47,8 @@ exports.getUserPosts=async(req,res)=>{
     exports.getUser=async(req,res)=>{
         try {
             // console.log('--------------',token);
-            const token=req.body.token||req.cookies.token;
+             const token=req.body.token||req.cookies.token;
+             
             
             if(!token||token==''){
                 return res.status(403).json({

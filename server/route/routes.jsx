@@ -5,12 +5,12 @@ const router=express.Router();
 
 
 
-const {sendOtp,signUp,login}=require('../controllers/Auth.jsx');
+const {sendOtp,signUp,isLogged,login}=require('../controllers/Auth.jsx');
 
 const {createPost,likePost,deletePost,updatePost}=require('../controllers/Posts.jsx');
 const {BootUp}=require('../controllers/Bootup.jsx');
 const {connectedPosts,getConnectedPostsUser,getAllConnectedPosts,likeConnectedPost}=require('../controllers/ConnectedPosts.jsx');
-const {isDonor}=require('../middlewares/auth.jsx');
+const {isDonor,logout}=require('../middlewares/auth.jsx');
 const {deleteUser,getUserPosts,updateUser,getUser,getAllRecieverPosts,getAllDonorPosts}=require('../controllers/fetchinfo.jsx')
 
 
@@ -34,6 +34,8 @@ router.get('/getAllDonorPosts',getAllDonorPosts);
 router.post('/getConnectedPostsUser',getConnectedPostsUser);
 router.get('/getAllConnectedPosts',getAllConnectedPosts);
 router.post('/likeConnectedPost',likeConnectedPost);
+router.post('/isLogged',isLogged);
+router.post('/logout',logout);
 
 
 

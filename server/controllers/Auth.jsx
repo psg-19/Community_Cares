@@ -249,3 +249,42 @@ console.log(res.body)
     
 
 }
+
+
+
+
+
+exports.isLogged=async(req,res)=>{
+    try {
+        if(!req.cookies){
+            return res.status(401).json({
+                success:false,
+                message:"user not logged in"
+            })
+        }
+      const token=req.cookies.token||req.body.token;
+
+      if(!token||token==''){
+        return res.status(400).json({
+            success:false,
+            message:"token not found"
+        })
+      }
+       
+    
+    return res.status(200).json({
+        success:true,
+        message:"TOKEN FOUND !!!",
+        token:token
+    })
+    
+    } catch (error) {
+        console.log('isLogged fata hai ----> ',error)
+        return res.status(400).json({
+            success:false,
+            message:'something went wrong while sending otp'
+        })
+    }
+    
+    }
+    
