@@ -71,7 +71,7 @@ postCaller()
   return (
     <div className='flex flex-col gap-y-6 bg-green1-light  items-center justify-center sm:pt-[2rem] 
     lg:pt-[2rem] overflow-y-scroll no-scrollbar
-
+pb-[5rem]
     '>
 
 <div className='h-20'></div>

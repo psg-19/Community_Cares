@@ -99,10 +99,10 @@ useEffect(()=>{
 
 
   return (
-    <div className='flex flex-col items-center space-y-4 h-[100vh] overflow-y-scroll bg-green1-light pt-28
+    <div className='flex flex-col items-center space-y-4 h-[100vh] overflow-y-scroll bg-green1-light pt-28 
     '>
 {/* //----------------------------------------------- */}
-<div className='flex gap-x-4'>
+<div className='flex gap-x-4 '>
 
 <label htmlFor="districts">
   <p><b>Select your District</b></p>
@@ -126,7 +126,7 @@ rounded-lg w-[40%]  border-black' id='districts' onChange={(e)=>{
 
 
 {/* //------------------------------------------------- */}
-<div className='h-[100vh] flex flex-row gap-y-10 w-[80%] gap-x-10 flex-wrap justify-center'>
+<div className='h-[100vh] flex flex-row gap-y-10 w-[80%] gap-x-10 flex-wrap justify-center '>
 
 
 {
@@ -240,6 +240,8 @@ donorPosts.length==0 ? (<Spinner/>):(
 )
 }
 </div>
+
+
     </div>
   )
 }

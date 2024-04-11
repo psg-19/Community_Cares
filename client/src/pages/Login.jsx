@@ -50,6 +50,7 @@ await axios.get(backendUrl+'/BootUp',{},{withCredentials: true,headers: {
   toast.error(error.message)
 }
 
+// console.log(';;;;;;;;;;;',process.env.REACT_APP_BACKEND_URL)
 
 await axios.post(backendUrl+'/login',formData,{withCredentials: true, headers: {
   'Content-Type': 'multipart/form-data'
@@ -130,6 +131,7 @@ const getUser=async(token)=>{
 
 <form action="" className='flex  flex-col   justify-center items-center gap-y-6 absolute lg:top-[40%] lg:left-[40%] sm:top-[35%] sm:left-[37%]
 
+all:top-[40%] all:left-[40%]
 
 ' >
   
