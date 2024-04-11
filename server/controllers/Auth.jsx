@@ -221,12 +221,13 @@ console.log(res.body)
     user.password=undefined;
 
     const option={
-        // expire:Date.now()+24*60*60*1000,
-        // expires: new Date(Date.now() + 1400),
-        // maxAge: 30 * 24 * 60 * 60 * 1000,
-          secure: process.env.NODE_ENV === "production" ,
-          httpOnly: true,
-        //   sameSite: 'strict'
+        expire:Date.now()+24*60*60*1000,
+        
+        //   secure: process.env.NODE_ENV === "production" ,
+        //   httpOnly: true, 
+        secure: true, // required for cookies to work on HTTPS
+      httpOnly: false,
+      sameSite: 'none'
     }
 
      res.cookie('token',token,option).header('Authorization', 'Bearer '+ token).status(200).json({

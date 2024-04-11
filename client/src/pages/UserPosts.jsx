@@ -79,7 +79,7 @@ const likeHandler =async(id)=>{
 
   const postCaller=async()=>{
 await axios.post(backendUrl+'/getUserPosts',{
-  
+  token:token1
 },{withCredentials: true,headers: {
   'Content-Type': 'multipart/form-data'
 }, credentials: 'include'})
