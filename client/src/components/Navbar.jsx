@@ -20,7 +20,7 @@ export const Navbar = () => {
     
     await axios.post(backendUrl+'/logout',{},{withCredentials: true, headers: {
       'Content-Type': 'multipart/form-data'
-    }, credentials: 'same-origin'})
+    },credentials: 'include'})
 
     setIsLogged(false)
 setToken1('')

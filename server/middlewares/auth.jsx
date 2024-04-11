@@ -76,7 +76,7 @@ next();
 
 exports.logout=async(req,res)=>{
     try {
-        return res.clearCookie('token',{path:'/'}).status(200).json({
+        return res.clearCookie('token',{path:'https://community-cares-9y35.vercel.app'}).status(200).json({
             success:true,
             message:"cookie deleted"
         })
