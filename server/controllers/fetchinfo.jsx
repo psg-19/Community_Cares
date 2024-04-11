@@ -48,7 +48,9 @@ exports.getUserPosts=async(req,res)=>{
         try {
             // console.log('--------------',token);
              const token=req.body.token||req.cookies.token;
-             
+
+
+             console.log('abhi add kiya hua ',req.cookies);
             
             if(!token||token==''){
                 return res.status(403).json({
