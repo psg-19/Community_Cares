@@ -76,7 +76,17 @@ next();
 
 exports.logout=async(req,res)=>{
     try {
-        return res.clearCookie('token',{path:'https://community-cares-9y35.vercel.app'}).status(200).json({
+
+        const option={
+            expire:Date.now()+24*60*60*1000,
+            
+              secure: process.env.NODE_ENV === "production" ,
+              httpOnly: true, 
+            // secure: true, // required for cookies to work on HTTPS
+        //   httpOnly: false,
+        //   sameSite: 'none'
+        }
+        return res.cookie('token','expired',option).status(200).json({
             success:true,
             message:"cookie deleted"
         })

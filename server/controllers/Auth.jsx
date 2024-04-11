@@ -223,11 +223,11 @@ console.log(res.body)
     const option={
         expire:Date.now()+24*60*60*1000,
         
-        //   secure: process.env.NODE_ENV === "production" ,
-        //   httpOnly: true, 
-        secure: true, // required for cookies to work on HTTPS
-      httpOnly: false,
-      sameSite: 'none'
+          secure: process.env.NODE_ENV === "production" ,
+          httpOnly: true, 
+        // secure: true, // required for cookies to work on HTTPS
+    //   httpOnly: false,
+    //   sameSite: 'none'
     }
 
      res.cookie('token',token,option).header('Authorization', 'Bearer '+ token).status(200).json({
@@ -265,7 +265,7 @@ exports.isLogged=async(req,res)=>{
         }
       const token=req.cookies.token||req.body.token;
 
-      if(!token||token==''){
+      if(!token||token==''||token=='expired'){
         return res.status(400).json({
             success:false,
             message:"token not found"
