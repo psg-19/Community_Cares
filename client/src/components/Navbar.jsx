@@ -3,28 +3,33 @@ import logo from '../assets/Community.png'
 import {NavLink,useNavigate} from 'react-router-dom'
 import { AppContext } from '../context/AppContext';
 import {toast} from 'react-hot-toast'
-
+import axios from 'axios'
 
 
 export const Navbar = () => {
 
-    const{isLogged,setIsLogged,user,token1,setToken1,setUser}=useContext(AppContext)
+    const{isLogged,backendUrl,setIsLogged,user,token1,setToken1,setUser}=useContext(AppContext)
 
 
 
     const [click,setClick]=useState(null)
  const navigate=useNavigate()
 
-    const logoutHandler=()=>{
+    const logoutHandler=async()=>{
    try {
-         
+    
+    await axios.post(backendUrl+'/logout',{},{withCredentials: true, headers: {
+      'Content-Type': 'multipart/form-data'
+    }, credentials: 'include'})
+
     setIsLogged(false)
 setToken1('')
 setUser('')
 console.log('logged out ')
-console.log(isLogged)
-console.log(user);
-console.log(token1)
+
+
+
+
    } catch (error) {
     toast.error("Cannot Logout !!!")
    }

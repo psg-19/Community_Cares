@@ -47,7 +47,9 @@ const submitHandler=async(e)=>{
   setIsLoading(true)
   e.preventDefault();
   console.log(formData)
- await axios.post(backendUrl+'/signUp',formData)
+ await axios.post(backendUrl+'/signUp',formData,{withCredentials: true,headers: {
+  'Content-Type': 'multipart/form-data'
+}, credentials: 'include'})
  .then((res)=>{
   
   toast.success(res.data.message);
@@ -88,7 +90,9 @@ if(isLoading1){
   // }
 
   setIsLoading1(true)
-  await axios.post(backendUrl+'/sendOtp',formData)
+  await axios.post(backendUrl+'/sendOtp',formData,{withCredentials: true,headers: {
+    'Content-Type': 'multipart/form-data'
+  }, credentials: 'include'})
   .then((e)=> {
     toast.success(e.data.message)
   })

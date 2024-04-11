@@ -19,7 +19,9 @@ const navigate=useNavigate()
     //funcs--------------------------------------------------
 const postCaller=async()=>{
     try {
-        const response=await axios.get(backendUrl+'/getAllConnectedPosts')
+        const response=await axios.get(backendUrl+'/getAllConnectedPosts',{},{withCredentials: true,headers: {
+          'Content-Type': 'multipart/form-data'
+        }, credentials: 'include'})
 
        setConnectedPosts(response.data.connectedPosts)
     } catch (error) {
@@ -45,7 +47,9 @@ const likeHandler =async(id)=>{
       await axios.post(backendUrl+'/likeConnectedPost',{
         postId:id,
         token:token1
-      });
+      },{withCredentials: true,headers: {
+        'Content-Type': 'multipart/form-data'
+      }, credentials: 'include'});
       
       postCaller()
     } catch (error) {

@@ -8,17 +8,18 @@ export const PrivateRoute2 = ({children}) => {
 // const navigate=useNavigate()
 const {isLogged,user}=useContext(AppContext)
 
-  if(!isLogged){
+  if(isLogged){
     console.log(isLogged)
-      return children
-    }
-    
-    else{
+    console.log(user)
+  toast.error('User Already Logged In !!!')
+
+  return    <Navigate to='/'/>
+  }
+  
+  else{
       console.log(isLogged)
-        console.log(user)
-      toast.error('Please Login First !!!')
-    
-      return    <Navigate to='/Login'/>
+        return children
+     
 
   }
 

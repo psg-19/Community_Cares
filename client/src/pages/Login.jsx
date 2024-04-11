@@ -6,16 +6,9 @@ import axios from 'axios'
 import loginBg from '../assets/loginbg1.png'
 export const Login = () => {
 
-  const {isLogged,setToken1,backendUrl,setUser,setIsLogged}=useContext(AppContext)
+  const {setToken1,backendUrl,setUser,setIsLogged}=useContext(AppContext)
 const navigate=useNavigate()
 
-const check=()=>{
-  console.log(isLogged+'islooo')
-  navigate('/');
-  // if(!token1)
-  toast.error("You are already loggedin !!!")
- 
-}
 
 const [isLoading,setIsLoading]=useState(false);
 
@@ -49,21 +42,25 @@ setIsLoading(true)
 
 // console.log(formData)
 try {
-await axios.get(backendUrl+'/BootUp')
+await axios.get(backendUrl+'/BootUp',{},{withCredentials: true,headers: {
+  'Content-Type': 'multipart/form-data'
+}, credentials: 'include'})
 
 } catch (error) {
   toast.error(error.message)
 }
 
 
-await axios.post(backendUrl+'/login',formData,{withCredentials: true, credentials: 'include'})
+await axios.post(backendUrl+'/login',formData,{withCredentials: true, headers: {
+  'Content-Type': 'multipart/form-data'
+},credentials: 'include'})
   .then((response)=>{
     setToken1(response.data.token);
     
     toast.success(response.data.message);
     
+    navigate('/')
     setIsLogged(true);
-   
 
 //------------------------
 
@@ -94,14 +91,16 @@ setIsLoading(false)
 
 const getUser=async(token)=>{
   await axios.post(backendUrl+'/getUser',{
-    token:token
-  },  {withCredentials: true, credentials: 'include'})
+    
+  },  {withCredentials: true, headers: {
+    'Content-Type': 'multipart/form-data'
+  }, credentials: 'include'})
   .then((response)=>{
     setUser(response.data.userData)
    
     // console.log(response)
 // setIsLogged(true)
-navigate('/')
+
 })
 .catch((error)=>{
   console.log(error)

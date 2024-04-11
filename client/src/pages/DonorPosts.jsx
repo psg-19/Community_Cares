@@ -28,7 +28,9 @@ setDistrict(e.target.value);
 //----------------------------------functions-------------------------------------------------
   const postCaller=async()=>{
   try {
-    const response =await axios.get(backendUrl+'/getAllDonorPosts');
+    const response =await axios.get(backendUrl+'/getAllDonorPosts',{},{withCredentials: true, headers: {
+      'Content-Type': 'multipart/form-data'
+    },credentials: 'include'});
     setDonorPosts(response.data.donorPosts);
   
     
@@ -48,7 +50,9 @@ const deleteHandler =async(id)=>{
   await axios.put(backendUrl+'/deletePost',{
     postId:id,
     token:token1
-  })
+  },{withCredentials: true, headers: {
+    'Content-Type': 'multipart/form-data'
+  },credentials: 'include'})
   .then((res)=> toast.success(res.data.message))
   .catch((e)=> toast.error(e.response.data.message))
   postCaller();
@@ -71,7 +75,9 @@ try {
   await axios.post(backendUrl+'/LikePost',{
     postId:id,
     token:token1
-  });
+  },{withCredentials: true,headers: {
+    'Content-Type': 'multipart/form-data'
+  }, credentials: 'include'});
   
   postCaller()
 } catch (error) {
@@ -135,7 +141,7 @@ donorPosts.length==0 ? (<Spinner/>):(
       <h3 className='font-bold text-xl'>{data.posts.title}</h3>
       <div className='flex justify-center items-center w-[14rem] h-[19rem]' ><img src={data.posts.imageUrl} className='w-[100%] h-[100%] rounded-lg' alt="" /></div>
 
-    <p className='w-[100%] flex itc justify-center'>{data.posts.description}</p>
+    <p className='w-[100%] flex items-center justify-center'>{data.posts.description}</p>
     <p >Requirement : {data.posts.quantity} People</p>
 
    

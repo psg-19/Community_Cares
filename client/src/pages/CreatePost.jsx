@@ -82,7 +82,9 @@ const submitHandler=async(e)=>{
     await axios.post(backendUrl+'/createPost',{
       ...formData,
       token:token1
-    },{
+    },{ withCredentials: true,headers: {
+      'Content-Type': 'multipart/form-data'
+    }, credentials: 'include',
       headers: {
         'Content-Type': 'multipart/form-data'
       }

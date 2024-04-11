@@ -6,6 +6,7 @@ import axios from 'axios'
 import { AiFillHeart,AiOutlineHeart } from "react-icons/ai";
 import { LuFileEdit } from 'react-icons/lu'
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { Spinner } from '../components/Spinner'
 
 
 
@@ -14,7 +15,7 @@ export const UserPosts = () => {
   const {backendUrl,token1,user,setCurrentPostEdit}=useContext(AppContext)
 const navigate=useNavigate();
 
-const[userPosts,setUserPosts]=useState([])
+const[userPosts,setUserPosts]=useState(null)
 
 
 
@@ -30,7 +31,9 @@ const[userPosts,setUserPosts]=useState([])
     await axios.put(backendUrl+'/deletePost',{
       postId:id,
       token:token1
-    })
+    },{withCredentials: true,headers: {
+      'Content-Type': 'multipart/form-data'
+    }, credentials: 'include'})
     .then((res)=> toast.success(res.data.message))
     .catch((e)=> toast.error(e.response.data.message))
     postCaller();
@@ -56,7 +59,9 @@ const likeHandler =async(id)=>{
     await axios.post(backendUrl+'/LikePost',{
       postId:id,
       token:token1
-    });
+    },{withCredentials: true, headers: {
+      'Content-Type': 'multipart/form-data'
+    },credentials: 'include'});
     
     postCaller()
   } catch (error) {
@@ -74,8 +79,10 @@ const likeHandler =async(id)=>{
 
   const postCaller=async()=>{
 await axios.post(backendUrl+'/getUserPosts',{
-  token:token1
-})
+  
+},{withCredentials: true,headers: {
+  'Content-Type': 'multipart/form-data'
+}, credentials: 'include'})
 .then((res)=>{
 // console.log(res.data.allPosts)
   setUserPosts(res.data.allPosts)
@@ -95,19 +102,32 @@ await axios.post(backendUrl+'/getUserPosts',{
   },[])
 
   return (
-    <div className='flex flex-col gap-y-4 items-center justify-center'>
+    <div className='flex flex-col items-center space-y-4 h-[100vh] overflow-y-scroll bg-green1-light pt-28
+    '>
+
+
+<div className='h-[100vh] flex flex-row gap-y-10 w-[80%] gap-x-10 flex-wrap justify-center'>
+
 
 {
-  userPosts.map((data)=>{
+
+userPosts ==null ? (<Spinner/>):
+(
+userPosts.length==0 ?(<div className='flex justify-center items-center'>No posts available</div>)
+:
+  (userPosts.map((data)=>{
     return (
-      <div className='flex flex-col  border-black border-2 w-[50%] p-2 items-center justify-center gap-y-4'>
+      <div className='flex flex-col border-2  max-h-[700px] max-w-[400px] min-w-[250px] min-h-[550px] w-[50%] h-[65%] p-4 justify-center items-center border-black  gap-y-4 bg-slate-100 rounded-lg overflow-hidden
+      hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] hover:scale-105 transition-all linear 
+      '>
         
-<p className='text-bold'>{data.title}</p>
+<h3 className='font-bold text-xl'>{data.title}</h3>
 
-<img src={data.imageUrl} className='w-[100%] rounded-lg' alt="" />
+<div className='flex justify-center items-center w-[14rem] h-[19rem]' ><img src={data.imageUrl} className='w-[100%] h-[100%] rounded-lg' alt="" /></div>
 
-<p>{data.description}</p>
-<p>{data.quantity}</p>
+
+<p className='w-[100%] flex items-center justify-center'>{data.description}</p>
+<p >Requirement : {data.quantity} People</p>
 
 <div  className='flex flex-row gap-x-10 items-center justify-center'>
     <div className='flex gap-x-2'>
@@ -141,8 +161,11 @@ data.email==user.email &&data.status==false && <div className='flex gap-2'>
       </div>
     )
   })
-}
 
+)
+)
+}
+</div>
     </div>
   )
 }

@@ -51,13 +51,14 @@ const imageHandler=(e)=>{
 
 
 
-
 const reloadUser=async()=>{
 
   
     await axios.post(backendUrl+'/getUser',{
       token:token1
-    })
+    },{withCredentials: true,headers: {
+      'Content-Type': 'multipart/form-data'
+    }, credentials: 'include'})
  .then((res)=>{
   setUser(res.data.userData);
   // console.log(res.data.userData)
@@ -107,10 +108,11 @@ if(formData.firstName===user.firstName&&formData.lastName===user.lastName&&formD
       ...formData,
       token:token1
     },{
+      withCredentials: true, credentials: 'include',
       headers: {
         'Content-Type': 'multipart/form-data'
       }
-    })
+    },)
 
     .then((res)=>{ 
       // console.log(res.data);

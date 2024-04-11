@@ -61,7 +61,7 @@ if(isLoading){
     await axios.put(backendUrl+'/updatePost',{
         ...formData,
         postId:currentPostEdit._id
-    },{
+    },{withCredentials: true, credentials: 'include',
         headers: {
           'Content-Type': 'multipart/form-data'
         }

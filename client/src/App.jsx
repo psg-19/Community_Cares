@@ -8,18 +8,31 @@ import { DonorPosts } from './pages/DonorPosts';
 import { UserConnectedPosts } from './pages/UserConnectedPosts';
 import { UserPosts } from './pages/UserPosts';
 import { RecieverPosts } from './pages/RecieverPosts';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { AppContext } from './context/AppContext';
 import PrivateRoute from './components/PrivateRoute';
 import { ConnectedPosts } from './pages/ConnectedPosts';
 import {PrivateRoute2} from './components/PrivateRoute2'
 import { CreatePost } from './pages/CreatePost';
 import { EditPost } from './pages/EditPost';
-
+import axios from 'axios'
+import {toast} from 'react-hot-toast'
 
 
 function App() {
- const {isLogged}=useContext(AppContext)
+
+
+
+if (performance.navigation.type === 1) {
+ 
+ 
+      
+      window.location.href = '/';
+  
+}
+
+  
+
   return (
     <div className="h-[11.7vh] " >
 
@@ -40,11 +53,11 @@ function App() {
           <PrivateRoute ><UserConnectedPosts/></PrivateRoute>
         }></Route>
         <Route path='/userPosts' element={
-        <PrivateRoute ><UserPosts/></PrivateRoute>}></Route>
+      <PrivateRoute >  <UserPosts/></PrivateRoute>}></Route>
       
       <Route path='/createPosts' element={
        
-          <CreatePost/>
+       <PrivateRoute ><CreatePost/></PrivateRoute>   
         
       }>
 

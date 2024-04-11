@@ -36,7 +36,9 @@ setDistrict(e.target.value);
 const postCaller=async()=>{
 
   try {
-    const response=await axios.get(backendUrl+'/getAllRecieverPosts')
+    const response=await axios.get(backendUrl+'/getAllRecieverPosts',{},{withCredentials: true,headers: {
+      'Content-Type': 'multipart/form-data'
+    }, credentials: 'include'})
 // console.log(response)
     if(response){
       console.log('hiiiii',response)
@@ -59,7 +61,9 @@ const postCaller=async()=>{
     await axios.put(backendUrl+'/deletePost',{
       postId:id,
       token:token1
-    })
+    },{withCredentials: true, headers: {
+      'Content-Type': 'multipart/form-data'
+    },credentials: 'include'})
     .then((res)=> toast.success(res.data.message))
     .catch((e)=> toast.error(e.response.data.message))
     postCaller();
@@ -83,7 +87,9 @@ const likeHandler=async(id)=>{
     await axios.post(backendUrl+'/LikePost',{
       postId:id,
       token:token1
-    });
+    },{withCredentials: true,headers: {
+      'Content-Type': 'multipart/form-data'
+    }, credentials: 'include'});
     
     postCaller()
   } catch (error) {
@@ -114,7 +120,9 @@ try {
   const response=await axios.post(backendUrl+'/connectedPosts',{
     reciverPostId:id,
     token:token1
-  });
+  },{withCredentials: true,headers: {
+    'Content-Type': 'multipart/form-data'
+  }, credentials: 'include'});
 postCaller()
   // console.log(response)
   console.log('Post connected successfully')

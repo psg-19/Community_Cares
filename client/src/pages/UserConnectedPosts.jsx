@@ -25,7 +25,9 @@ const postCaller=async()=>{
     try {
         const response=await axios.post(backendUrl+'/getConnectedPostsUser',{
           token:token1
-        })
+        },{withCredentials: true,headers: {
+          'Content-Type': 'multipart/form-data'
+        }, credentials: 'include'})
 
        setUserConnectedPosts(response.data.postDetails)
       //  console.log(response.data.postDetails)
@@ -52,7 +54,9 @@ const likeHandler =async(id)=>{
       await axios.post(backendUrl+'/likeConnectedPost',{
         postId:id,
         token:token1
-      });
+      },{withCredentials: true,headers: {
+        'Content-Type': 'multipart/form-data'
+      }, credentials: 'include'});
       
       postCaller()
     } catch (error) {
