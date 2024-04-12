@@ -162,7 +162,7 @@ if(formData.firstName===user.firstName&&formData.lastName===user.lastName&&formD
 
         <h1 className='font-bold text-xl'>Update Your Profile</h1>
 
-<div  className='flex flex-row flex-wrap justify-center items-center  gap-x-10 gap-y-10 w-[100%] mb-8 divide-x overflow-y-auto no-scrollbar  divide-gray-400'>
+<div  className='flex flex-row flex-wrap justify-center items-center  gap-x-10 gap-y-10 w-[100%] mb-8 lg:divide-x md:divide-x sm:divide-x overflow-y-auto no-scrollbar  divide-gray-400'>
 
 
 <form action="" className='flex flex-col gap-y-3 items-center justify-center w-[45%] min-w-[200px]  '>
@@ -234,7 +234,7 @@ rounded-lg
 
  
 <select name='district' className=' border-2 border-black py-1 px-3 bg-input-200
-rounded-lg
+rounded-lg all:w-[90%]
 ' value={formData.district} id='district' onChange={(e)=>{
   changeHandler(e)
 }}>

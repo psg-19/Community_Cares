@@ -4,6 +4,8 @@ const User=require('../models/User.jsx');
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 require('dotenv').config();
+
+const FORGOT_PASS_OTP=require('../models/ForgotPassOtp.jsx')
 //------------------------------------------SENDOTP-------------------------------------------
 
 exports.sendOtp=async(req,res)=>{
@@ -18,6 +20,14 @@ if(!email||email.trim()==''){
     })
 }
 
+const user=await User.findOne({email:email});
+
+if(user){
+    return res.status(400).json({
+        success:false,
+    message:"User Exists , Please Login !!!"
+    })
+}
 
 let otp=otpGenerator.generate(6,{
     upperCaseAlphabets:false,
@@ -121,8 +131,9 @@ exports.signUp=async(req,res)=>{
     //     return res.status(403).json({
     //         success:false,
     //         message:"OTP expired !!!"
-    //     })
+    //     })  556033  709718
     // }
+    // console.log(recentOtp.otp,'------------',otp)
     
     if(otp!=recentOtp.otp){
         return res.status(402).json({
@@ -288,4 +299,164 @@ exports.isLogged=async(req,res)=>{
     }
     
     }
+    
+
+    
+// exports.resetPassword=async(req,res)=>{
+
+//     try {
+
+//         const token=req.cookies.token||req.body.token;
+
+//         const tokenDetails=jwt.verify(token,process.env.JWT_SECRET);
+
+//         const user=await User.findById(tokenDetails._id);
+
+//         const password
+        
+//     } catch (error) {
+        
+//     }
+        
+    
+//     }
+    
+
+exports.sendOtpForForgotPassword=async(req,res)=>{
+    try {
+        const {email}=req.body;
+
+        if(!email||email.trim()==''){
+            return res.status(400).json({
+                success:false,
+                message:'All field are mandatory !!!'
+            })
+        }
+        const user=await User.findOne({email:email});
+
+        if(!user){
+            return res.status(401).json({
+                success:false,
+                message:"User Not Found, Please SignUp !!!"
+            })
+        }
+
+
+
+
+
+
+
+let otp=otpGenerator.generate(6,{
+    upperCaseAlphabets:false,
+    lowerCaseAlphabets:false,
+    specialChars: false
+ });
+ otp=otp.toString();
+// otp=otp.toString();
+console.log(otp);
+
+const otpCreated=await FORGOT_PASS_OTP.create({email:`${email}`,otp:`${otp}`});
+
+if(!otpCreated){
+    return res.status(401).json({
+        success:false,
+        message:'Error while sending OTP ,please try again later'
+    })
+}
+
+return res.status(200).json({
+    success:true,
+    message:"OTP sent successfully !!!"
+})
+
+} catch (error) {
+    console.log('sendOtpForForgotPass fata hai ----> ',error)
+    return res.status(400).json({
+        success:false,
+        message:'something went wrong while sending otp'
+    })
+}
+}
+
+
+exports.forgotPassword=async(req,res)=>{
+
+    try {
+
+        const {email,otp,password,confirmPassword}=req.body;
+
+        if(!email||!otp||!password||!confirmPassword||email.trim()==''||password.trim()==''||confirmPassword.trim()==''||otp.trim()==''){
+            return res.status(402).json({
+                success:false,
+                message:"All Fields Are Mandatory !!!"
+            })
+        }
+
+        const recentOtp=await FORGOT_PASS_OTP.findOne({email:`${email}`}).sort({createdAt:-1}).limit(1);
+
+
+        if(!recentOtp){
+            return res.status(401).json({
+        
+                success:false,
+                message:'Please generate OTP first !!!'
+            })
+            
+        }
+
+        console.log(recentOtp.otp,'-----',otp)
+        
+        if(otp!=recentOtp.otp){
+            return res.status(402).json({
+                success:false,
+                message:'Wrong OTP !!!'
+            })
+    
+        }
+    
+
+
+        if(password!==confirmPassword){
+            return res.status(401).json({
+                success:false,
+                message:"Passwords Not Matching !!!"
+            })
+        }
+
+        const encryptedPass=await bcrypt.hash(password,10);
+
+
+
+        const user=await User.findOneAndUpdate({email:email},{
+
+
+            password:encryptedPass
+        },{new:true});
+
+        // const checkPass=bcrypt.compare(password,user.password)
+
+return res.status(200).json({
+    success:true,
+    message:"Password successfully changed !!!"
+})
+        
+
+
+
+
+
+        
+    } catch (error) {
+        console.log('forgotPassword fata hai ----> ',error)
+    return res.status(400).json({
+        success:false,
+        message:'something went wrong while sending otp'
+    })
+    }
+        
+    
+    }
+
+    // 484989  880472
     

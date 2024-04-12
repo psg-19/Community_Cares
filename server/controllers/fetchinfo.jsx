@@ -126,6 +126,8 @@ return res.status(401).json({
 
 
             console.log(req.body,req.files)
+
+
             if(req.files){
                 const image=req.files.image;
 

@@ -5,7 +5,7 @@ const router=express.Router();
 
 
 
-const {sendOtp,signUp,isLogged,login}=require('../controllers/Auth.jsx');
+const {sendOtp,signUp,isLogged,login,sendOtpForForgotPassword,forgotPassword}=require('../controllers/Auth.jsx');
 
 const {createPost,likePost,deletePost,updatePost}=require('../controllers/Posts.jsx');
 const {BootUp}=require('../controllers/Bootup.jsx');
@@ -36,6 +36,9 @@ router.get('/getAllConnectedPosts',getAllConnectedPosts);
 router.post('/likeConnectedPost',likeConnectedPost);
 router.post('/isLogged',isLogged);
 router.post('/logout',logout);
+router.post('/forgotPassword',forgotPassword);
+router.post('/sendOtpForForgotPassword',sendOtpForForgotPassword);
+
 
 
 

@@ -96,7 +96,7 @@ if(isLoading1){
   .then((e)=> {
     toast.success(e.data.message)
   })
-  .catch((e)=>console.log(e))
+  .catch((e)=>toast.error(e.response.data.message))
 
   setIsLoading1(false)
 }
@@ -107,7 +107,14 @@ if(isLoading1){
 
 
   return (
-    <div className='flex items-center justify-center bg-green1-light h-[100vh]'>
+    <div className='flex items-center justify-center bg-green1-light h-[100vh] pt-[10rem]  
+    
+    lg:overflow-y-hidden
+    md:overflow-y-hidden
+    sm:overflow-y-hidden
+    all:overflow-y-scroll
+
+    '>
      
      
      <div className='relative '>
@@ -121,12 +128,14 @@ if(isLoading1){
      
      <form action="" className='flex  flex-col   justify-center items-center gap-y-10 absolute lg:top-[22%] lg:left-[20%] md:top-[22%] md:left-[20%] 
      sm:top-[25%] sm:left-[25%]
+
+     all:top-[5%] all:left-[27%] all:gap-y-3
      '>
 
 
-<div className='flex lg:gap-x-24 md:gap-x-16 sm:gap-x-10'>
+<div className='flex all:flex-col lg:flex-row md:flex-row sm:flex-row lg:gap-x-24 md:gap-x-16  sm:gap-x-10'>
 {/* ------------------first div---------------------------- */}
-<div className='flex flex-col items-center justify-center gap-y-6'>
+<div className='flex flex-col items-center justify-center all:gap-y-2 gap-y-6'>
 {/* --------------------------fname-------------------------- */}
 <div>
 <label htmlFor="">
@@ -149,10 +158,10 @@ rounded-lg'  placeholder='Enter last Name'  name='lastName' onChange={(e)=>chang
 
 {/* //------------------------email------------------------
  */}
-<div className=''>
+<div className='flex flex-col '>
   
-<label htmlFor="">
- <p><b>Email</b></p>
+<label className='all:flex all:justify-start md:justify-start lg:justify-start sm:justify-start all:items-center' htmlFor="">
+ <p ><b >Email</b></p>
 </label>
 <input type="email" className='  border-2 border-black py-1 px-3 bg-input-200
 rounded-lg'  placeholder='Enter Email' name='email' onChange={(e)=>changeHandler(e)}/>
@@ -183,7 +192,7 @@ rounded-lg'  placeholder='Enter OTP'  name='otp' onChange={(e)=>changeHandler(e)
 
 
 
-<div className='flex flex-col items-center justify-center gap-y-9'>
+<div className='flex flex-col items-center all:gap-y-2 justify-center lg:gap-y-8 md:gap-y-8 sm:gap-y-8'>
 
 {/* -----------------------------------phone no-----------------
  */}
@@ -209,14 +218,14 @@ rounded-lg'  name='address' onChange={(e)=>changeHandler(e)}/>
 {/* ----------------------------------district------------------ */}
 
 
-<div>
+<div className='all:flex all:flex-col all:items-center all:justify-center'>
   
 <label htmlFor="district">
   <p><b>Select your District </b></p>
 
   </label>
  
-<select name='district' className='w-[80%]  border-2 border-black py-1 px-3 bg-input-200
+<select name='district' className='w-[80%] all:w-[60%] border-2 border-black py-1 px-3 bg-input-200
 rounded-lg'  id='district' onChange={(e)=>{
   changeHandler(e)
 }}>
@@ -256,7 +265,7 @@ rounded-lg'  placeholder='Confirm Password'  name='confirmPassword' onChange={(e
 </div>
 {/* -----------------------third div---------------- */}
 
-<div className='flex flex-col gap-y-6'>
+<div className='flex flex-col all:gap-y-2 lg:gap-y-6 sm:gap-y-6 md:gap-y-6'>
   
 {/* -----------------------------role------------------- */}
 <select name="role" className='w-[100%]  border-2 border-black py-1 px-3 bg-input-200

@@ -66,11 +66,11 @@ console.log('logged out ')
         <img src={logo} className=' rounded-full h-20' alt="" />
         </div>
 
-        <nav className='flex items-center justify-center'>
+        <nav className=' flex items-center justify-center'>
 
-            <ul className='flex gap-x-4 items-center justify-center'>
+            <ul className=' flex gap-x-4 items-center justify-center'>
                 <li className={`text-black cursor-pointer font-mullish py-7 hover:text-yellow-900
-                transition-all duration-200   relative group
+                transition-all duration-200 flex justify-center items-center  relative group
                 
                 ${click =="Home" ? ("text-yellow-900"):("")}
                 
@@ -80,14 +80,14 @@ console.log('logged out ')
                   navigate('/')
                 }}
                 >
-                  <NavLink to='/' className='font-bold'>Home</NavLink>
+                  <NavLink to='/' ><pre className=' font-extrabold'>  Home  </pre></NavLink>
                 <div class={`h-1 absolute bottom-0 
                  ${click =="Home" ? ("bg-yellow-900 block"):("hidden")}
                 w-full  bg-yellow-900 group-hover:block  `}></div>
                 </li>
 
 
-                <li className={`text-black cursor-pointer font-mullish py-7 hover:text-yellow-900
+                <li className={`text-black flex justify-center items-center cursor-pointer font-mullish py-7 hover:text-yellow-900
                 transition-all duration-200   relative group
                 
                 ${click =="Donor Posts" ? ("text-yellow-900"):("")}
@@ -101,7 +101,7 @@ console.log('logged out ')
                  ${click =="Donor Posts" ? ("bg-yellow-900"):("hidden")}
                 w-full  bg-yellow-900 group-hover:block  `}></div></li>
                 <li className={`text-black cursor-pointer font-mullish py-7 hover:text-yellow-900
-                transition-all duration-200   relative group
+                transition-all duration-200 flex justify-center items-center  relative group
                 
                 ${click =="Reciever Posts" ? ("text-yellow-900"):("")}
                 
@@ -113,7 +113,7 @@ console.log('logged out ')
                  ${click =="Reciever Posts" ? ("bg-yellow-900"):("hidden")}
                 w-full  bg-yellow-900 group-hover:block  `}></div>
                 </li>
-                <li className={`text-black cursor-pointer font-mullish py-7 hover:text-yellow-900
+                <li className={`text-black flex justify-center items-center cursor-pointer font-mullish py-7 hover:text-yellow-900
                 transition-all duration-200   relative group
                 
                 ${click =="Connected Posts" ? ("text-yellow-900"):("")}
@@ -140,7 +140,7 @@ console.log('logged out ')
 logoutHandler()
 setClick(null)
 }
-}><NavLink to='/' className='font-bold'>
+}><NavLink to='/' className='font-bold flex justify-center items-center'>
   {isLoading ? 'Please Wait ...':'Log out'}</NavLink></li>
          
    <li className={` w-14 h-14 rounded-full bg-gradient-to-r from-red-500 to-indigo-600 ${click=='profile' ? (" "):(" animate-pulse ")} `} onClick={()=>{
@@ -152,7 +152,7 @@ setClick(null)
     
 
      ):
-     (<ul className='flex gap-x-4'>
+     (<ul className='flex items-center justify-center gap-x-4 w-auto gap-y-2 md:flex-wrap sm:flex-wrap'>
 
    <li className={` py-1 px-4 rounded-lg  flex items-center justify-center font-bold hover:bg-slate-50 ${click=='Login' ? ' bg-white border-yellow-900 border-[3px] ':' border-blue-600 border-2 '} `}    onClick={(e)=> {
                   setClick(e.target.innerText);

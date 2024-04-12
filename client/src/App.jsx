@@ -8,15 +8,14 @@ import { DonorPosts } from './pages/DonorPosts';
 import { UserConnectedPosts } from './pages/UserConnectedPosts';
 import { UserPosts } from './pages/UserPosts';
 import { RecieverPosts } from './pages/RecieverPosts';
-import { useContext, useEffect } from 'react';
-import { AppContext } from './context/AppContext';
+
 import PrivateRoute from './components/PrivateRoute';
 import { ConnectedPosts } from './pages/ConnectedPosts';
 import {PrivateRoute2} from './components/PrivateRoute2'
 import { CreatePost } from './pages/CreatePost';
 import { EditPost } from './pages/EditPost';
-import axios from 'axios'
-import {toast} from 'react-hot-toast'
+import { ForgotPassword } from './pages/ForgotPassword';
+
 
 
 function App() {
@@ -45,6 +44,7 @@ if (performance.navigation.type === 1) {
         </PrivateRoute>}></Route>
        
         <Route path='/login' element={<PrivateRoute2 ><Login/></PrivateRoute2>}></Route>
+        <Route path='/forgotPassword' element={<PrivateRoute2 ><ForgotPassword/></PrivateRoute2>}></Route>
         <Route path='/signUp' element={<PrivateRoute2 ><SignUp/></PrivateRoute2>}></Route>
         <Route path='/connectedPosts' element={<ConnectedPosts/>}></Route>
         <Route path='/donorPost' element={<DonorPosts/>}></Route>
