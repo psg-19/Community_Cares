@@ -148,7 +148,7 @@ setIsLoading(false)
 
 
 {/* --------------------2 ka div--------------------------------- */}
-<div className='flex flex-row flex-wrap justify-center items-center  gap-x-10 gap-y-10 w-[100%] mb-8 divide-x overflow-y-auto no-scrollbar  divide-gray-400'>
+<div className='flex flex-row flex-wrap justify-center items-center  gap-x-10 gap-y-10 w-[100%] mb-8 lg:divide-x md:divide-x sm:divide-x overflow-y-auto no-scrollbar  divide-gray-400'>
 
 
 

@@ -72,6 +72,7 @@ postCaller()
     <div className='flex flex-col gap-y-6 bg-green1-light  items-center justify-center sm:pt-[2rem] 
     lg:pt-[2rem] overflow-y-scroll no-scrollbar
 pb-[5rem]
+all:px-10
     '>
 
 <div className='h-20'></div>
@@ -87,7 +88,7 @@ pb-[5rem]
     //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
     (connectedPosts.map((data)=>{
-        return <div className='flex flex-col items-center justify-center border-2 border-black   gap-y-4 rounded-lg
+        return <div className='flex flex-col items-center justify-center border-2 border-black   gap-y-10 rounded-lg
         
        
         bg-slate-200 
@@ -96,7 +97,7 @@ pb-[5rem]
     
 p-6
 
-lg:max-w-720px lg:max-h-[500px] lg:w-[50%] lg:h-[30%]
+lg:min-w-[900px] lg:max-h-[500px] lg:w-[50%] lg:h-[30%]
 
 
 
@@ -107,9 +108,11 @@ lg:max-w-720px lg:max-h-[500px] lg:w-[50%] lg:h-[30%]
           flex-wrap 
           sm:max-h-[700px] sm:h-[100rem]
 
-          all:max-h-[700px] all:h-[80rem] 
+         
 
-          lg:w-[100%] lg:h-[40rem]
+          lg:w-[100%]  lg:h-[40rem]
+
+          
           '>
             {/* //======================donor posts----------- */}
            <div className='flex flex-col  items-center justify-center  bg-slate-100
@@ -126,7 +129,7 @@ md:w-[90%] md:h-[50%]
 <h1 className='font-bold'>Donor</h1>
           
 
-<div>
+<div className='flex items-center justify-center flex-col'>
 <div className='font-bold'>{data.donorPost.title}</div>
   <img src={data.donorPost.imageUrl} alt="" className=' w-48' />
   </div>
@@ -172,15 +175,18 @@ lg:w-[48%] lg:h-[23rem]
 </div>
 </div>
 
-<div className='text-4xl' >
+<div className='flex gap-x-2 justify-center items-center' >
+  <div className='text-4xl'>
+
       {
         
         data.likes.includes(user._id) ? ( <AiFillHeart  onClick={()=>likeHandler(data._id)} />):(<AiOutlineHeart
           onClick={()=>likeHandler(data._id)}
-    />)
-      }
+          />)
+        }
+        </div>
+      <p className='text-2xl flex justify-center items-center'>{data.likes.length}</p>
     </div>
-      <p>{data.likes.length}</p>
 
         </div>
 }))

@@ -102,9 +102,9 @@ await axios.post(backendUrl+'/getUserPosts',{
   },[])
 
   return (
-    <div className='flex flex-col items-center space-y-4 h-[100vh] overflow-y-scroll bg-green1-light pt-28
+    <div className='flex flex-col items-center gap-y-6 h-[100vh] overflow-y-scroll bg-green1-light pt-28
     '>
-
+<div className=' font-bold text-2xl underline'>Your Posts </div>
 
 <div className='h-[100vh] flex flex-row gap-y-10 w-[80%] gap-x-10 flex-wrap justify-center'>
 

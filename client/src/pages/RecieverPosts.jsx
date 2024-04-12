@@ -151,15 +151,16 @@ useEffect(()=>{
   return (
     <div className='flex flex-col items-center space-y-4 h-[100vh] overflow-y-scroll bg-green1-light pt-32 pb-10
     '>
+<div className='font-bold text-2xl underline mb-4'>Reciever's Posts</div>
 
-<div className='flex gap-x-4'>
+<div className='flex justify-center items-center flex-wrap gap-x-4'>
   
 <label htmlFor="districts">
-<p><b>Select your District</b></p>
+<p><b> Filter Posts By District</b></p>
 </label>
 
 <select name='districts' className=' border-2 border-black py-1 px-3 bg-input-200
-rounded-lg w-[40%] border-2 border-black' id='districts' onChange={(e)=>{
+rounded-lg w-[40%] ' id='districts' onChange={(e)=>{
   districtHandler(e)
 }}>
   <option value='All'>All</option>

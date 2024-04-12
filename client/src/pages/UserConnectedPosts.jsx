@@ -76,8 +76,13 @@ console.log(userConnectedPosts)
     },[])
 
   return (
-    <div className='flex flex-col gap-y-6 items-center justify-center  '>
-
+    <div className='flex flex-col gap-y-6 bg-green1-light  items-center justify-center sm:pt-[2rem] 
+    lg:pt-[2rem] overflow-y-scroll no-scrollbar
+pb-[5rem]
+all:px-10
+    '>
+<div className='h-20'></div>
+<h1 className='text-xl font-bold underline'>Posts Connected To You</h1>
 
 {
     userConnectedPosts.length ==0 ? (<div className='flex flex-row gap-x-6'>
@@ -88,20 +93,58 @@ No posts available
     
     //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     (userConnectedPosts.map((data)=>{
-        return <div className='flex flex-col gap-y-6  items-center justify-center border-2 border-black p-2'>
+        return <div className='flex flex-col items-center justify-center border-2 border-black   gap-y-10 rounded-lg
+        
+       
+        bg-slate-200 
+        hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] hover:scale-105 transition-all linear 
+
+    
+p-6
+
+lg:min-w-[900px] lg:max-h-[500px] lg:w-[50%] lg:h-[30%]
+
+
+
+     
+        
+        ' >
+
+            <div className='flex flex-row gap-x-6  gap-y-6 justify-center items-center
+          flex-wrap 
+          sm:max-h-[700px] sm:h-[100rem]
+          
+          
+          
+          lg:w-[100%]  lg:h-[40rem]
+          
+          
+          '>
             {/* //======================donor posts----------- */}
 
-            <div className='flex flex-row gap-x-6'>
-           <div className='flex flex-col border-2 items-center justify-center w-[50%] p-4'>
+
+           <div className='flex flex-col  items-center justify-center  bg-slate-100
+border-[1px] border-black
+rounded-lg gap-y-6
+sm:w-[90%] sm:h-[50%] 
+all:w-[90%] all:h-[50%] 
+lg:w-[48%] lg:h-[23rem]
+md:w-[90%] md:h-[50%] 
+
+
+'>
 
 <h1 className='font-bold'>Donor</h1>
-           <div>{data.donorPost.title}</div>
+          
 
-<div><img src={data.donorPost.imageUrl} alt="" className=' w-48' /></div>
+<div className='flex items-center justify-center flex-col'>
+<div className='font-bold'>{data.donorPost.title}</div>
+  <img src={data.donorPost.imageUrl} alt="" className=' w-48' />
+  </div>
 
 
 <p>{data.donorPost.description}</p>
-<p>{data.donorPost.quantity}</p>
+<p><b>Requirement : </b>{data.donorPost.quantity} People</p>
 
 
            </div>
@@ -109,16 +152,28 @@ No posts available
 {/* =====================================Recievr posts================ */}
 
 
-<div className='flex flex-col border-2 items-center justify-center w-[50%] p-2 '>
+<div className='flex flex-col  items-center justify-center  bg-slate-100
+border-[1px] border-black
+rounded-lg gap-y-6
+sm:w-[90%] sm:h-[50%] 
+all:w-[90%] all:h-[50%] 
+lg:w-[48%] lg:h-[23rem]
+md:w-[90%] md:h-[50%] 
+
+
+'>
 
 <h1 className='font-bold'>Reciever</h1>
-<div>{data.recieverPost.title}</div>
 
-<div><img src={data.recieverPost.imageUrl} alt="" className=' w-48' /></div>
+<div className='flex items-center justify-center flex-col'>
+  <div className='font-bold'>{data.recieverPost.title}</div>
+
+  <img src={data.recieverPost.imageUrl} alt="" className=' w-48' />
+  </div>
 
 
 <p>{data.recieverPost.description}</p>
-<p>{data.recieverPost.quantity}</p>
+<p><b>Requirement : </b>{data.donorPost.quantity} People</p>
 
 
 
@@ -126,7 +181,7 @@ No posts available
 </div>
 </div>
 
-<div className='flex gap-x-4 items-center justify-center'>
+<div className='flex gap-x-2 justify-center items-center'>
   <div className='text-4xl'>
 
       {
@@ -136,7 +191,7 @@ No posts available
           />)
         }
         </div>
-      <p className='text-2xl'>{data.likes.length}</p>
+      <p className='text-2xl flex justify-center items-center'>{data.likes.length}</p>
     </div>
 
         </div>

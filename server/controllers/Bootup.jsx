@@ -29,7 +29,7 @@ exports.BootUp=async(req,res)=>{
 
 
     for(let i=0;i<recievers.length;i++){
-      if(recievers[i].posts.expiresAt.getTime()<new Date(Date.now()).getTime()||recievers[i].posts.status==true){
+      if(Date.parse(recievers[i].posts.expiresAt) < Date.now()||recievers[i].posts.status==true){
         await RecieverPosts.findByIdAndDelete(recievers[i]._id)
       }
     }
@@ -38,7 +38,7 @@ exports.BootUp=async(req,res)=>{
     const connectedPosts=await ConnectedPosts.find({});
 
     for(let i=0;i<connectedPosts.length;i++){
-      if(connectedPosts[i].expiresAt.getTime()<new Date(Date.now()).getTime()){
+      if(Date.parse(connectedPosts[i].expiresAt) < Date.now()){
         await ConnectedPosts.findByIdAndDelete(connectedPosts[i]._id);
       }
     }

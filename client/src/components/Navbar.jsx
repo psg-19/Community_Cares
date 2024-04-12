@@ -10,12 +10,19 @@ export const Navbar = () => {
 
     const{isLogged,backendUrl,setIsLogged,user,setToken1,setUser}=useContext(AppContext)
 
-
+const [isLoading,setIsLoading]=useState(false)
 
     const [click,setClick]=useState(null)
  const navigate=useNavigate()
 
     const logoutHandler=async()=>{
+      if(isLoading){
+        toast.error("Please Wait ,Logging out!!!");
+        return
+      }
+
+      setIsLoading(true);
+
    try {
     
     await axios.post(backendUrl+'/logout',{},{withCredentials: true, headers: {
@@ -33,6 +40,9 @@ console.log('logged out ')
    } catch (error) {
     toast.error("Cannot Logout !!!")
    }
+
+   setIsLoading(false)
+
     }
 
 
@@ -53,7 +63,7 @@ console.log('logged out ')
 <div className='flex  items-center justify-between w-[90%] h-24 ' >
         
         <div>
-        <img src={logo} className='h-20' alt="" />
+        <img src={logo} className=' rounded-full h-20' alt="" />
         </div>
 
         <nav className='flex items-center justify-center'>
@@ -70,7 +80,7 @@ console.log('logged out ')
                   navigate('/')
                 }}
                 >
-                  <NavLink to='/'>Home</NavLink>
+                  <NavLink to='/' className='font-bold'>Home</NavLink>
                 <div class={`h-1 absolute bottom-0 
                  ${click =="Home" ? ("bg-yellow-900 block"):("hidden")}
                 w-full  bg-yellow-900 group-hover:block  `}></div>
@@ -85,7 +95,7 @@ console.log('logged out ')
                 `}  onClick={(e)=> {
                   setClick(e.target.innerText);
                   navigate('/donorPost')
-                }}><NavLink to='/donorPost'>Donor Posts</NavLink>
+                }}><NavLink to='/donorPost' className='font-bold'>Donor Posts</NavLink>
                 
                 <div class={`h-1 absolute bottom-0 
                  ${click =="Donor Posts" ? ("bg-yellow-900"):("hidden")}
@@ -98,7 +108,7 @@ console.log('logged out ')
                 `}  onClick={(e)=> {
                   setClick(e.target.innerText);
                   navigate('/recieverPost')
-                }}><NavLink to='/recieverPost'>Reciever Posts </NavLink>
+                }}><NavLink  className='font-bold' to='/recieverPost'>Reciever Posts </NavLink>
                    <div class={`h-1 absolute bottom-0  
                  ${click =="Reciever Posts" ? ("bg-yellow-900"):("hidden")}
                 w-full  bg-yellow-900 group-hover:block  `}></div>
@@ -111,7 +121,7 @@ console.log('logged out ')
                 `}  onClick={(e)=> {
                   setClick(e.target.innerText);
                   navigate('/connectedPosts')
-                }}><NavLink to='/connectedPosts'>Connected Posts</NavLink>
+                }}><NavLink  className='font-bold' to='/connectedPosts'>Connected Posts</NavLink>
                    <div class={`h-1 absolute bottom-0  
                  ${click =="Connected Posts" ? ("bg-yellow-900"):("hidden")}
                 w-full  bg-yellow-900 group-hover:block  `}></div>
@@ -130,11 +140,12 @@ console.log('logged out ')
 logoutHandler()
 setClick(null)
 }
-}><NavLink to='/' >Log out</NavLink></li>
+}><NavLink to='/' className='font-bold'>
+  {isLoading ? 'Please Wait ...':'Log out'}</NavLink></li>
          
    <li className={` w-14 h-14 rounded-full bg-gradient-to-r from-red-500 to-indigo-600 ${click=='profile' ? (" "):(" animate-pulse ")} `} onClick={()=>{
     setClick('profile')
-   }}><NavLink to='/profile'><img src={imageUrl} className=' rounded-full p-[2px] w-[100%] h-[100%] ' alt="profile"></img></NavLink></li>
+   }}><NavLink className='font-bold' to='/profile'><img src={imageUrl} className=' rounded-full p-[2px] w-[100%] h-[100%] ' alt="profile"></img></NavLink></li>
 
 
      </ul>
