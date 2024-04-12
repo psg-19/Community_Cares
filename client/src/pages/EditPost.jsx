@@ -104,7 +104,7 @@ const imageHandler=(e)=>{
 
 
   return (
-    <div className='gap-y-6 bg-green1-light h-[100vh] 
+    <div className='gap-y-6 bg-richblack-800  h-[100vh] 
     flex items-center justify-center '>
 
 <div className='bg-white rounded-3xl w-[80%] h-[83%] flex flex-col gap-y-4 px-4 py-2 overflow-x-hidden'>

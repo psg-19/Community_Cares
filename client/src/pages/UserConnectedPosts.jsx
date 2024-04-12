@@ -76,13 +76,13 @@ console.log(userConnectedPosts)
     },[])
 
   return (
-    <div className='flex flex-col gap-y-6 bg-green1-light  items-center justify-center sm:pt-[2rem] 
+    <div className='flex flex-col gap-y-6 bg-richblack-800   items-center justify-center sm:pt-[2rem] 
     lg:pt-[2rem] overflow-y-scroll no-scrollbar
 pb-[5rem]
 all:px-10
     '>
 <div className='h-20'></div>
-<h1 className='text-xl font-bold underline'>Posts Connected To You</h1>
+<h1 className='text-xl font-bold underline text-white'>Posts Connected To You</h1>
 
 {
     userConnectedPosts.length ==0 ? (<div className='flex flex-row gap-x-6'>

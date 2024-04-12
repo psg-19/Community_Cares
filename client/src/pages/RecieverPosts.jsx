@@ -17,6 +17,7 @@ export const RecieverPosts = () => {
   const {user,token1,Districts,setCurrentPostEdit,backendUrl}=useContext(AppContext)
   const navigate=useNavigate()
 const [isLoading,setIsLoading]=useState(false)
+const [isLoading2,setIsLoading2]=useState(false)
 
 
   //---------------------------vars------------------------------
@@ -34,6 +35,7 @@ setDistrict(e.target.value);
 
 
 const postCaller=async()=>{
+  setIsLoading2(true)
 
   try {
     const response=await axios.get(backendUrl+'/getAllRecieverPosts',{},{withCredentials: true,headers: {
@@ -50,7 +52,7 @@ const postCaller=async()=>{
     console.log(error)
     console.log('error while loading recievers post !!!')
   }
-
+setIsLoading2(false)
 }
 
 
@@ -149,14 +151,14 @@ useEffect(()=>{
 
 
   return (
-    <div className='flex flex-col items-center space-y-4 h-[100vh] overflow-y-scroll bg-green1-light pt-32 pb-10
+    <div className='flex flex-col items-center space-y-4 h-[100vh] overflow-y-scroll bg-richblack-800  pt-32 pb-10
     '>
-<div className='font-bold text-2xl underline mb-4'>Reciever's Posts</div>
+<div className='font-bold text-2xl underline mb-4 text-white'>Reciever's Posts</div>
 
 <div className='flex justify-center items-center flex-wrap gap-x-4'>
   
 <label htmlFor="districts">
-<p><b> Filter Posts By District</b></p>
+<p><b className='text-white'> Filter Posts By District</b></p>
 </label>
 
 <select name='districts' className=' border-2 border-black py-1 px-3 bg-input-200
@@ -175,7 +177,11 @@ rounded-lg w-[40%] ' id='districts' onChange={(e)=>{
   <div className='h-[100vh] flex flex-row gap-y-10 w-[80%] gap-x-10 flex-wrap justify-center'>
 
     {
-      recieverPosts=='' ? (<Spinner/>):(
+
+      isLoading2 ? (<Spinner/>):(
+      recieverPosts=='' ? (<div className='text-white'>No Post's Available</div>):(
+
+        
         recieverPosts.map((data)=>{
           return (
             district=='All' ? (<div className='flex flex-col border-2  max-h-[700px] max-w-[400px] min-w-[250px] min-h-[550px] w-[50%] h-[65%] p-4 justify-center items-center border-black  gap-y-4 bg-slate-100 rounded-lg overflow-hidden
@@ -278,6 +284,7 @@ rounded-lg w-[40%] ' id='districts' onChange={(e)=>{
           )
         })
       )
+    )
     }
 
    

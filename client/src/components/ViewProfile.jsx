@@ -12,7 +12,7 @@ const navigate=useNavigate()
 
 
   return (
-    <div className=' gap-y-6 bg-green1-light h-[100vh] 
+    <div className=' gap-y-6 bg-richblack-800  h-[100vh] 
     flex items-center justify-center  pt-16'>
         
 

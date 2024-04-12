@@ -130,7 +130,7 @@ setIsLoading(false)
 
 
   return (
-    <div className=' gap-y-6 bg-green1-light h-[100vh] pt-16
+    <div className=' gap-y-6 bg-richblack-800  h-[100vh] pt-16
     flex items-center justify-center 
     '>
 

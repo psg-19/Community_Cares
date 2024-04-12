@@ -33,7 +33,7 @@ if (performance.navigation.type === 1) {
   
 
   return (
-    <div className="h-[11.7vh] " >
+    <div className="h-[11.7vh] bg-richblack-800 " >
 
 <Navbar ></Navbar>
       <Routes>

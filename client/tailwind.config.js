@@ -36,6 +36,15 @@ module.exports = {
       grayBlue: "#344a6c",
       deepBlueHead: "#162f56",
       gray2: "#525a76",
+      richblack: {
+        5: "#F1F2FF",
+        25: "#DBDDEA",
+        100: "#AFB2BF",
+        200: "#999DAA",
+        700: "#2C333F",
+        800: "#161D29",
+        900: "#000814",
+      },
 
 
       green1:{

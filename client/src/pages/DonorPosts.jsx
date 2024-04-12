@@ -21,12 +21,16 @@ const navigate=useNavigate()
 
 const [district,setDistrict]=useState('All');
 
+const [isLoading2,setIsLoading2]=useState(false)
+
 const districtHandler=(e)=>{
 setDistrict(e.target.value);
 }
 
 //----------------------------------functions-------------------------------------------------
   const postCaller=async()=>{
+
+    setIsLoading2(true)
   try {
     const response =await axios.get(backendUrl+'/getAllDonorPosts',{},{withCredentials: true, headers: {
       'Content-Type': 'multipart/form-data'
@@ -40,7 +44,7 @@ setDistrict(e.target.value);
   
   }
 
-  
+  setIsLoading2(false)
     // console.log(e.target.value);
   }
 
@@ -99,16 +103,16 @@ useEffect(()=>{
 
 
   return (
-    <div className='flex flex-col items-center space-y-4 h-[100vh] overflow-y-scroll bg-green1-light pt-28 
+    <div className='flex flex-col items-center space-y-4 h-[100vh] overflow-y-scroll bg-richblack-800  pt-28 
     '>
 {/* //----------------------------------------------- */}
 
-<div className='font-bold text-2xl underline mb-5'>Donor's Posts</div>
+<div className='font-bold text-2xl underline mb-5 text-white'>Donor's Posts</div>
 
-<div className='flex gap-x-4 '>
+<div className='flex justify-center items-center flex-wrap gap-x-4 '>
 
 <label htmlFor="districts">
-  <p><b>Filter Posts By District</b></p>
+  <p><b className='text-white'>Filter Posts By District</b></p>
 </label>
 
 
@@ -133,7 +137,8 @@ rounded-lg w-[40%]  border-black' id='districts' onChange={(e)=>{
 
 
 {
-donorPosts.length==0 ? (<Spinner/>):(
+isLoading2 ? (<Spinner/>):(
+  donorPosts=='' ? (<div className='text-white'>No Post's Available</div>):(
   donorPosts.map((data)=>{
     return (
       
@@ -240,7 +245,7 @@ donorPosts.length==0 ? (<Spinner/>):(
       
     )
   })
-)
+))
 }
 </div>
 

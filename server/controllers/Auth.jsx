@@ -236,7 +236,7 @@ console.log(res.body)
         
         //   secure: process.env.NODE_ENV === "production" ,
         //   httpOnly: true, 
-        secure: true, // required for cookies to work on HTTPS
+        secure: true, 
       httpOnly: false,
       sameSite: 'none'
     }

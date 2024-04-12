@@ -114,7 +114,7 @@ const getUser=async(token)=>{
 
 
   return (
-    <div className='  h-[100vh]  flex items-center justify-center bg-green1-light' >
+    <div className='  h-[100vh]  flex items-center justify-center bg-richblack-800 ' >
 {/* 
 {
   isLogged ? (check()):

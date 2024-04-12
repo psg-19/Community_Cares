@@ -107,13 +107,14 @@ if(isLoading1){
 
 
   return (
-    <div className='flex items-center justify-center bg-green1-light h-[100vh] pt-[10rem]  
+    <div className='flex items-center justify-center bg-richblack-800  h-[100vh] pt-[10rem]  
     
     lg:overflow-y-hidden
     md:overflow-y-hidden
     sm:overflow-y-hidden
     all:overflow-y-scroll
-
+    all:overflow-x-hidden
+    sm:overflow-x-hidden
     '>
      
      
@@ -121,13 +122,13 @@ if(isLoading1){
 
 
      <div className='w-[730px] h-[730px] flex items-center justify-center '>
-<img src={loginBg}  alt="" className='lg:w-[100%] lg:h-[100%] sm:w-[70%] sm:h-[70%] md:w-[100%] md:h-[100%]' />
+<img src={loginBg}  alt="" className='lg:w-[2000px] lg:h-[800px] sm:w-[100%] sm:h-[100%] md:w-[100%] md:h-[100%]  all:h-[900px]  '/>
 </div>
      
      
      
-     <form action="" className='flex  flex-col   justify-center items-center gap-y-10 absolute lg:top-[22%] lg:left-[20%] md:top-[22%] md:left-[20%] 
-     sm:top-[25%] sm:left-[25%]
+     <form action="" className='flex  flex-col   justify-center items-center gap-y-10 absolute lg:top-[22%] lg:left-[23%] md:top-[22%] md:left-[20%] 
+     sm:top-[25%] sm:left-[20%]
 
      all:top-[5%] all:left-[27%] all:gap-y-3
      '>
@@ -135,7 +136,7 @@ if(isLoading1){
 
 <div className='flex all:flex-col lg:flex-row md:flex-row sm:flex-row lg:gap-x-24 md:gap-x-16  sm:gap-x-10'>
 {/* ------------------first div---------------------------- */}
-<div className='flex flex-col items-center justify-center all:gap-y-2 gap-y-6'>
+<div className='flex flex-col  items-center justify-center all:gap-y-2 gap-y-6'>
 {/* --------------------------fname-------------------------- */}
 <div>
 <label htmlFor="">

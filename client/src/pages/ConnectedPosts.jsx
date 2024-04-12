@@ -13,11 +13,15 @@ export const ConnectedPosts = () => {
 
     const {user,token1,backendUrl}=useContext(AppContext)
 
+    const [isLoading2,setIsLoading2]=useState(false)
+
 const navigate=useNavigate()
 
 
     //funcs--------------------------------------------------
 const postCaller=async()=>{
+
+  setIsLoading2(true)
     try {
         const response=await axios.get(backendUrl+'/getAllConnectedPosts',{},{withCredentials: true,headers: {
           'Content-Type': 'multipart/form-data'
@@ -27,6 +31,8 @@ const postCaller=async()=>{
     } catch (error) {
         toast.error("Something went wrong while fetching Posts")
     }
+
+    setIsLoading2(false)
 }
 
 
@@ -69,21 +75,18 @@ postCaller()
     },[])
 
   return (
-    <div className='flex flex-col gap-y-6 bg-green1-light  items-center justify-center sm:pt-[2rem] 
+    <div className='flex flex-col gap-y-6 bg-richblack-800  items-center justify-center sm:pt-[2rem] 
     lg:pt-[2rem] overflow-y-scroll no-scrollbar
 pb-[5rem]
 all:px-10
     '>
 
 <div className='h-20'></div>
-<h1 className='text-xl font-bold underline'>Connected Posts</h1>
+<h1 className='text-xl font-bold underline text-white'>Connected Posts</h1>
 
 {
-    connectedPosts.length==0 ? (<div className='flex flex-row gap-x-6 '>
-
-<Spinner/>
-
-    </div>):
+    isLoading2 ? (<Spinner/>):(
+      connectedPosts=='' ? (<div className='text-white'>No Post's Available</div>):
     
     //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -190,6 +193,7 @@ lg:w-[48%] lg:h-[23rem]
 
         </div>
 }))
+    )
 }
 
 

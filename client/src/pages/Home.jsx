@@ -30,7 +30,11 @@ export const Home = () => {
       setIsLogged(true)
       
     })
-  .catch((e)=> console.log('hiiii',e))
+  .catch((e)=> {
+    // setIsLogged(false);
+    // setToken1('');
+    // setUser(null)
+  })
 }
 
 
@@ -61,6 +65,6 @@ useEffect(()=>{
 
 
   return (
-    <div className='flex bg-green1-light items-center h-[100vh] justify-center'>Welome To Community Care's</div>
+    <div className='flex  bg-richblack-800  items-center h-[100vh] justify-center text-white'>Welome To Community Care's</div>
   )
 }

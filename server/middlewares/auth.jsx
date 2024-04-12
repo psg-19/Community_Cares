@@ -78,11 +78,11 @@ exports.logout=async(req,res)=>{
     try {
 
         const option={
-            // expire:Date.now()+24*60*60*1000,
+            expire:Date.now()+24*60*60*1000,
             
             //   secure: process.env.NODE_ENV === "production" ,
             //   httpOnly: true, 
-            secure: true, // required for cookies to work on HTTPS
+            secure: true, 
           httpOnly: false,
           sameSite: 'none'
         }
