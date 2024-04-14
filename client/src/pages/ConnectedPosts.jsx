@@ -90,8 +90,8 @@ all:px-10
     
     //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-    (connectedPosts.map((data)=>{
-        return <div className='flex flex-col items-center justify-center border-2 border-black   gap-y-10 rounded-lg
+    (connectedPosts.map((data,index)=>{
+        return <div key={index} className='flex flex-col items-center justify-center border-2 border-black   gap-y-10 rounded-lg
         
        
         bg-slate-200 

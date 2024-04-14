@@ -73,7 +73,7 @@ useEffect(()=>{
 
 
 {/* ---------------------------------hero=--------------------------------- */}
-<div className=' bg-homeBg  w-[100vw] h-[100vh] bg-cover bg-center bg-no-repeat relative flex justify-center items-center'>
+<div className=' bg-homeBg  w-[100vw] h-[100vh] bg-cover bg-center bg-no-repeat relative flex justify-center items-center no-scrollbar'>
 
 
 
@@ -246,7 +246,7 @@ setClick('Sign Up')}}>
 
 <h1 className='text-center font-extrabold text-6xl text-black'>Our Services</h1>
 
-<p className=' text-black text-center'>We are committed to reducing food waste and helping those in need.</p>
+<p className=' text-black text-center opacity-70'>We are committed to reducing food waste and helping those in need.</p>
 
 <div className='flex  flex-wrap w-[100vw] justify-center items-center gap-x-[2.5%] gap-y-10 lg:flex-row md:flex-col sm:flex-col all:flex-col'>
 
@@ -257,7 +257,7 @@ setClick('Sign Up')}}>
 
 <h1 className='text-2xl text-center text-black font-semibold'>Food Collection</h1>
 
-<p className='text-center text-black'>We collect food left at the end of the day from hotels and restaurants.</p>
+<p className='text-center opacity-70 text-green1-dark2'>We collect food left at the end of the day from hotels and restaurants.</p>
 </div>
 
 
@@ -266,7 +266,7 @@ setClick('Sign Up')}}>
 
 <h1 className='text-center text-2xl text-black font-semibold'>FOOD DISTRIBUTION</h1>
 
-<p className='text-center text-black'>We distribute the collected food to hospitals, orphanages, and homeless communities.</p>
+<p className='text-center opacity-70 text-green1-dark2'>We distribute the collected food to hospitals, orphanages, and homeless communities.</p>
 </div>
 {/* -------------------------------------------------------- */}
 
@@ -275,7 +275,7 @@ setClick('Sign Up')}}>
 
 <h1 className='text-center text-2xl text-black font-semibold'>FOOD DISTRIBUTION</h1>
 
-<p className='text-center text-black'>We distribute the collected food to hospitals, orphanages, and homeless communities.</p>
+<p className='text-center opacity-70 text-green1-dark2 '>We distribute the collected food to hospitals, orphanages, and homeless communities.</p>
 </div>
 
 
@@ -294,6 +294,66 @@ setClick('Sign Up')}}>
 
 {/* --------------------------------------foot 1 end---------------------------------- */}
 
+
+{/* ----------------------footer------------------------ */}
+
+
+
+<div className='  bg-richblack-900 w-[100vw] flex flex-col gap-y-20 py-20'> 
+<div className='flex flex-col gap-y-10'>
+
+<h1 className='text-center text-5xl text-white font-semibold'>Join Us in Making a Difference</h1>
+
+<h5 className='text-white text-center'>Your support can help us reach more people in need.</h5>
+
+</div>
+
+
+<div className='flex flex-col gap-y-2 items-center justify-center'>
+<button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-8 border border-blue-500 hover:border-transparent rounded " onClick={()=> {navigate('/signUp')
+
+setClick('Sign Up')}}>
+  Join Us
+</button>
+
+<p className='text-white text-center'>Every contribution counts. Thank you for your support.</p>
+
+</div>
+
+
+
+<div className='w-[100vw]  flex flex-wrap justify-evenly items-start '>
+
+<div className='flex justify-normal min-w-[200px] items-center'>
+<p className='text-center '>© 2024 Community Cares. All rights reserved.</p>
+</div>
+
+
+{/* ---------------------------------------------------------------- */}
+
+<div className='flex flex-col gap-y-4'>
+<h1 className='text-2xl text-white'>Quick Links</h1>
+
+<div className='flex flex-col justify-center  gap-y-4 items-start'>
+  
+<p className='cursor-pointer' onClick={()=> navigate('/')}>Home</p>
+
+<p className='cursor-pointer' onClick={()=> navigate('/login')}>Login</p>
+<p className='cursor-pointer' onClick={()=> navigate('/signUp')}>Sign Up</p>
+
+</div>
+
+</div>
+
+
+
+</div>
+
+</div>
+
+
+
+{/* --------------------footer end-------------------------------------- */}
 
 {/* -------------------------------------------wrapper end--------------------------- */}
 

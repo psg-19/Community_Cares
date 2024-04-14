@@ -210,12 +210,15 @@ value={formData.quantity}
 
 
 {/* -------------------------image---------------------------------------------------- */}
-<div className='flex flex-col justify-center items-center'>
+<div className='flex flex-col justify-center gap-y-3 items-center'>
   
 <label htmlFor="">
   <p><b>Organisation Image</b></p>
 
 </label>
+
+
+<div className='h-[150px] border-[2px] rounded-lg border-black w-[250px] flex justify-center items-center'>{formData.image==null ?'No file selected':<img className='rounded-lg w-[100%] h-[100%] ' src={URL.createObjectURL(formData.image)} alt="" />}</div>
 
 <input type="file" 
 name='image'
@@ -249,8 +252,8 @@ rounded-lg' value={formData.district} id='district' onChange={(e)=>{
 }}>
   
   {
-    Districts.map((dist)=>{
-      return <option value={dist}>{dist}</option>
+    Districts.map((dist,index)=>{
+      return <option key={index} value={dist}>{dist}</option>
     })
   }
 </select>

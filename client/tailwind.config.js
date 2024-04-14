@@ -52,7 +52,9 @@ module.exports = {
       green1:{
         light:'#79ff0045',
         // light:'#E4FEEC'
-        dark:'#FF1100'
+        dark:'#FF1100',
+
+        dark2:'#3d3d3d'
 
       },
       

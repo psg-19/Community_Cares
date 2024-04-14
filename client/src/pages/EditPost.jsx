@@ -145,7 +145,7 @@ value={formData.title}
 
 <div className='relative w-[80%]'>
 
-<img src={currentPostEdit.imageUrl}
+<img src={formData.image==null ? currentPostEdit.imageUrl:URL.createObjectURL(formData.image)}
 
 className='rounded-lg w-[100%]'
 alt="post image" />

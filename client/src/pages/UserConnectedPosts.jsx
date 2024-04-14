@@ -72,7 +72,7 @@ const likeHandler =async(id)=>{
 
     useEffect(()=>{
 postCaller()
-console.log(userConnectedPosts)
+// console.log(userConnectedPosts)
     },[])
 
   return (
@@ -92,8 +92,8 @@ No posts available
     </div>):
     
     //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    (userConnectedPosts.map((data)=>{
-        return <div className='flex flex-col items-center justify-center border-2 border-black   gap-y-10 rounded-lg
+    (userConnectedPosts.map((data,index)=>{
+        return <div key={index} className='flex flex-col items-center justify-center border-2 border-black   gap-y-10 rounded-lg
         
        
         bg-slate-200 

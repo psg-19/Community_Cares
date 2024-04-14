@@ -43,7 +43,7 @@ const postCaller=async()=>{
     }, credentials: 'include'})
 // console.log(response)
     if(response){
-      console.log('hiiiii',response)
+     
       setRecieverPosts(response.data.recieverPosts);
     // console.log(recieverPosts)
     }
@@ -167,8 +167,8 @@ rounded-lg w-[40%] ' id='districts' onChange={(e)=>{
 }}>
   <option value='All'>All</option>
   {
-    Districts.map((dist)=>{
-      return <option value={dist}>{dist}</option>
+    Districts.map((dist,index)=>{
+      return <option key={index} value={dist}>{dist}</option>
     })
   }
 </select>
@@ -182,9 +182,9 @@ rounded-lg w-[40%] ' id='districts' onChange={(e)=>{
       recieverPosts=='' ? (<div className='text-white'>No Post's Available</div>):(
 
         
-        recieverPosts.map((data)=>{
+        recieverPosts.map((data,index)=>{
           return (
-            district=='All' ? (<div className='flex flex-col border-2  max-h-[700px] max-w-[400px] min-w-[250px] min-h-[550px] w-[50%] h-[65%] p-4 justify-center items-center border-black  gap-y-4 bg-slate-100 rounded-lg overflow-hidden
+            district=='All' ? (<div key={index} className='flex flex-col border-2  max-h-[700px] max-w-[400px] min-w-[250px] min-h-[590px] w-[50%] h-[65%] p-4 justify-center items-center border-black  gap-y-4 bg-slate-100 rounded-lg overflow-hidden
             hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] hover:scale-105 transition-all linear 
             '>
           <h3 className='font-bold text-xl'>{data.posts.title}</h3>
@@ -234,7 +234,7 @@ rounded-lg w-[40%] ' id='districts' onChange={(e)=>{
         </div>) :
           
           //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-          (data.posts.district==district &&<div className='flex flex-col border-2  max-h-[700px] max-w-[400px] min-w-[250px] min-h-[550px] w-[50%] h-[65%] p-4 justify-center items-center border-black  gap-y-4 bg-slate-100 rounded-lg overflow-hidden
+          (data.posts.district==district &&<div className='flex flex-col border-2  max-h-[700px] max-w-[400px] min-w-[250px] min-h-[590px] w-[50%] h-[65%] p-4 justify-center items-center border-black  gap-y-4 bg-slate-100 rounded-lg overflow-hidden
           hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] hover:scale-105 transition-all linear 
           '>
           <h3>{data.posts.title}</h3>

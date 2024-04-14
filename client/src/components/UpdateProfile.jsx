@@ -168,9 +168,9 @@ if(formData.firstName===user.firstName&&formData.lastName===user.lastName&&formD
 <form action="" className='flex flex-col gap-y-3 items-center justify-center w-[45%] min-w-[200px]  '>
 
   {/* -----------------img------------------------- */}
-<div className='relative'>
+<div className='relative rounded-full bg-gradient-to-r from-red-500 to-indigo-600'>
   
-  <img src={user.profileUrl} className='w-40 h-40 rounded-full '  alt="profile" />
+  <img src={formData.image==null ? user.profileUrl:URL.createObjectURL(formData.image)} className='w-44 p-[3px] h-44 rounded-full '  alt="profile" />
   <div className=' bg-slate-300 rounded-full absolute top-[69%] left-[74%] h-10 w-10'
   
   
@@ -240,8 +240,8 @@ rounded-lg all:w-[90%]
 }}>
   
   {
-    Districts.map((dist)=>{
-      return <option value={dist}>{dist}</option>
+    Districts.map((dist,index)=>{
+      return <option key={index} value={dist}>{dist}</option>
     })
   }
 </select>

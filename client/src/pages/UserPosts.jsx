@@ -115,9 +115,9 @@ userPosts ==null ? (<Spinner/>):
 (
 userPosts.length==0 ?(<div className='flex justify-center items-center'>No posts available</div>)
 :
-  (userPosts.map((data)=>{
+  (userPosts.map((data,index)=>{
     return (
-      <div className='flex flex-col border-2  max-h-[700px] max-w-[400px] min-w-[250px] min-h-[550px] w-[50%] h-[65%] p-4 justify-center items-center border-black  gap-y-4 bg-slate-100 rounded-lg overflow-hidden
+      <div key={index} className='flex flex-col border-2  max-h-[700px] max-w-[400px] min-w-[250px] min-h-[550px] w-[50%] h-[65%] p-4 justify-center items-center border-black  gap-y-4 bg-slate-100 rounded-lg overflow-hidden
       hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] hover:scale-105 transition-all linear 
       '>
         
