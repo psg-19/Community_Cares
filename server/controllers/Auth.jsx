@@ -225,7 +225,7 @@ console.log(res.body)
     }
 
     const token=jwt.sign(payload,process.env.JWT_SECRET,{
-        expiresIn:'2h'
+        expiresIn:'3h'
     })
 
     user.token=token;
@@ -282,7 +282,23 @@ exports.isLogged=async(req,res)=>{
             message:"token not found"
         })
       }
-       
+
+      let  errr;
+
+      jwt.verify(token,process.env.JWT_SECRET,function(err, token) {
+      
+       errr=err
+    
+    })
+      
+    if(errr){
+    return res.status(401).json({
+        success: false,
+        message:'Session Expired , Please Login'
+    })
+    }
+      
+
     
     return res.status(200).json({
         success:true,

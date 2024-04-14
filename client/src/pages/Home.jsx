@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../context/AppContext'
 import axios from 'axios'
 import {toast} from 'react-hot-toast'
@@ -11,7 +11,8 @@ import { useNavigate } from 'react-router-dom'
 export const Home = () => {
 
 
-  const {backendUrl,setUser,setToken1,setIsLogged,setClick}=useContext(AppContext)
+// let ct=0;
+  const {backendUrl,setUser,setToken1,ct,setCt,setIsLogged,setClick}=useContext(AppContext)
 const navigate=useNavigate()
 
   const refreshHandler=async()=>{
@@ -31,10 +32,22 @@ const navigate=useNavigate()
       setIsLogged(true)
       
     })
-  .catch((e)=> {
-    // setIsLogged(false);
-    // setToken1('');
-    // setUser(null)
+    .catch((e)=> {
+      
+      if((e.response.data.message=='Session Expired , Please Login'||e.response.data.message=='token not found')){
+
+        if(ct===0){
+      setClick('Login')
+      toast.error('Session Expired , Please Login Again')
+    setIsLogged(false);
+    setToken1('');
+    setCt(10)
+    // console.log(ct,'=====')
+    // setUser(null);
+        }
+   
+    }
+
   })
 }
 

@@ -89,7 +89,7 @@ console.log('logged out ')
                 }}
                 >
                   <NavLink to='/' ><pre className=' font-extrabold'>  Home  </pre></NavLink>
-                <div class={`h-1 absolute bottom-0 
+                <div className={`h-1 absolute bottom-0 
                  ${click =="  Home  " ? ("bg-yellow-900 block"):("hidden")}
                 w-full  bg-yellow-900 group-hover:block  `}></div>
                 </li>
@@ -105,7 +105,7 @@ console.log('logged out ')
                   navigate('/donorPost')
                 }}><NavLink to='/donorPost' className='font-bold'>Donor Posts</NavLink>
                 
-                <div class={`h-1 absolute bottom-0 
+                <div className={`h-1 absolute bottom-0 
                  ${click =="Donor Posts" ? ("bg-yellow-900"):("hidden")}
                 w-full  bg-yellow-900 group-hover:block  `}></div></li>
                 <li className={`text-black cursor-pointer font-mullish py-7 hover:text-yellow-900
@@ -117,7 +117,7 @@ console.log('logged out ')
                   setClick(e.target.innerText);
                   navigate('/recieverPost')
                 }}><NavLink  className='font-bold' to='/recieverPost'>Reciever Posts </NavLink>
-                   <div class={`h-1 absolute bottom-0  
+                   <div className={`h-1 absolute bottom-0  
                  ${click =="Reciever Posts" ? ("bg-yellow-900"):("hidden")}
                 w-full  bg-yellow-900 group-hover:block  `}></div>
                 </li>
@@ -130,7 +130,7 @@ console.log('logged out ')
                   setClick(e.target.innerText);
                   navigate('/connectedPosts')
                 }}><NavLink  className='font-bold' to='/connectedPosts'>Connected Posts</NavLink>
-                   <div class={`h-1 absolute bottom-0  
+                   <div className={`h-1 absolute bottom-0  
                  ${click =="Connected Posts" ? ("bg-yellow-900"):("hidden")}
                 w-full  bg-yellow-900 group-hover:block  `}></div>
                 </li>
@@ -228,7 +228,7 @@ setClick(null)
    >
     <NavLink className='font-bold' to='/profile'>Your Profile</NavLink>
 
-    <div class={`h-1 absolute bottom-0 
+    <div className={`h-1 absolute bottom-0 
      ${click =="Your Profile" ? ("bg-yellow-900 block"):("hidden")}
     w-full  bg-yellow-900 group-hover:block  `}></div>
     </li>
@@ -249,7 +249,7 @@ setClick(null)
     }}
     >
       <NavLink to='/' ><pre className='  font-extrabold'>  Home  </pre></NavLink>
-    <div class={`h-1 absolute bottom-0 
+    <div className={`h-1 absolute bottom-0 
      ${click =="  Home  " ? ("bg-yellow-900 block"):("hidden")}
     w-full  bg-yellow-900 group-hover:block  `}></div>
     </li>
@@ -266,7 +266,7 @@ setClick(null)
       navigate('/donorPost')
     }}><NavLink to='/donorPost' className='font-bold'>Donor Posts</NavLink>
     
-    <div class={`h-1 absolute bottom-0 
+    <div className={`h-1 absolute bottom-0 
      ${click =="Donor Posts" ? ("bg-yellow-900"):("hidden")}
     w-full  bg-yellow-900 group-hover:block  `}></div></li>
     <li className={`text-black cursor-pointer font-mullish py-7 hover:text-yellow-900
@@ -279,7 +279,7 @@ setClick(null)
       setHamburger(false)
       navigate('/recieverPost')
     }}><NavLink  className='font-bold' to='/recieverPost'>Reciever Posts </NavLink>
-       <div class={`h-1 absolute bottom-0  
+       <div className={`h-1 absolute bottom-0  
      ${click =="Reciever Posts" ? ("bg-yellow-900"):("hidden")}
     w-full  bg-yellow-900 group-hover:block  `}></div>
     </li>
@@ -293,7 +293,7 @@ setClick(null)
       setHamburger(false)
       navigate('/connectedPosts')
     }}><NavLink  className='font-bold' to='/connectedPosts'>Connected Posts</NavLink>
-       <div class={`h-1 absolute bottom-0  
+       <div className={`h-1 absolute bottom-0  
      ${click =="Connected Posts" ? ("bg-yellow-900"):("hidden")}
     w-full  bg-yellow-900 group-hover:block  `}></div>
     </li>
@@ -308,7 +308,7 @@ setClick(null)
       setHamburger(false)
       navigate('/createPosts')
     }}><NavLink  className='font-bold' to='/createPosts'> Create New {user.role} Post</NavLink>
-       <div class={`h-1 absolute bottom-0  
+       <div className={`h-1 absolute bottom-0  
      ${click ==`Create New ${user.role} Post` ? ("bg-yellow-900"):("hidden")}
     w-full  bg-yellow-900 group-hover:block  `}></div>
     </li> }
