@@ -217,7 +217,7 @@ setClick('Connected Posts')}}>
 {/* ----------------------------------foot 2 start----------------------------------- */}
 
 
-<div className='bg-[url("https://unicorn-cdn.b-cdn.net/f6c370b0-3116-49b3-99aa-bf142ca15d6c/")] w-[100vw] h-[100vh] flex flex-col justify-start items-center py-32 px-6 gap-y-12   bg-cover bg-center bg-no-repeat relative'>
+<div className='bg-[url("https://res.cloudinary.com/dby1pwcbx/image/upload/v1713082457/shaym/hzqmouw5bw0wjnqcaxap.jpg")] w-[100vw] h-[100vh] flex flex-col justify-start items-center py-32 px-6 gap-y-12   bg-cover bg-center bg-no-repeat relative'>
 
 <h1 className='font-extrabold text-white text-6xl'>Food Safety</h1>
 
