@@ -97,7 +97,7 @@ const submitHandler=async(e)=>{
 
 // console.log(formData)
 
-if(formData.firstName===user.firstName&&formData.lastName===user.lastName&&formData.phoneNo===user.phoneNo&&formData.address===user.address&&formData.district==user.district){
+if(formData.firstName===user.firstName&&formData.lastName===user.lastName&&formData.phoneNo===user.phoneNo&&formData.address===user.address&&formData.district==user.district&&formData.image==null){
   toast.error("Make atleast one change to update profile !!!");
   setIsLoading(false)
   return;
