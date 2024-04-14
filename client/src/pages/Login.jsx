@@ -126,13 +126,13 @@ const getUser=async(token)=>{
 
 <div className='relative overflow-hidden'>
 
-<div className='w-[730px] h-[730px] flex lg:items-center lg:justify-center md:items-center md:justify-center sm:items-center sm:justify-center   all:items-center  '>
-<img src={loginBg}  alt="" className='lg:w-[100%] lg:h-[100%] sm:w-[70%] sm:h-[70%] all:h-[70%]' />
+<div className='w-[730px] h-[730px] flex lg:items-center lg:justify-center md:items-center md:justify-center sm:items-center sm:justify-center   all:items-center  all:justify-start '>
+<img src={loginBg}  alt="" className='lg:w-[100%] lg:h-[100%] sm:w-[70%] sm:h-[70%] all:h-[60%]' />
 </div>
 
 <form action="" className='flex  flex-col   justify-center items-center gap-y-6 absolute lg:top-[40%] lg:left-[40%] sm:top-[35%] sm:left-[37%]
 
-all:top-[40%] all:left-[37%]
+all:top-[36%] all:left-[28%]
 
 ' >
   
