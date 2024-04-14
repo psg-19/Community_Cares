@@ -22,7 +22,9 @@ module.exports = {
       'lg': '1280px'
     },
 
-    extend: {fontFamily: {
+    extend: {
+      
+      fontFamily: {
       mullish: ["Mulish", "sans-serif"],
     },
     colors: {
@@ -56,13 +58,24 @@ module.exports = {
       
 
       blue1:{
-        light:"#ACE2E1"
+        light:"#DFF0FF",
+
       },
         input:{
           200:'#bcbfb970'
         }
 
-    },},
+    },
+  
+
+    backgroundImage: {
+      'homeBg': "url('https://res.cloudinary.com/dby1pwcbx/image/upload/v1713072559/shaym/ki5jphmk3qs6itca8zvx.jpg')",
+      // 'footer-texture': "url('/img/footer-texture.png')",
+    }
+
+  
+  
+  },
 
    
   },

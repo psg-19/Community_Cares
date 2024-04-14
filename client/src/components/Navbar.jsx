@@ -12,7 +12,7 @@ import { RxCross1 } from "react-icons/rx";
 
 export const Navbar = () => {
 
-    const{isLogged,backendUrl,setIsLogged,user,setToken1,setUser}=useContext(AppContext)
+    const{isLogged,backendUrl,setIsLogged,click,setClick,user,setToken1,setUser}=useContext(AppContext)
 
 const [isLoading,setIsLoading]=useState(false);
 
@@ -20,7 +20,7 @@ const [isLoading,setIsLoading]=useState(false);
 //---------------------------------------------------------
 const [hamburger,setHamburger]=useState(false);
 //-----------------------------------------------------------
-    const [click,setClick]=useState(null)
+    
  const navigate=useNavigate()
 
     const logoutHandler=async()=>{
@@ -59,14 +59,14 @@ console.log('logged out ')
     useEffect(()=>{
        
     setImageUrl(user.profileUrl);
-    setClick('Home')
-    // console.log('hiii')
+    setClick('  Home  ')
+
     
        
     },[user])
 
   return (
-    <div className={`flex flex-col items-center  backdrop-blur-sm backdrop-brightness-75 backdrop-contrast-75 fixed w-[100vw] z-10 ${hamburger ? ' h-[100vh] overflow-y-scroll  ':'  justify-center  '} `}>
+    <div className={`flex flex-col items-center  backdrop-blur-sm backdrop-brightness-75 backdrop-contrast-75 fixed w-[100vw] z-50 ${hamburger ? ' h-[100vh] overflow-y-scroll  ':'  justify-center  '} `}>
 
 <div className='flex  items-center justify-between w-[90%] h-24 ' >
         
@@ -80,7 +80,7 @@ console.log('logged out ')
                 <li className={`text-black cursor-pointer font-mullish py-7 hover:text-yellow-900
                 transition-all duration-200 flex justify-center items-center  relative group
                 invert
-                ${click =="Home" ? ("text-yellow-900"):("")}
+                ${click =="  Home  " ? ("text-yellow-900"):("")}
                 
                 `}
                 onClick={(e)=> {
@@ -90,7 +90,7 @@ console.log('logged out ')
                 >
                   <NavLink to='/' ><pre className=' font-extrabold'>  Home  </pre></NavLink>
                 <div class={`h-1 absolute bottom-0 
-                 ${click =="Home" ? ("bg-yellow-900 block"):("hidden")}
+                 ${click =="  Home  " ? ("bg-yellow-900 block"):("hidden")}
                 w-full  bg-yellow-900 group-hover:block  `}></div>
                 </li>
 
@@ -197,22 +197,49 @@ setClick(null)
 
     </div>
 
-    <div className={`lg:hidden md:hidden  ${hamburger ? ' sm:block all:block ':' sm:hidden all:hidden '} flex  `}>
+    <div className={`lg:hidden md:hidden  ${hamburger ? ' sm:block all:block ':' sm:hidden all:hidden '}  `}>
 
 
   
 
-<ul className=' flex gap-x-4 items-center flex-col gap-y-3 justify-center'>
+<ul className=' sm:block all:block flex gap-x-4 lg:hidden md:hidden items-center flex-col gap-y-3 justify-center'>
 
-{isLogged ==true && <li className={` w-14 h-14 rounded-full bg-gradient-to-r from-red-500 to-indigo-600 ${click=='profile' ? (" "):(" animate-pulse ")} `} onClick={()=>{
+{isLogged ==true && <ul className='flex flex-row justify-center items-center gap-x-4'>
+  
+  <li className={` w-14 h-14 rounded-full bg-gradient-to-r from-red-500 to-indigo-600 ${click=='Your Profile' ? (" "):(" animate-pulse ")} `}  onClick={()=>{
     setHamburger(false)
-    setClick('profile')
-   }}><NavLink className='font-bold' to='/profile'><img src={imageUrl} className=' rounded-full p-[2px] w-[100%] h-[100%] ' alt="profile"></img></NavLink></li>}
+    setClick('Your Profile')
+    navigate('/profile')
+   }}><NavLink className='font-bold' to='/profile'><img src={imageUrl} className=' rounded-full p-[2px] w-[100%] h-[100%] ' alt="profile"></img></NavLink></li>
+
+
+   <li className={`text-black cursor-pointer font-mullish py-7 hover:text-yellow-900
+    transition-all duration-200 flex justify-center items-center  relative group invert
+    
+    ${click =="Your Profile" ? ("text-yellow-900"):("")}
+    
+    `} 
+   onClick={()=>{
+    setHamburger(false)
+    setClick('Your Profile')
+    navigate('/profile')
+   }}
+
+   >
+    <NavLink className='font-bold' to='/profile'>Your Profile</NavLink>
+
+    <div class={`h-1 absolute bottom-0 
+     ${click =="Your Profile" ? ("bg-yellow-900 block"):("hidden")}
+    w-full  bg-yellow-900 group-hover:block  `}></div>
+    </li>
+
+
+  </ul>}
 
     <li className={`text-black cursor-pointer font-mullish py-7 hover:text-yellow-900
     transition-all duration-200 flex justify-center items-center  relative group invert
     
-    ${click =="Home" ? ("text-yellow-900"):("")}
+    ${click =="  Home  " ? ("text-yellow-900"):("")}
     
     `}
     onClick={(e)=> {
@@ -223,7 +250,7 @@ setClick(null)
     >
       <NavLink to='/' ><pre className='  font-extrabold'>  Home  </pre></NavLink>
     <div class={`h-1 absolute bottom-0 
-     ${click =="Home" ? ("bg-yellow-900 block"):("hidden")}
+     ${click =="  Home  " ? ("bg-yellow-900 block"):("hidden")}
     w-full  bg-yellow-900 group-hover:block  `}></div>
     </li>
 

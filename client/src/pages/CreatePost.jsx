@@ -162,7 +162,7 @@ setIsLoading(false)
 <p><b>  Title </b></p>
   </label>
 <input type="text" className=' border-2 border-black py-1 px-3 bg-input-200
-rounded-lg'  name='title' placeholder='Enter Title' onChange={(e)=>changeHandler(e)}
+rounded-lg'  name='title'  placeholder='Enter Title' onChange={(e)=>changeHandler(e)}
 
 value={formData.title}
 />

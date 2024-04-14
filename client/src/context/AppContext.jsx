@@ -12,7 +12,7 @@ export default function AppContextProvider({children}){
 const [isLogged,setIsLogged]=useState(false);
 const[token1,setToken1]=useState('')
 const [user,setUser]=useState({});
-
+const [click,setClick]=useState(null)
 const [donorPosts,setDonorPosts]=useState('');
 
 const [currentPostEdit,setCurrentPostEdit]=useState('');
@@ -38,7 +38,8 @@ const value={
     donorPosts,setDonorPosts
     ,Districts,
     currentPostEdit,setCurrentPostEdit,
-    backendUrl
+    backendUrl,
+    click,setClick
    
 }
 return <AppContext.Provider value={value}>
