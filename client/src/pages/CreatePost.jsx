@@ -84,21 +84,18 @@ const submitHandler=async(e)=>{
       token:token1
     },{ withCredentials: true,headers: {
       'Content-Type': 'multipart/form-data'
-    }, credentials: 'include',
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
+    }, credentials: 'include'
     })
 
     .then((res)=>{ 
-      console.log(res);
+      // console.log(res);
       toast.success(res.data.message)
       navigate('/userPosts');
     })
 
 
     .catch((e)=> {
-      console.log(e);
+      // console.log(e);
       toast.error(e.response.data.message);
       
     })
