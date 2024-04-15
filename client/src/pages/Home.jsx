@@ -252,10 +252,10 @@ setClick('Sign Up')}}>
 
 {/* -------------------------------------foot 1 start---------------------------- */}
 
-<div className='w-[100vw] flex   justify-center items-center bg-white'>
+<div className='w-[100vw] flex px-6  justify-center items-center bg-white'>
 
 
-<div className='py-24 flex flex-col gap-y-8 '>
+<div className='py-12  flex flex-col gap-y-8 '>
 
 <h1 className='text-center font-extrabold text-6xl text-black'>Our Services</h1>
 

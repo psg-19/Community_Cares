@@ -162,11 +162,11 @@ setClick(null)
      ):
      (<ul className='flex items-center justify-center gap-x-4 w-auto gap-y-2 md:flex-wrap sm:flex-wrap'>
 
-   <li className={` py-1 px-4 rounded-lg  flex items-center justify-center font-bold hover:bg-slate-50 ${click=='Login' ? ' bg-white border-yellow-900 border-[3px] ':' border-blue-600 border-2 '} `}    onClick={(e)=> {
+   <li className={` py-1 px-4 rounded-lg  hover:text-black flex items-center justify-center font-bold hover:bg-slate-50 ${click=='Login' ? ' bg-white text-black border-yellow-900 border-[3px] ':' text-white border-blue-600 border-2 '} `}    onClick={(e)=> {
                   setClick(e.target.innerText);
                   // console.log(e.target.innerText);
                   navigate('/login')
-                }} ><NavLink to='/login'>Login</NavLink></li>
+                }} ><NavLink to='/login' >Login</NavLink></li>
    <li onClick={(e)=> {
                   setClick(e.target.innerText);
                   // console.log(e.target.innerText);
@@ -197,7 +197,7 @@ setClick(null)
 
     </div>
 
-    <div className={`lg:hidden md:hidden  ${hamburger ? ' sm:block all:block ':' sm:hidden all:hidden '}  `}>
+    <div className={`lg:hidden md:hidden gap-y-4 flex flex-col  ${hamburger ? ' sm:block all:block ':' sm:hidden all:hidden '}  `}>
 
 
   
@@ -316,7 +316,7 @@ setClick(null)
     
 </ul>
 
-<div className='  flex justify-center items-center'>
+<div className='  flex justify-center items-center mt-4'>
 
 {
    isLogged  ? (<ul className='flex gap-x-4 justify-center items-center'>

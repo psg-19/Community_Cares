@@ -43,10 +43,63 @@ const changeHandler=(e)=>{
   // console.log('first')
 }
 
+function containsNumber(str) {
+  return /\d/.test(str);
+}
+
+function containsOnlyNumbers(str) {
+  return /^\d+$/.test(str);
+}
+
 const submitHandler=async(e)=>{
   setIsLoading(true)
   e.preventDefault();
-  console.log(formData)
+  // console.log(formData)
+
+if(containsNumber(formData.firstName)||containsNumber(formData.lastName)){
+  toast.error('Name should only have letters ');
+  setIsLoading(false)
+  return
+}
+
+if(!containsOnlyNumbers(formData.otp)){
+  toast.error('OTP must be a number !!!');
+  setIsLoading(false)
+  return
+}
+if(!containsOnlyNumbers(formData.phoneNo)){
+  toast.error('Phone Number should not contain letters !!!');
+  setIsLoading(false)
+  return
+}
+
+if(formData.password!==formData.confirmPassword){
+  toast.error('Passwords not matching !!!');
+  setIsLoading(false)
+  return
+
+}
+
+if(!(/[a-zA-Z]/.test(formData.password))){
+  toast.error('Password must contain a letter !!!');
+  setIsLoading(false)
+  return
+
+}
+if(!(/[!@#$%^&*(),.?":{}|<>]/.test(formData.password))){
+  toast.error('Password must contain a special character !!!');
+  setIsLoading(false)
+  return
+
+}
+if(!(/\d/.test(formData.password))){
+  toast.error('Password must contain a number !!!');
+  setIsLoading(false)
+  return
+
+}
+
+
  await axios.post(backendUrl+'/signUp',formData,{withCredentials: true,headers: {
   'Content-Type': 'multipart/form-data'
 }, credentials: 'include'})
@@ -121,16 +174,16 @@ if(isLoading1){
      <div className='relative '>
 
 
-     <div className='w-[730px] h-[730px] flex items-center justify-center '>
+     <div className='w-[900px] h-[800px] flex items-center justify-center '>
 <img src={loginBg}  alt="" className='lg:w-[2000px] lg:h-[800px] sm:w-[100%] sm:h-[100%] md:w-[100%] md:h-[100%]  all:h-[900px]  '/>
 </div>
      
      
      
      <form action="" className='flex  flex-col   justify-center items-center gap-y-10 absolute lg:top-[22%] lg:left-[23%] md:top-[22%] md:left-[20%] 
-     sm:top-[25%] sm:left-[20%]
+     sm:top-[25%] sm:left-[27%]
 
-     all:top-[5%] all:left-[27%] all:gap-y-3
+     all:top-[13%] all:left-[30%] all:gap-y-3
      '>
 
 

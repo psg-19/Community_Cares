@@ -91,7 +91,7 @@ all:px-10
     //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
     (connectedPosts.map((data,index)=>{
-        return <div key={index} className='flex flex-col items-center justify-center border-2 border-black   gap-y-10 rounded-lg
+        return <div key={index} className='flex flex-col items-center justify-center border-2 border-black   gap-y-12 rounded-lg
         
        
         bg-slate-200 
@@ -121,10 +121,10 @@ lg:min-w-[900px] lg:max-h-[500px] lg:w-[50%] lg:h-[30%]
            <div className='flex flex-col  items-center justify-center  bg-slate-100
 border-[1px] border-black
 rounded-lg gap-y-6
-sm:w-[90%] sm:h-[50%] 
-all:w-[90%] all:h-[50%] 
-lg:w-[48%] lg:h-[23rem]
-md:w-[90%] md:h-[50%] 
+sm:w-[90%] sm:h-[53%] 
+all:w-[90%] all:h-[53%] 
+lg:w-[48%] lg:h-[24rem]
+md:w-[90%] md:h-[53%] 
 
 
 '>
@@ -152,10 +152,10 @@ border-[1px] border-black
 rounded-lg 
 gap-y-6
 
-sm:w-[90%] sm:h-[50%]
-all:w-[90%] all:h-[50%]
-md:w-[90%] md:h-[50%]
-lg:w-[48%] lg:h-[23rem]
+sm:w-[90%] sm:h-[53%]
+all:w-[90%] all:h-[53%]
+md:w-[90%] md:h-[53%]
+lg:w-[48%] lg:h-[24rem]
 
 '>
 
