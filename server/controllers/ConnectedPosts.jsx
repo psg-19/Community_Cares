@@ -65,7 +65,12 @@ try {
 
 const recieverUpdatedPostId=recieversPost.posts._id;
                     
-
+if(donorPost.posts.district!==recieversPost.posts.district){
+    return res.status(401).json({
+        success:false,
+        message:"You can only donate in your district !!!"
+    })
+}
 
                     const updateDonor=await Post.findOneAndUpdate({_id:donorUpdatedPostId},{
                         

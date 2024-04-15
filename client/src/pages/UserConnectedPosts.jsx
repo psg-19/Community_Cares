@@ -85,7 +85,7 @@ all:px-10
 <h1 className='text-xl font-bold underline text-white'>Posts Connected To You</h1>
 
 {
-    userConnectedPosts.length ==0 ? (<div className='flex flex-row gap-x-6'>
+    userConnectedPosts.length ==0 ? (<div className='flex text-white flex-row gap-x-6'>
 
 No posts available
 
@@ -138,12 +138,12 @@ md:w-[90%] md:h-[50%]
           
 
 <div className='flex items-center justify-center flex-col'>
-<div className='font-bold'>{data.donorPost.title}</div>
-  <img src={data.donorPost.imageUrl} alt="" className=' w-48' />
+<div className='font-bold overflow-scroll no-scrollbar w-48'>{data.donorPost.title}</div>
+  <img  src={data.donorPost.imageUrl} alt="" className=' rounded-lg w-48' />
   </div>
 
 
-<p>{data.donorPost.description}</p>
+<div className='overflow-scroll no-scrollbar w-48'><p >{data.donorPost.description}</p></div>
 <p><b>Requirement : </b>{data.donorPost.quantity} People</p>
 
 
@@ -166,13 +166,13 @@ md:w-[90%] md:h-[50%]
 <h1 className='font-bold'>Reciever</h1>
 
 <div className='flex items-center justify-center flex-col'>
-  <div className='font-bold'>{data.recieverPost.title}</div>
+  <div className='font-bold overflow-scroll no-scrollbar w-48'>{data.recieverPost.title}</div>
 
   <img src={data.recieverPost.imageUrl} alt="" className=' w-48' />
   </div>
 
 
-<p>{data.recieverPost.description}</p>
+<div className=' overflow-scroll no-scrollbar'><p className=' w-48'>{data.recieverPost.description}</p></div>
 <p><b>Requirement : </b>{data.donorPost.quantity} People</p>
 
 

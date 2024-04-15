@@ -160,7 +160,7 @@ if(formData.firstName===user.firstName&&formData.lastName===user.lastName&&formD
 
 
 
-        <h1 className='font-bold text-xl'>Update Your Profile</h1>
+        <h1 className='text-center font-bold text-xl'>Update Your Profile</h1>
 
 <div  className='flex flex-row flex-wrap justify-center items-center  gap-x-10 gap-y-10 w-[100%] mb-8 lg:divide-x md:divide-x sm:divide-x overflow-y-auto no-scrollbar  divide-gray-400'>
 

@@ -113,7 +113,7 @@ await axios.post(backendUrl+'/getUserPosts',{
 
 userPosts ==null ? (<Spinner/>):
 (
-userPosts.length==0 ?(<div className='flex justify-center items-center'>No posts available</div>)
+userPosts.length==0 ?(<div className='flex text-white justify-center items-center'>No posts available</div>)
 :
   (userPosts.map((data,index)=>{
     return (
@@ -121,13 +121,13 @@ userPosts.length==0 ?(<div className='flex justify-center items-center'>No posts
       hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] hover:scale-105 transition-all linear 
       '>
         
-<h3 className='font-bold text-xl'>{data.title}</h3>
+<h3 className='font-bold text-xl w-[14rem] overflow-scroll no-scrollbar'>{data.title}</h3>
 
 <div className='flex justify-center items-center w-[14rem] h-[19rem]' ><img src={data.imageUrl} className='w-[100%] h-[100%] rounded-lg' alt="" /></div>
 
-
-<p className='w-[100%] flex items-center justify-center'>{data.description}</p>
-<p >Requirement : {data.quantity} People</p>
+<div className=' overflow-scroll no-scrollbar w-[14rem]'>
+<p className=' overflow-scroll no-scrollbar'>{data.description}</p></div>
+<p >Requirement: {data.quantity} People</p>
 
 <div  className='flex flex-row gap-x-10 items-center justify-center'>
     <div className='flex gap-x-2'>

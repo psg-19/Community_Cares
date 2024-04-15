@@ -146,10 +146,12 @@ isLoading2 ? (<Spinner/>):(
       hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] hover:scale-105 transition-all linear 
       '>
           
-      <h3 className='font-bold text-xl'>{data.posts.title}</h3>
+      <h3 className='font-bold text-xl w-[14rem] overflow-scroll no-scrollbar'>{data.posts.title}</h3>
       <div className='flex justify-center items-center w-[14rem] h-[19rem]' ><img src={data.posts.imageUrl} className='w-[100%] h-[100%] rounded-lg' alt="" /></div>
 
-    <p className='w-[100%] flex items-center justify-center'>{data.posts.description}</p>
+   <div className='w-[14rem] overflow-scroll no-scrollbar'>
+   <p className='w-[100%] flex items-center justify-center'>{data.posts.description}</p>
+   </div>
     <p >Requirement : {data.posts.quantity} People</p>
 
    
@@ -196,10 +198,10 @@ isLoading2 ? (<Spinner/>):(
       hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] hover:scale-105 transition-all linear 
       '>
           
-      <h3 className='font-bold text-xl'>{data.posts.title}</h3>
+      <h3 className='font-bold text-xl w-[14rem] overflow-scroll no-scrollbar'>{data.posts.title}</h3>
       <div className='flex justify-center items-center w-[14rem] h-[19rem]' ><img src={data.posts.imageUrl} className='w-[100%] h-[100%] rounded-lg' alt="" /></div>
     
-        <p className='flex justify-center items-center'>{data.posts.description}</p>
+        <div className='w-[14rem] overflow-scroll no-scrollbar'><p className='flex justify-center items-center'>{data.posts.description}</p></div>
         <p>Requirement : {data.posts.quantity} People</p>
     
 
