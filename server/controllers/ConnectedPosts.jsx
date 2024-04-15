@@ -192,10 +192,10 @@ exports.getConnectedPostsUser=async(req,res)=>{
         const user=jwt.verify(token,process.env.JWT_SECRET);
         // console.log(user)
 
-        let postDetails=await ConnectedPosts.find({donorEmail:user.email}).populate('donorPost').populate('recieverPost').exec();
+        let postDetails=await ConnectedPosts.find({donorEmail:user.email}).sort({_id:-1}).populate('donorPost').populate('recieverPost').exec();
 
         if(postDetails.length==0){
-            postDetails=await ConnectedPosts.find({recieverEmail:user.email}).populate('donorPost').populate('recieverPost').exec()
+            postDetails=await ConnectedPosts.find({recieverEmail:user.email}).sort({_id:-1}).populate('donorPost').populate('recieverPost').exec()
         }
 
         // console.log(postDetails)
@@ -227,7 +227,7 @@ exports.getConnectedPostsUser=async(req,res)=>{
 exports.getAllConnectedPosts=async(req,res)=>{
     try {
 
-        const connectedPosts=await ConnectedPosts.find({}).populate('donorPost').populate('recieverPost').exec();;
+        const connectedPosts=await ConnectedPosts.find({}).sort({_id:-1}).populate('donorPost').populate('recieverPost').exec();;
 
         return res.status(200).json({
             success:true,

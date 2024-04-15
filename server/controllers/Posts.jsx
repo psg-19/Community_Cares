@@ -106,7 +106,8 @@ const newPost=await Post.create({
     imageUrl:newImage.secure_url,
     district,
     address,
-    quantity
+    quantity,
+    userName:tokenObj.name,
 
 });
 

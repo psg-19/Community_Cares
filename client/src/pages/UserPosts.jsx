@@ -152,12 +152,21 @@ data.email==user.email &&data.status==false && <div className='flex gap-2'>
 </div>
   }
   </div>
-
+{/* 
 <p>Created At  {new Date(data.createdAt).getHours()}:{new Date(data.createdAt).getMinutes()}</p>
 <br />
-<p>{new Date(data.createdAt).getDate()}-{new Date(data.createdAt).getMonth()}-{new Date(data.createdAt).getFullYear()}</p>
+<p>{new Date(data.createdAt).getDate()}-{new Date(data.createdAt).getMonth()}-{new Date(data.createdAt).getFullYear()}</p> */}
   
 
+  
+  <div className='flex flex-col gap-y-2 justify-center items-center'>
+
+<div><pre><b>District : </b>{data.district}</pre></div>
+
+<pre><b>By:</b> {data.userName}</pre>
+{/* <div><p><b>By - </b>{data.name}</p></div> */}
+
+</div>
       </div>
     )
   })

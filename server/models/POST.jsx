@@ -65,6 +65,11 @@ const postSchema=new mongoose.Schema({
         type:String,
         required:true,
         default:'none'
+    },
+    userName:{
+        type:String,
+        required:true,
+        
     }
 });
 

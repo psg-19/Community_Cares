@@ -96,7 +96,7 @@ exports.signUp=async(req,res)=>{
         })
     }
 
-    const user=await User.findOne({email:`${email}`});
+    const user=await User.findOne({email});
 
     if(user){
         return res.status(401).json({
@@ -106,7 +106,7 @@ exports.signUp=async(req,res)=>{
         })
     }
     
-    const recentOtp=await OTP.findOne({email:`${email}`}).sort({createdAt:-1}).limit(1);
+    const recentOtp=await OTP.findOne({email:`${email}`}).sort({_id:-1}).limit(1);
     if(!recentOtp){
         return res.status(401).json({
     
@@ -133,7 +133,7 @@ exports.signUp=async(req,res)=>{
     //         message:"OTP expired !!!"
     //     })  556033  709718
     // }
-    // console.log(recentOtp.otp,'------------',otp)
+    console.log(recentOtp.otp,'------------',otp)
     
     if(otp!=recentOtp.otp){
         return res.status(402).json({
@@ -220,7 +220,8 @@ console.log(res.body)
         email:user.email,
         _id:user._id,
         role:user.role,
-        district:user.district
+        district:user.district,
+        name:user.firstName
 
     }
 
@@ -409,7 +410,8 @@ exports.forgotPassword=async(req,res)=>{
             })
         }
 
-        const recentOtp=await FORGOT_PASS_OTP.findOne({email:`${email}`}).sort({createdAt:-1}).limit(1);
+
+        const recentOtp=await FORGOT_PASS_OTP.findOne({email:`${email}`}).sort({_id:-1}).limit(1);
 
 
         if(!recentOtp){

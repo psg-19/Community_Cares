@@ -179,9 +179,11 @@ isLoading2 ? (<Spinner/>):(
   </div>
 
   
-<div className='flex justify-evenly'>
+<div className='flex flex-col gap-y-2 justify-center items-center'>
 
 <div><pre><b>District : </b>{data.posts.district}</pre></div>
+
+<pre><b>By:</b> {data.posts.userName}</pre>
 {/* <div><p><b>By - </b>{data.name}</p></div> */}
 
 </div>
@@ -227,9 +229,10 @@ isLoading2 ? (<Spinner/>):(
   }
   </div>
   
-<div className='flex justify-evenly'>
+<div className='flex flex-col gap-y-2 justify-center items-center'>
 
 <div><pre><b>District : </b>{data.posts.district}</pre></div>
+<pre><b>By:</b> {data.posts.userName}</pre>
 {/* <div><p><b>By - </b>{data.name}</p></div> */}
 
 </div>

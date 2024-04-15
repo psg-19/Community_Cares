@@ -22,7 +22,7 @@ exports.getUserPosts=async(req,res)=>{
  
      const user= jwt.verify(token,process.env.JWT_SECRET);
  
-     const allPosts=await Post.find({email:user.email});
+     const allPosts=await Post.find({email:user.email}).sort({_id:-1});
      // console.log(allPosts)
  
      return res.status(200).json({
@@ -275,7 +275,7 @@ return res.status(200).json({
         
         
        
-       const donorPosts=await DonorPosts.find({}).populate("posts").exec();
+       const donorPosts=await DonorPosts.find({}).sort({_id:-1}).populate("posts").exec();
     
 
         return res.status(200).json({
@@ -297,7 +297,7 @@ return res.status(200).json({
  exports.getAllRecieverPosts=async(req,res)=>{
     try {
 
-        const recieverPosts=await RecieverPosts.find({}).populate('posts').exec();
+        const recieverPosts=await RecieverPosts.find({}).sort({_id:-1}).populate('posts').exec();
 
         return res.status(200).json({
             success:true,
