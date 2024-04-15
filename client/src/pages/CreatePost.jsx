@@ -91,14 +91,14 @@ const submitHandler=async(e)=>{
     })
 
     .then((res)=>{ 
-      // console.log(res);
+      console.log(res);
       toast.success(res.data.message)
       navigate('/userPosts');
     })
 
 
     .catch((e)=> {
-      // console.log(e);
+      console.log(e);
       toast.error(e.response.data.message);
       
     })
