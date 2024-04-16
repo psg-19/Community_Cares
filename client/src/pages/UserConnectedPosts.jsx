@@ -138,12 +138,12 @@ md:w-[90%] md:h-[50%]
           
 
 <div className='flex items-center justify-center flex-col'>
-<div className='font-bold overflow-scroll no-scrollbar w-48'>{data.donorPost.title}</div>
-  <img  src={data.donorPost.imageUrl} alt="" className=' rounded-lg w-48' />
+<div className='font-bold overflow-scroll no-scrollbar  justify-center flex items-center w-48'>{data.donorPost.title}</div>
+  <div className='w-48 overflow-hidden'><img  src={data.donorPost.imageUrl} alt="" className=' rounded-lg ' /></div>
   </div>
 
 
-<div className='overflow-scroll no-scrollbar w-48'><p >{data.donorPost.description}</p></div>
+<div className='overflow-scroll no-scrollbar w-48'><b>Description: </b><p >{data.donorPost.description}</p></div>
 <p><b>Requirement : </b>{data.donorPost.quantity} People</p>
 
 
@@ -166,13 +166,13 @@ md:w-[90%] md:h-[50%]
 <h1 className='font-bold'>Reciever</h1>
 
 <div className='flex items-center justify-center flex-col'>
-  <div className='font-bold overflow-scroll no-scrollbar w-48'>{data.recieverPost.title}</div>
+  <div className='font-bold overflow-scroll no-scrollbar  justify-center flex items-center w-48'>{data.recieverPost.title}</div>
 
-  <img src={data.recieverPost.imageUrl} alt="" className=' w-48' />
+  <div className=' w-48 overflow-hidden' ><img src={data.recieverPost.imageUrl} alt="" className='rounded-lg' /></div>
   </div>
 
 
-<div className=' overflow-scroll no-scrollbar'><p className=' w-48'>{data.recieverPost.description}</p></div>
+<div className=' overflow-scroll no-scrollbar'><b>Description: </b><p className=' w-48'>{data.recieverPost.description}</p></div>
 <p><b>Requirement : </b>{data.donorPost.quantity} People</p>
 
 

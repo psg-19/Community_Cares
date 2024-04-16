@@ -146,10 +146,11 @@ isLoading2 ? (<Spinner/>):(
       hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] hover:scale-105 transition-all linear 
       '>
           
-      <h3 className='font-bold text-xl w-[14rem] overflow-scroll no-scrollbar'>{data.posts.title}</h3>
-      <div className='flex justify-center items-center w-[14rem] h-[19rem]' ><img src={data.posts.imageUrl} className='w-[100%] h-[100%] rounded-lg' alt="" /></div>
+      <h3 className='font-bold text-xl w-[14rem] overflow-scroll  justify-center flex items-center no-scrollbar'>{data.posts.title}</h3>
+      <div className='flex justify-center overflow-hidden items-center w-[14rem] h-[19rem]' ><img src={data.posts.imageUrl} className='w-[100%] h-[100%] rounded-lg' alt="" /></div>
 
    <div className='w-[14rem] overflow-scroll no-scrollbar'>
+    <b>Description: </b>
    <p className='w-[100%] flex items-center justify-center'>{data.posts.description}</p>
    </div>
     <p >Requirement : {data.posts.quantity} People</p>
@@ -198,10 +199,10 @@ isLoading2 ? (<Spinner/>):(
       hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] hover:scale-105 transition-all linear 
       '>
           
-      <h3 className='font-bold text-xl w-[14rem] overflow-scroll no-scrollbar'>{data.posts.title}</h3>
-      <div className='flex justify-center items-center w-[14rem] h-[19rem]' ><img src={data.posts.imageUrl} className='w-[100%] h-[100%] rounded-lg' alt="" /></div>
+      <h3 className='font-bold text-xl w-[14rem]  justify-center flex items-center overflow-scroll no-scrollbar'>{data.posts.title}</h3>
+      <div className='flex justify-center items-center overflow-hidden w-[14rem] h-[19rem]' ><img src={data.posts.imageUrl} className='w-[100%] h-[100%] rounded-lg' alt="" /></div>
     
-        <div className='w-[14rem] overflow-scroll no-scrollbar'><p className='flex justify-center items-center'>{data.posts.description}</p></div>
+        <div className='w-[14rem] overflow-scroll no-scrollbar'><b>Description: </b><p className='flex justify-center items-center'>{data.posts.description}</p></div>
         <p>Requirement : {data.posts.quantity} People</p>
     
 

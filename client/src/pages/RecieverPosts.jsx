@@ -189,10 +189,10 @@ rounded-lg w-[40%] ' id='districts' onChange={(e)=>{
             district=='All' ? (<div key={index} className='flex flex-col border-2  max-h-[700px] max-w-[400px] min-w-[250px] min-h-[590px] w-[50%] h-[65%] p-4 justify-center items-center border-black  gap-y-4 bg-slate-100 rounded-lg overflow-hidden
             hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] hover:scale-105 transition-all linear 
             '>
-          <h3 className='font-bold text-xl w-[14rem] overflow-scroll no-scrollbar'>{data.posts.title}</h3>
-          <div className='flex justify-center items-center w-[14rem] h-[19rem]' ><img src={data.posts.imageUrl} className='w-[100%] h-[100%] rounded-lg' alt="" /></div>
+          <h3 className='font-bold text-xl w-[14rem] overflow-scroll  justify-center flex items-center no-scrollbar'>{data.posts.title}</h3>
+          <div className='flex justify-center items-center overflow-hidden w-[14rem] h-[19rem]' ><img src={data.posts.imageUrl} className='w-[100%] h-[100%] rounded-lg' alt="" /></div>
 
-    <div className='overflow-scroll no-scrollbar w-[14rem] '>    <p className='w-[100%] flex itc justify-center'>{data.posts.description}</p></div>
+    <div className='overflow-scroll no-scrollbar w-[14rem] '>  <b>Description: </b>  <p className='w-[100%] flex itc justify-center'>{data.posts.description}</p></div>
         <p>Requirement : {data.posts.quantity} People</p>
 
         <div  className='flex flex-row gap-x-10 items-center justify-center'>
@@ -240,10 +240,10 @@ rounded-lg w-[40%] ' id='districts' onChange={(e)=>{
           (data.posts.district==district &&<div className='flex flex-col border-2  max-h-[700px] max-w-[400px] min-w-[250px] min-h-[590px] w-[50%] h-[65%] p-4 justify-center items-center border-black  gap-y-4 bg-slate-100 rounded-lg overflow-hidden
           hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] hover:scale-105 transition-all linear 
           '>
-          <h3 className='font-bold text-xl w-[14rem] overflow-scroll no-scrollbar'>{data.posts.title}</h3>
-          <div className='flex justify-center items-center w-[14rem] h-[19rem]' ><img src={data.posts.imageUrl} className='w-[100%] h-[100%] rounded-lg' alt="" /></div>
+          <h3 className='font-bold text-xl w-[14rem] overflow-scroll  justify-center flex items-center no-scrollbar'>{data.posts.title}</h3>
+          <div className='flex justify-center items-center overflow-hidden w-[14rem] h-[19rem]' ><img src={data.posts.imageUrl} className='w-[100%] h-[100%] rounded-lg' alt="" /></div>
 
-          <div className='overflow-scroll no-scrollbar w-[14rem] '>    <p className='w-[100%] flex itc justify-center'>{data.posts.description}</p></div>
+          <div className='overflow-scroll no-scrollbar w-[14rem] '>   <b>Description: </b> <p className='w-[100%] flex itc justify-center'>{data.posts.description}</p></div>
         <p>{data.posts.quantity}</p>
 
         <div  className='flex flex-row gap-x-10 items-center justify-center'>

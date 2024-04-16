@@ -162,7 +162,7 @@ lg:w-[48%] lg:h-[24rem]
 <h1 className='font-bold'>Reciever</h1>
 
 
-<div className='flex items-center justify-center flex-col'>
+<div className='flex items-center justify-center overflow-hidden flex-col'>
   <div className='font-bold w-48 overflow-scroll no-scrollbar'>{data.recieverPost.title}</div>
 
   <img src={data.recieverPost.imageUrl} alt="" className=' w-48' />
