@@ -97,7 +97,7 @@ const submitHandler=async(e)=>{
 
     .catch((e)=> {
       console.log(e);
-      toast.error(e);
+      toast.error(e.response.data);
       
       setIsLoading(false)
     })
