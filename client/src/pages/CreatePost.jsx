@@ -91,13 +91,15 @@ const submitHandler=async(e)=>{
       console.log(res);
       toast.success(res.data.message)
       navigate('/userPosts');
+      setIsLoading(false)
     })
 
 
     .catch((e)=> {
       console.log(e);
-      toast.error(e.response.data.message);
+      toast.error(e);
       
+      setIsLoading(false)
     })
 
 setIsLoading(false)
