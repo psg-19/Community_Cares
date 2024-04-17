@@ -45,7 +45,7 @@ const navigate=useNavigate()
 
      
 
-        <div className='flex flex-col  justify-center gap-y-4'>
+        <div className='flex flex-col  justify-center p-x-4 gap-y-4'>
     <p> <b> Name :</b> {user.firstName} {user.lastName}</p>
     <p><b>Email :</b> {user.email}</p>
        <p><b>Contact Number :</b> {user.phoneNo}</p>
