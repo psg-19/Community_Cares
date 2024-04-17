@@ -16,13 +16,43 @@ app.use(fileUpload(
     
     app.use(express.json());
     app.use(cookieParser());
+    
+    
+    const allowedOrigins=['https://community-cares-9y35.vercel.app','https://community-cares-9y35.vercel.app/donorPost',
+
+    'https://community-cares-9y35.vercel.app/sendOtp',
+    'https://community-cares-9y35.vercel.app/signUp',
+    'https://community-cares-9y35.vercel.app/login',
+    'https://community-cares-9y35.vercel.app/createPost',
+    'https://community-cares-9y35.vercel.app/BootUp',
+    'https://community-cares-9y35.vercel.app/connectedPosts',
+    'https://community-cares-9y35.vercel.app/likePost',
+    'https://community-cares-9y35.vercel.app/updatePost',
+    'https://community-cares-9y35.vercel.app/getUserPosts'
+    ,'https://community-cares-9y35.vercel.app/deletePost',
+    'https://community-cares-9y35.vercel.app/getUser',
+    'https://community-cares-9y35.vercel.app/updateUser',
+    'https://community-cares-9y35.vercel.app/deleteUser',
+    'https://community-cares-9y35.vercel.app/getAllRecieverPosts',
+    'https://community-cares-9y35.vercel.app/getAllDonorPosts',
+    'https://community-cares-9y35.vercel.app/getConnectedPostsUser',
+    'https://community-cares-9y35.vercel.app/likeConnectedPost',
+    'https://community-cares-9y35.vercel.app/isLogged',
+    'https://community-cares-9y35.vercel.app/logout',
+    'https://community-cares-9y35.vercel.app/forgotPassword',
+    'https://community-cares-9y35.vercel.app/sendOtpForForgotPassword'
+];
+
+
 app.use(cors({
     // origin: 'http://localhost:3000',
     origin: 
     
+
+
     function (origin, callback) {
         // Check if the request origin is allowed
-        if (!origin || process.env.FRONTEND_URL.includes(origin)) {
+        if (!origin || allowedOrigins.includes(origin)) {
           callback(null, true);
         } else {
           callback(new Error('Not allowed by CORS'));
