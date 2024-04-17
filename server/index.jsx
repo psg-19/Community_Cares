@@ -18,7 +18,17 @@ app.use(fileUpload(
     app.use(cookieParser());
 app.use(cors({
     // origin: 'http://localhost:3000',
-    origin: process.env.FRONTEND_URL, 
+    origin: 
+    
+    function (origin, callback) {
+        // Check if the request origin is allowed
+        if (!origin || process.env.FRONTEND_URL.includes(origin)) {
+          callback(null, true);
+        } else {
+          callback(new Error('Not allowed by CORS'));
+        }
+      }
+    , 
   optionsSuccessStatus: 200,
   credentials: true 
   }));
