@@ -4,12 +4,13 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 import axios from 'axios'
 import loginBg from '../assets/loginbg1.png'
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 export const Login = () => {
 
   const {setToken1,backendUrl,setUser,setIsLogged}=useContext(AppContext)
 const navigate=useNavigate()
 
-
+const [showpass, setshowpass] = useState(false);
 const [isLoading,setIsLoading]=useState(false);
 
 const [formData,setFormData]=useState({
@@ -124,30 +125,47 @@ const getUser=async(token)=>{
 
 ( */}
 
-<div className='relative overflow-hidden'>
 
-<div className='lg:w-[730px] md:w-[730px] sm:w-[730px] all:w-[630px] h-[730px] flex lg:items-center lg:justify-center md:items-center md:justify-center sm:items-center sm:justify-center   all:items-center  all:justify-stretch '>
+{/* <div className='lg:w-[730px] md:w-[730px] sm:w-[730px] all:w-[630px] h-[730px] flex lg:items-center lg:justify-center md:items-center md:justify-center sm:items-center sm:justify-center   all:items-center  all:justify-stretch '>
 <img src={loginBg}  alt="" className='lg:w-[100%] lg:h-[100%] sm:w-[70%] sm:h-[70%] all:h-[60%] all:w-[60%]' />
-</div>
+</div> */}
 
-<form action="" className='flex  flex-col   justify-center items-center gap-y-6 absolute lg:top-[40%] lg:left-[40%] sm:top-[35%] sm:left-[37%]
-
-all:top-[36%] all:left-[28%]
-
+<form action="" className='flex  flex-col   justify-center items-center gap-y-6  
+relative overflow-hidden border-2 border-richblack-700 px-[10%] py-[7%] bg-richblack-900 rounded-2xl
 ' >
   
 <div >
-<p> <b> Email </b></p>
-<input type="text" className=' border-2 border-black py-1 px-3 bg-input-200
-rounded-lg
-' placeholder='Enter Your Email' name='email'  onChange={(e)=>changeHandler(e)}/>
+<p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]">
+          Email Address <sup className="text-pink-200">*</sup>
+        </p>
+<input type='text' className="bg-richblack-700 rounded-[0.5rem] text-richblack-5
+        w-full p-[12px]" placeholder='Enter Your Email' name='email'  onChange={(e)=>changeHandler(e)}/>
+
+
 </div>
 
 
 
-<label htmlFor="">
-<p><b>  Password </b></p>
-<input type="password" className='border-2 border-black py-1 px-3 rounded-lg bg-input-200' placeholder='Enter Your Password'  name='password' onChange={(e)=>changeHandler(e)}/>
+<label htmlFor="" className='w-full relative'>
+<p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]">
+          Password <sup className="text-pink-200">*</sup>
+        </p>
+<input  type={showpass === true ? "text" : "password"} className="bg-richblack-700 rounded-[0.5rem] text-richblack-5
+        w-full p-[12px]" placeholder='Enter Your Password'  name='password' onChange={(e)=>changeHandler(e)}/>
+
+        
+<span
+          onClick={() => {
+            setshowpass((prev) => !prev);
+          }}
+          className="absolute right-3 mt-2 top-[30px] cursor-pointer "
+        >
+          {showpass === true ? (
+            <AiOutlineEye fontSize={24} fill="#AFB2BF" />
+          ) : (
+            <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
+          )}
+        </span>
 </label>
 
 
@@ -171,7 +189,7 @@ rounded-lg
 
 {/* )
 } */}
-</div>
+
 </div>
   
     

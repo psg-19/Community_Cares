@@ -4,7 +4,7 @@ import { toast } from 'react-hot-toast'
 import { AppContext } from '../context/AppContext'
 import axios from 'axios'
 import loginBg from '../assets/loginbg1.png'
-
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 
 
@@ -12,7 +12,8 @@ export const SignUp = () => {
   const navigate=useNavigate()
 const {backendUrl,Districts}=useContext(AppContext)
 
-
+const [showpass, setshowpass] = useState(false);
+  const [showcomfirmpass, setshowcomfirmpass] = useState(false);
 
 const [formData,setFormData]=useState({
   email:'',
@@ -171,20 +172,19 @@ if(isLoading1){
     '>
      
      
-     <div className='relative '>
+     <div className='flex items-center justify-center  border-2 p-10 rounded-2xl bg-richblack-900 border-richblack-700'>
 
 
-     <div className='w-[900px] h-[800px] flex items-center justify-center '>
+     {/* <div className='w-[900px] h-[800px] flex items-center justify-center '>
 <img src={loginBg}  alt="" className='lg:w-[2000px] lg:h-[800px] sm:w-[100%] sm:h-[100%] md:w-[100%] md:h-[100%]  all:h-[900px]  '/>
-</div>
+</div> */}
      
      
      
-     <form action="" className='flex  flex-col   justify-center items-center gap-y-10 absolute lg:top-[22%] lg:left-[23%] md:top-[22%] md:left-[20%] 
-     sm:top-[25%] sm:left-[27%]
-
-     all:top-[13%] all:left-[30%] all:gap-y-3
+     <form action="" className='flex  flex-col   justify-center items-center gap-y-10  all:gap-y-3
      '>
+
+      
 
 
 <div className='flex all:flex-col lg:flex-row md:flex-row sm:flex-row lg:gap-x-24 md:gap-x-16  sm:gap-x-10'>
@@ -193,20 +193,25 @@ if(isLoading1){
 {/* --------------------------fname-------------------------- */}
 <div>
 <label htmlFor="">
-  <p><b>First Name</b></p>
+<p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]">
+              {" "}
+              First Name <sup className="text-pink-200">*</sup>
+            </p>
 </label>
-<input type="text" className=' border-2 border-black py-1 px-3 bg-input-200
-rounded-lg'  placeholder='Enter first Name' name='firstName' onChange={(e)=>changeHandler(e)}/>
+<input type="text" className="bg-richblack-800 rounded-[0.5rem] text-richblack-5
+        w-full p-[12px]"  placeholder='Enter first Name' name='firstName' onChange={(e)=>changeHandler(e)}/>
 
 
 </div>
 {/* //-----------------------lname----------------------------- */}
 <div>
 <label htmlFor="">
- <p><b> Last Name </b></p>
+<p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]">
+              Last Name <sup className="text-pink-200">*</sup>
+            </p>
 </label>
-<input type="text" className='  border-2 border-black py-1 px-3 bg-input-200
-rounded-lg'  placeholder='Enter last Name'  name='lastName' onChange={(e)=>changeHandler(e)}/>
+<input type="text"  className="bg-richblack-800 rounded-[0.5rem] text-richblack-5
+        w-full p-[12px]"  placeholder='Enter last Name'  name='lastName' onChange={(e)=>changeHandler(e)}/>
 
 </div>
 
@@ -215,10 +220,12 @@ rounded-lg'  placeholder='Enter last Name'  name='lastName' onChange={(e)=>chang
 <div className='flex flex-col '>
   
 <label className='all:flex all:justify-start md:justify-start lg:justify-start sm:justify-start all:items-center' htmlFor="">
- <p ><b >Email</b></p>
+<p className="text-[0.875rem] w-full text-richblack-5 mb-1 leading-[1.375rem]">
+            Email Address <sup className="text-pink-200">*</sup>
+          </p>
 </label>
-<input type="email" className='  border-2 border-black py-1 px-3 bg-input-200
-rounded-lg'  placeholder='Enter Email' name='email' onChange={(e)=>changeHandler(e)}/>
+<input type="email"  className="bg-richblack-800 rounded-[0.5rem] text-richblack-5
+        w-full p-[12px]"  placeholder='Enter Email' name='email' onChange={(e)=>changeHandler(e)}/>
 <br />
 <button className='mt-1 className=bg-transparent hover:bg-cyan-500 text-cyan-700  font-semibold hover:text-white py-2 px-4 border border-cyan-500  hover:border-transparent rounded-lg 
 rounded-lg  p-1' onClick={(e)=>sendOtp(e)}>{isLoading1 ? 'Please Wait ...':'Send OTP'}</button>
@@ -229,10 +236,10 @@ rounded-lg  p-1' onClick={(e)=>sendOtp(e)}>{isLoading1 ? 'Please Wait ...':'Send
 
 <div>
 <label htmlFor="">
-<p><b>  OTP </b></p>
+<p className="text-[0.875rem] text-richblack-5 mb-1  leading-[1.375rem]">  OTP <sup className="text-pink-200">*</sup></p>
 </label>
-<input type="text" className='   border-2 border-black py-1 px-3 bg-input-200
-rounded-lg'  placeholder='Enter OTP'  name='otp' onChange={(e)=>changeHandler(e)}/>
+<input type="text"  className="bg-richblack-800 rounded-[0.5rem] text-richblack-5
+        w-full p-[12px]"  placeholder='Enter OTP'  name='otp' onChange={(e)=>changeHandler(e)}/>
 
 </div>
 </div>
@@ -246,17 +253,19 @@ rounded-lg'  placeholder='Enter OTP'  name='otp' onChange={(e)=>changeHandler(e)
 
 
 
-<div className='flex flex-col items-center all:gap-y-2 justify-center lg:gap-y-8 md:gap-y-8 sm:gap-y-8'>
-
+<div className='flex flex-col items-center  all:gap-y-2 justify-center lg:gap-y-8 md:gap-y-8 sm:gap-y-8'>
+{/* <div className='flex all:flex-col lg:flex-row md:flex-row sm:flex-row lg:gap-x-24 md:gap-x-16  sm:gap-x-10'> */}
 {/* -----------------------------------phone no-----------------
  */}
  <div>
   
 <label htmlFor="">
-  <p><b>Phone Number </b></p>
+<p className="text-[0.875rem] text-richblack-5 mb-1  leading-[1.375rem]">
+              Phone Number<sup className="text-pink-200">*</sup>
+            </p>
 </label>
-<input type="text" className='   border-2 border-black py-1 px-3 bg-input-200
-rounded-lg' placeholder='Enter Phone Number'  name='phoneNo' onChange={(e)=>changeHandler(e)}/>
+<input type="text"  className="bg-richblack-800 rounded-[0.5rem] text-richblack-5
+        w-full p-[12px]" placeholder='Enter Phone Number'  name='phoneNo' onChange={(e)=>changeHandler(e)}/>
 
  </div>
 
@@ -275,12 +284,14 @@ rounded-lg'  name='address' onChange={(e)=>changeHandler(e)}/>
 <div className='all:flex all:flex-col all:items-center all:justify-center'>
   
 <label htmlFor="district">
-  <p><b>Select your District </b></p>
-
+  
+  <p className="text-[0.875rem] text-richblack-5 mb-1  leading-[1.375rem]">
+  Select your District<sup className="text-pink-200">*</sup>
+            </p>
   </label>
  
-<select name='district' className='w-[80%] all:w-[60%] border-2 border-black py-1 px-3 bg-input-200
-rounded-lg'  id='district' onChange={(e)=>{
+<select name='district'  className="bg-richblack-800 rounded-[0.5rem] text-richblack-5
+        w-[60%] p-[12px]"  id='district' onChange={(e)=>{
   changeHandler(e)
 }}>
   
@@ -295,23 +306,51 @@ rounded-lg'  id='district' onChange={(e)=>{
 
 
 {/* ----------------------------------password------- */}
-<div>
+<div className='relative'>
 <label htmlFor="">
-<p><b>  Password </b></p>
+<p className="text-[0.875rem] text-richblack-5 mb-1  leading-[1.375rem]">
+              Create Password<sup className="text-pink-200">*</sup>
+            </p>
 </label>
-<input type="password" className='   border-2 border-black py-1 px-3 bg-input-200
-rounded-lg'  placeholder='Enter Password' name='password' onChange={(e)=>changeHandler(e)}/>
-
+<input type={showpass == true ? "text" : "password"}  className="bg-richblack-800 rounded-[0.5rem] text-richblack-5
+        w-full p-[12px]"  placeholder='Enter Password' name='password' onChange={(e)=>changeHandler(e)}/>
+ <span
+              onClick={() => {
+                setshowpass((prev) => !prev);
+              }}
+              className="absolute right-3 mt-2 top-[30px] cursor-pointer "
+            >
+              {showpass === true ? (
+                <AiOutlineEye fontSize={24} fill="#AFB2BF" />
+              ) : (
+                <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
+              )}
+            </span>
 </div>
 
 {/* ------------------------------------conf pass----------- */}
-<div>
+<div className='relative'>
   <label htmlFor="">
-<p><b>  Confirm Password </b></p>
+  <p className="text-[0.875rem] text-richblack-5 mb-1  leading-[1.375rem]">
+              Confirm Password<sup className="text-pink-200">*</sup>
+            </p>
 </label>
-<input type="password" className='   border-2 border-black py-1 px-3 bg-input-200
-rounded-lg'  placeholder='Confirm Password'  name='confirmPassword' onChange={(e)=>changeHandler(e)}/>
+<input type={showcomfirmpass == true ? "text" : "password"}  className="bg-richblack-800 rounded-[0.5rem] text-richblack-5
+        w-full p-[12px]"  placeholder='Confirm Password'  name='confirmPassword' onChange={(e)=>changeHandler(e)}/>
 
+
+<span
+              onClick={() => {
+                setshowcomfirmpass((prev) => !prev);
+              }}
+              className="absolute right-3 mt-2 top-[30px] cursor-pointer "
+            >
+              {showcomfirmpass === true ? (
+                <AiOutlineEye fontSize={24} fill="#AFB2BF" />
+              ) : (
+                <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
+              )}
+            </span>
 </div>
 
 
@@ -322,8 +361,8 @@ rounded-lg'  placeholder='Confirm Password'  name='confirmPassword' onChange={(e
 <div className='flex flex-col all:gap-y-2 lg:gap-y-6 sm:gap-y-6 md:gap-y-6'>
   
 {/* -----------------------------role------------------- */}
-<select name="role" className='w-[100%]  border-2 border-black py-1 px-3 bg-input-200
-rounded-lg'  id="role" onChange={(e)=> changeHandler(e)}>
+<select name="role"  className="bg-richblack-800 rounded-[0.5rem] text-richblack-5
+        w-full p-[12px]"  id="role" onChange={(e)=> changeHandler(e)}>
   <option value="Donor">Donor</option>
   <option value="Reciever">Reciever</option>
 </select>
