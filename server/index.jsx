@@ -26,7 +26,7 @@ app.use(fileUpload(
     
     app.use(cors({
       // origin: 'http://localhost:3000',
-      origin: true,
+      origin: process.env.FRONTEND_URL,
       optionsSuccessStatus: 200,
       credentials: true 
     }));
