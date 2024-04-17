@@ -22,15 +22,15 @@ app.use(fileUpload(
 
 
     const router=require('./route/routes.jsx')
-    app.use('/api/v1',router)
-
     
-app.use(cors({
-    // origin: 'http://localhost:3000',
-    origin: process.env.FRONTEND_URL,
-  optionsSuccessStatus: 200,
-  credentials: true 
-  }));
+    
+    app.use(cors({
+      // origin: 'http://localhost:3000',
+      origin: process.env.FRONTEND_URL,
+      optionsSuccessStatus: 200,
+      credentials: true 
+    }));
+    app.use('/api/v1',router)
 
 //--------------db connect-----------------
 const dbConnect=require('./config/database.jsx');
