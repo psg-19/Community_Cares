@@ -12,7 +12,7 @@ const uploadToCloudinary=require('../config/cloudinary.jsx');
 //----------------------------create post----------------------------
 exports.createPost=async(req,res)=>{
    try {
-    const token=req.cookies.token||req.body.token||req.header('Authorisation').replace('Bearer ',"");
+    const token=req.cookies.token||req.body.token;
 
     if(!token){
         return res.status(401).json({
@@ -112,19 +112,16 @@ const newPost=await Post.create({
 });
 
 
-const updateUser=await User.findByIdAndUpdate(id,{
-$push:{
-posts:newPost._id
-}
-},
-{new:true}).populate('posts').exec();
+
 
 if(role=='Donor'){
-    const updateRolePosts= await DonorPosts.create({posts:newPost._id,email:email});
+  await DonorPosts.create({posts:newPost._id,email:email});
     
 }
+
+
 else{
-    const updateRolePosts= await RecieverPosts.create({posts:newPost._id,email:email});
+   await RecieverPosts.create({posts:newPost._id,email:email});
 
 }
 // console.log(updateRolePosts)
