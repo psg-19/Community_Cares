@@ -58,11 +58,11 @@ if(isLoading){
   return
 }
 
-if(formData.title=currentPostEdit.title,
-  formData.description==currentPostEdit.description,
-  formData.district==currentPostEdit.district,
-  formData.address==currentPostEdit.address ,
-  formData.quantity==currentPostEdit.quantity,
+if(formData.title==currentPostEdit.title&&
+  formData.description==currentPostEdit.description&&
+  formData.district==currentPostEdit.district&&
+  formData.address==currentPostEdit.address &&
+  formData.quantity==currentPostEdit.quantity&&
   formData.image==null){
   toast.error("Make atleast one change to update post !!!");
   setIsLoading(false)

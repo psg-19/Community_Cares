@@ -97,7 +97,7 @@ const submitHandler=async(e)=>{
 
     .catch((e)=> {
       console.log(e);
-      toast.error(e.response.data.message ? (e.response.data.message):(e.message));
+      toast.error(e.response.data!=undefined ? (e.response.data.message):(e.message));
       // alert(JSON.stringify(e.response))
       
       setIsLoading(false)
