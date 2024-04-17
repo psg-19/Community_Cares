@@ -78,7 +78,7 @@ const submitHandler=async(e)=>{
 
 
 
-  try {
+
     await axios.post(backendUrl+'/createPost',{
       ...formData,
       token:token1
@@ -107,12 +107,9 @@ const submitHandler=async(e)=>{
 
 setIsLoading(false)
 
-  } catch (error) {
-    // console.log(error);
-    toast.error(error.message);
-  }
+ 
   
-  setIsLoading(false)
+  
 
 }
 
