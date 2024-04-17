@@ -58,6 +58,17 @@ if(isLoading){
   return
 }
 
+if(formData.title=currentPostEdit.title,
+  formData.description==currentPostEdit.description,
+  formData.district==currentPostEdit.district,
+  formData.address==currentPostEdit.address ,
+  formData.quantity==currentPostEdit.quantity,
+  formData.image==null){
+  toast.error("Make atleast one change to update post !!!");
+  setIsLoading(false)
+  return;
+}
+
     await axios.put(backendUrl+'/updatePost',{
         ...formData,
         postId:currentPostEdit._id
@@ -230,13 +241,28 @@ rounded-lg w-[100%]' id='district' onChange={(e)=>{
 
 <div className='flex justify-center items-center gap-x-2'>
 
-<button className='border-2 border-black py-1 px-3'
 
-onClick={(e)=> submitHandler(e)}
->{isLoading ? 'Please Wait':'Save'}</button>
-<button className='border-2 border-black py-1 px-3' onClick={()=>{
+<button onClick={(e)=>submitHandler(e)}  class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+
+
+
+<span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+{isLoading ? 'Please Wait ...':'Save'}
+</span>
+</button>
+
+
+
+
+
+
+<button onClick={()=>{
     navigate('/userPosts')
-}} >Cancel</button>
+}} className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
+<span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+Cancel
+</span>
+</button>
 
 
 </div>

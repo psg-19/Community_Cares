@@ -22,7 +22,6 @@ const [formData,setFormData]=useState({
 })
 
 
-const navigate=useNavigate()
 
 
 
@@ -91,7 +90,10 @@ const submitHandler=async(e)=>{
   }
 
 
+
   setIsLoading(true)
+
+  
   
   // console.log('submit',formData)
 
