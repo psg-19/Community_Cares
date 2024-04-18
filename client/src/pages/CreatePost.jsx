@@ -76,7 +76,11 @@ const submitHandler=async(e)=>{
   
   // console.log(formData)
 
-
+  if(formData.image.size>1024*1024*6){
+    toast.error("Image must be less than 6 mb");
+    formData.image=null;
+    setIsLoading(false)
+    }
 
 
     await axios.post(backendUrl+'/createPost',{

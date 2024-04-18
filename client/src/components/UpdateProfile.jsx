@@ -43,7 +43,7 @@ const imageHandler=(e)=>{
   }))
   // console.log(e.target)
   // console.log(formData)
-  console.log(e.target.files[0]);
+  // console.log(e.target.files[0]);
 
 
 }
@@ -80,22 +80,21 @@ const submitHandler=async(e)=>{
 
   e.preventDefault();
 
-
-  
-
-
-  if(isLoading){
-    toast.error('Please Wait, Image upload in progress !!!');
-    return
-  }
+// console.log(,'sizeeeeeeeeeeeee')
 
 
+if(isLoading){
+  toast.error('Please Wait, Image upload in progress !!!');
+  return
+}
 
-  setIsLoading(true)
 
-  
-  
-  // console.log('submit',formData)
+
+setIsLoading(true)
+
+
+
+// console.log('submit',formData)
 
 // console.log(formData)
 
@@ -105,6 +104,13 @@ if(formData.firstName===user.firstName&&formData.lastName===user.lastName&&formD
   return;
 }
 
+if(formData.image.size>1024*1024*6){
+toast.error("Image must be less than 6 mb");
+// formData.image=null;
+// console.log(first)
+setIsLoading(false)
+return
+}
 
     await axios.put(backendUrl+'/updateUser',{
       ...formData,
@@ -123,12 +129,14 @@ if(formData.firstName===user.firstName&&formData.lastName===user.lastName&&formD
       reloadUser()
       
 
+      setIsLoading(false)
     })
 
 
     .catch((e)=> {
       // console.log(e);
       toast.error(e.response.data.message)
+      setIsLoading(false)
     })
 
 
@@ -253,7 +261,7 @@ rounded-lg all:w-[90%]
 
 <div>
 
-<button onClick={(e)=>submitHandler(e)}  class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+<button onClick={(e)=>submitHandler(e)}  className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
 
 
 
