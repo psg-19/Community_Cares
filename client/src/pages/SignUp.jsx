@@ -172,7 +172,7 @@ if(isLoading1){
     '>
      
      
-     <div className='flex items-center justify-center  border-2 p-10 rounded-2xl bg-richblack-900 border-richblack-700'>
+     <div className='flex items-center justify-center  border-2 lg:p-10 md:p-10 sm:p-10 all:px-0 all:py-8 all:mt-[18rem] all:mb-[1rem] rounded-2xl bg-richblack-900 border-richblack-700 lg:my-0 md:my-0 sm:my-0'>
 
 
      {/* <div className='w-[900px] h-[800px] flex items-center justify-center '>
