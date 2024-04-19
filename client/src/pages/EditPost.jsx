@@ -69,12 +69,14 @@ if(formData.title==currentPostEdit.title&&
   return;
 }
 
-
+// console.log(formData.image)
+if(formData.image!=null){
 if(formData.image.size>1024*1024*6){
   toast.error("Image must be less than 6 mb");
   formData.image=null;
   setIsLoading(false)
   }
+}
 
     await axios.put(backendUrl+'/updatePost',{
         ...formData,

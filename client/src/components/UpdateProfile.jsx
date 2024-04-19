@@ -103,13 +103,14 @@ if(formData.firstName===user.firstName&&formData.lastName===user.lastName&&formD
   setIsLoading(false)
   return;
 }
-
+if(formData.image!=null){
 if(formData.image.size>1024*1024*6){
 toast.error("Image must be less than 6 mb");
 // formData.image=null;
 // console.log(first)
 setIsLoading(false)
 return
+}
 }
 
     await axios.put(backendUrl+'/updateUser',{

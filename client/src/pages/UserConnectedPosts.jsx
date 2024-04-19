@@ -139,7 +139,8 @@ md:w-[90%] md:h-[50%]
 
 <div className='flex items-center justify-center flex-col'>
 <div className='font-bold overflow-scroll no-scrollbar  justify-center flex items-center w-48'>{data.donorPost.title}</div>
-  <div className='w-48 overflow-hidden'><img  src={data.donorPost.imageUrl} alt="" className=' rounded-lg ' /></div>
+
+  <div className='w-[10rem] h-[12rem] overflow-hidden rounded-lg flex justify-center items-center'><img  src={data.donorPost.imageUrl} alt="" className=' rounded-lg h-[100%] w-[100%] ' /></div>
   </div>
 
 
@@ -168,7 +169,7 @@ md:w-[90%] md:h-[50%]
 <div className='flex items-center justify-center flex-col'>
   <div className='font-bold overflow-scroll no-scrollbar  justify-center flex items-center w-48'>{data.recieverPost.title}</div>
 
-  <div className=' w-48 overflow-hidden' ><img src={data.recieverPost.imageUrl} alt="" className='rounded-lg' /></div>
+  <div className=' w-[10rem] h-[12rem] overflow-hidden rounded-lg' ><img src={data.recieverPost.imageUrl} alt="" className='rounded-lg w-[100%] h-[100%]' /></div>
   </div>
 
 

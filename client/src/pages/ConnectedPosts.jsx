@@ -134,11 +134,11 @@ md:w-[90%] md:h-[53%]
 
 <div className='flex items-center justify-center flex-col'>
 <div className='font-bold w-48 overflow-scroll no-scrollbar'>{data.donorPost.title}</div>
-  <img src={data.donorPost.imageUrl} alt="" className=' rounded-lg w-48' />
+
   </div>
+  <div className='w-[10rem] h-[12rem] overflow-hidden rounded-lg flex justify-center items-center'><img  src={data.donorPost.imageUrl} alt="" className=' rounded-lg h-[100%] w-[100%] ' /></div>
 
-
-<div className=' overflow-scroll no-scrollbar w-48'><p>{data.donorPost.description}</p></div>
+<div className=' overflow-scroll no-scrollbar w-48'><b>Description: </b><p>{data.donorPost.description}</p></div>
 <p><b>Requirement : </b>{data.donorPost.quantity} People</p>
 
 
@@ -165,11 +165,11 @@ lg:w-[48%] lg:h-[24rem]
 <div className='flex items-center justify-center overflow-hidden flex-col'>
   <div className='font-bold w-48 overflow-scroll no-scrollbar'>{data.recieverPost.title}</div>
 
-  <img src={data.recieverPost.imageUrl} alt="" className=' w-48' />
+ 
   </div>
+  <div className='w-[10rem] h-[12rem] overflow-hidden rounded-lg flex justify-center items-center'><img  src={data.recieverPost.imageUrl} alt="" className=' rounded-lg h-[100%] w-[100%] ' /></div>
 
-
-<div className='w-48 overflow-scroll no-scrollbar'><p>{data.recieverPost.description}</p></div>
+<div className='w-48 overflow-scroll no-scrollbar'><b>Description: </b><p>{data.recieverPost.description}</p></div>
 <p><b>Requirement : </b>{data.donorPost.quantity} People</p>
 
 
