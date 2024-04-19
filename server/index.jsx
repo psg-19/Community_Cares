@@ -2,6 +2,7 @@ const express=require('express');
 const app=express();
 const cors=require('cors')
 require('dotenv').config();
+const bodyParser=require('body-parser')
 var cookieParser = require('cookie-parser');
 
 //------------miidleware-----------
@@ -14,6 +15,8 @@ app.use(fileUpload(
     }
     ));
     
+    app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
     app.use(express.json());
     app.use(cookieParser());
     
