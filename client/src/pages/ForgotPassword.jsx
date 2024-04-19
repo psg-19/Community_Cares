@@ -10,7 +10,7 @@ import loginBg from '../assets/loginbg1.png'
 
 export const ForgotPassword = () => {
 
-  const {backendUrl}=useContext(AppContext)
+
 const navigate=useNavigate()
 
 
@@ -53,7 +53,7 @@ const sendOtp=async(e)=>{
     // }
   
     setIsLoading1(true)
-    await axios.post(backendUrl+'/sendOtpForForgotPassword',formData,{withCredentials: true,headers: {
+    await axios.post(process.env.REACT_APP_BACKEND_URL+'/sendOtpForForgotPassword',formData,{withCredentials: true,headers: {
       'Content-Type': 'multipart/form-data'
     }, credentials: 'include'})
     .then((e)=> {
@@ -92,7 +92,7 @@ setIsLoading(true)
 
 // console.log(';;;;;;;;;;;',process.env.REACT_APP_BACKEND_URL)
 
-await axios.post(backendUrl+'/forgotPassword',formData,{withCredentials: true, headers: {
+await axios.post(process.env.REACT_APP_BACKEND_URL+'/forgotPassword',formData,{withCredentials: true, headers: {
   'Content-Type': 'multipart/form-data'
 },credentials: 'include'})
   .then((response)=>{

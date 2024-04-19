@@ -15,7 +15,7 @@ export const UserConnectedPosts = () => {
 
     const [userConnectedPosts,setUserConnectedPosts]=useState([]);
 
-    const {user,token1,backendUrl}=useContext(AppContext)
+    const {user,token1}=useContext(AppContext)
 
 const navigate=useNavigate()
 
@@ -23,7 +23,7 @@ const navigate=useNavigate()
     //funcs--------------------------------------------------
 const postCaller=async()=>{
     try {
-        const response=await axios.post(backendUrl+'/getConnectedPostsUser',{
+        const response=await axios.post(process.env.REACT_APP_BACKEND_URL+'/getConnectedPostsUser',{
           token:token1
         },{withCredentials: true,headers: {
           'Content-Type': 'multipart/form-data'
@@ -51,7 +51,7 @@ const likeHandler =async(id)=>{
     
     try {
       
-      await axios.post(backendUrl+'/likeConnectedPost',{
+      await axios.post(process.env.REACT_APP_BACKEND_URL+'/likeConnectedPost',{
         postId:id,
         token:token1
       },{withCredentials: true,headers: {

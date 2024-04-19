@@ -9,7 +9,7 @@ import editPostBg from '../assets/update_post.png'
 
 export const EditPost = () => {
 
-    const {currentPostEdit,backendUrl,setCurrentPostEdit,Districts}=useContext(AppContext)
+    const {currentPostEdit,setCurrentPostEdit,Districts}=useContext(AppContext)
 
     const navigate=useNavigate()
 
@@ -78,7 +78,7 @@ if(formData.image.size>1024*1024*6){
   }
 }
 
-    await axios.put(backendUrl+'/updatePost',{
+    await axios.put(process.env.REACT_APP_BACKEND_URL+'/updatePost',{
         ...formData,
         postId:currentPostEdit._id
     },{withCredentials: true, credentials: 'include',

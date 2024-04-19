@@ -14,7 +14,7 @@ import { Spinner } from '../components/Spinner';
 
 export const RecieverPosts = () => {
   
-  const {user,token1,setClick,Districts,setCurrentPostEdit,backendUrl}=useContext(AppContext)
+  const {user,token1,setClick,Districts,setCurrentPostEdit}=useContext(AppContext)
   const navigate=useNavigate()
 const [isLoading,setIsLoading]=useState(false)
 const [isLoading2,setIsLoading2]=useState(false)
@@ -38,7 +38,7 @@ const postCaller=async()=>{
   setIsLoading2(true)
 
   try {
-    const response=await axios.get(backendUrl+'/getAllRecieverPosts',{},{withCredentials: true,headers: {
+    const response=await axios.get(process.env.REACT_APP_BACKEND_URL+'/getAllRecieverPosts',{},{withCredentials: true,headers: {
       'Content-Type': 'multipart/form-data'
     }, credentials: 'include'})
 // console.log(response)
@@ -60,7 +60,7 @@ setIsLoading2(false)
 
   const deleteHandler =async(id)=>{
 
-    await axios.put(backendUrl+'/deletePost',{
+    await axios.put(process.env.REACT_APP_BACKEND_URL+'/deletePost',{
       postId:id,
       token:token1
     },{withCredentials: true, headers: {
@@ -86,7 +86,7 @@ const likeHandler=async(id)=>{
   
   try {
     
-    await axios.post(backendUrl+'/LikePost',{
+    await axios.post(process.env.REACT_APP_BACKEND_URL+'/LikePost',{
       postId:id,
       token:token1
     },{withCredentials: true,headers: {
@@ -119,7 +119,7 @@ setIsLoading(true);
 
 try {
   
-  const response=await axios.post(backendUrl+'/connectedPosts',{
+  const response=await axios.post(process.env.REACT_APP_BACKEND_URL+'/connectedPosts',{
     reciverPostId:id,
     token:token1
   },{withCredentials: true,headers: {

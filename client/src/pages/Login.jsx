@@ -7,7 +7,7 @@ import loginBg from '../assets/loginbg1.png'
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 export const Login = () => {
 
-  const {setToken1,backendUrl,setUser,setIsLogged}=useContext(AppContext)
+  const {setToken1,setUser,setIsLogged}=useContext(AppContext)
 const navigate=useNavigate()
 
 const [showpass, setshowpass] = useState(false);
@@ -44,7 +44,7 @@ setIsLoading(true)
 
 // console.log(formData)
 try {
-await axios.get(backendUrl+'/BootUp',{},{withCredentials: true,headers: {
+await axios.get(process.env.REACT_APP_BACKEND_URL+'/BootUp',{},{withCredentials: true,headers: {
   'Content-Type': 'multipart/form-data'
 }, credentials: 'include'})
 
@@ -54,7 +54,7 @@ await axios.get(backendUrl+'/BootUp',{},{withCredentials: true,headers: {
 
 // console.log(';;;;;;;;;;;',process.env.REACT_APP_BACKEND_URL)
 
-await axios.post(backendUrl+'/login',formData,{withCredentials: true, headers: {
+await axios.post(process.env.REACT_APP_BACKEND_URL+'/login',formData,{withCredentials: true, headers: {
   'Content-Type': 'multipart/form-data'
 },credentials: 'include'})
   .then((response)=>{
@@ -93,7 +93,7 @@ setIsLoading(false)
 
 
 const getUser=async(token)=>{
-  await axios.post(backendUrl+'/getUser',{
+  await axios.post(process.env.REACT_APP_BACKEND_URL+'/getUser',{
     token:token
   },  {withCredentials: true, headers: {
     'Content-Type': 'multipart/form-data'

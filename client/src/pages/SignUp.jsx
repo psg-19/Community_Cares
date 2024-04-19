@@ -10,7 +10,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 export const SignUp = () => {
   const navigate=useNavigate()
-const {backendUrl,Districts}=useContext(AppContext)
+const {Districts}=useContext(AppContext)
 
 const [showpass, setshowpass] = useState(false);
   const [showcomfirmpass, setshowcomfirmpass] = useState(false);
@@ -101,7 +101,7 @@ if(!(/\d/.test(formData.password))){
 }
 
 
- await axios.post(backendUrl+'/signUp',formData,{withCredentials: true,headers: {
+ await axios.post(process.env.REACT_APP_BACKEND_URL+'/signUp',formData,{withCredentials: true,headers: {
   'Content-Type': 'multipart/form-data'
 }, credentials: 'include'})
  .then((res)=>{
@@ -144,7 +144,7 @@ if(isLoading1){
   // }
 
   setIsLoading1(true)
-  await axios.post(backendUrl+'/sendOtp',formData,{withCredentials: true,headers: {
+  await axios.post(process.env.REACT_APP_BACKEND_URL+'/sendOtp',formData,{withCredentials: true,headers: {
     'Content-Type': 'multipart/form-data'
   }, credentials: 'include'})
   .then((e)=> {

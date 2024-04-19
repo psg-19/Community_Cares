@@ -12,7 +12,7 @@ import { RxCross1 } from "react-icons/rx";
 
 export const Navbar = () => {
 
-    const{isLogged,backendUrl,setIsLogged,click,setClick,user,setToken1,setUser}=useContext(AppContext)
+    const{isLogged,setIsLogged,click,setClick,user,setToken1,setUser}=useContext(AppContext)
 
 const [isLoading,setIsLoading]=useState(false);
 
@@ -33,7 +33,7 @@ const [hamburger,setHamburger]=useState(false);
 
    try {
     
-    await axios.post(backendUrl+'/logout',{},{withCredentials: true, headers: {
+    await axios.post(process.env.REACT_APP_BACKEND_URL+'/logout',{},{withCredentials: true, headers: {
       'Content-Type': 'multipart/form-data'
     },credentials: 'include'})
 

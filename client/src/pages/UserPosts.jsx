@@ -12,7 +12,7 @@ import { Spinner } from '../components/Spinner'
 
 
 export const UserPosts = () => {
-  const {backendUrl,token1,user,setCurrentPostEdit}=useContext(AppContext)
+  const {token1,user,setCurrentPostEdit}=useContext(AppContext)
 const navigate=useNavigate();
 
 const[userPosts,setUserPosts]=useState(null)
@@ -28,7 +28,7 @@ const[userPosts,setUserPosts]=useState(null)
 
   const deleteHandler =async(id)=>{
 
-    await axios.put(backendUrl+'/deletePost',{
+    await axios.put(process.env.REACT_APP_BACKEND_URL+'/deletePost',{
       postId:id,
       token:token1
     },{withCredentials: true,headers: {
@@ -56,7 +56,7 @@ const likeHandler =async(id)=>{
   
   try {
     
-    await axios.post(backendUrl+'/LikePost',{
+    await axios.post(process.env.REACT_APP_BACKEND_URL+'/LikePost',{
       postId:id,
       token:token1
     },{withCredentials: true, headers: {
@@ -78,7 +78,7 @@ const likeHandler =async(id)=>{
 
 
   const postCaller=async()=>{
-await axios.post(backendUrl+'/getUserPosts',{
+await axios.post(process.env.REACT_APP_BACKEND_URL+'/getUserPosts',{
   token:token1
 },{withCredentials: true,headers: {
   'Content-Type': 'multipart/form-data'

@@ -19,9 +19,8 @@ const [currentPostEdit,setCurrentPostEdit]=useState('');
 
 
 
-const backendUrl=process.env.REACT_APP_BACKEND_URL
 
-// const backendUrl='http://localhost:4000/api/v1';
+
 const [ct,setCt]=useState(0)
 
 
@@ -38,7 +37,7 @@ const value={
     donorPosts,setDonorPosts
     ,Districts,
     currentPostEdit,setCurrentPostEdit,
-    backendUrl,
+   
     click,setClick,
     ct,setCt
    

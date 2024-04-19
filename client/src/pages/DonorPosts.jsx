@@ -14,7 +14,7 @@ import { RiDeleteBin6Line } from 'react-icons/ri';
 
 
 export const DonorPosts = () => {
-  const {user,token1,Districts,backendUrl,setCurrentPostEdit}=useContext(AppContext);
+  const {user,token1,Districts,setCurrentPostEdit}=useContext(AppContext);
  let ct=0;
 const {donorPosts,setDonorPosts}=useContext(AppContext)
 const navigate=useNavigate()
@@ -32,7 +32,7 @@ setDistrict(e.target.value);
 
     setIsLoading2(true)
   try {
-    const response =await axios.get(backendUrl+'/getAllDonorPosts',{},{withCredentials: true, headers: {
+    const response =await axios.get(process.env.REACT_APP_BACKEND_URL+'/getAllDonorPosts',{},{withCredentials: true, headers: {
       'Content-Type': 'multipart/form-data'
     },credentials: 'include'});
     setDonorPosts(response.data.donorPosts);
@@ -51,7 +51,7 @@ setDistrict(e.target.value);
 
 const deleteHandler =async(id)=>{
 
-  await axios.put(backendUrl+'/deletePost',{
+  await axios.put(process.env.REACT_APP_BACKEND_URL+'/deletePost',{
     postId:id,
     token:token1
   },{withCredentials: true, headers: {
@@ -76,7 +76,7 @@ if(!user._id){
 
 try {
   
-  await axios.post(backendUrl+'/LikePost',{
+  await axios.post(process.env.REACT_APP_BACKEND_URL+'/LikePost',{
     postId:id,
     token:token1
   },{withCredentials: true,headers: {

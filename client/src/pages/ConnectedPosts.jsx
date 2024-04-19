@@ -11,7 +11,7 @@ export const ConnectedPosts = () => {
 
     const [connectedPosts,setConnectedPosts]=useState([]);
 
-    const {user,token1,backendUrl}=useContext(AppContext)
+    const {user,token1}=useContext(AppContext)
 
     const [isLoading2,setIsLoading2]=useState(false)
 
@@ -23,7 +23,7 @@ const postCaller=async()=>{
 
   setIsLoading2(true)
     try {
-        const response=await axios.get(backendUrl+'/getAllConnectedPosts',{},{withCredentials: true,headers: {
+        const response=await axios.get(process.env.REACT_APP_BACKEND_URL+'/getAllConnectedPosts',{},{withCredentials: true,headers: {
           'Content-Type': 'multipart/form-data'
         }, credentials: 'include'})
 
@@ -50,7 +50,7 @@ const likeHandler =async(id)=>{
     
     try {
       
-      await axios.post(backendUrl+'/likeConnectedPost',{
+      await axios.post(process.env.REACT_APP_BACKEND_URL+'/likeConnectedPost',{
         postId:id,
         token:token1
       },{withCredentials: true,headers: {

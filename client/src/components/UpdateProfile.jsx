@@ -8,7 +8,7 @@ import updateprofile from '../assets/updateprofile.png'
 
 
 export const UpdateProfile = ({setChange}) => {
-  const {user,backendUrl,Districts,setUser,token1}=useContext(AppContext)
+  const {user,Districts,setUser,token1}=useContext(AppContext)
 // console.log(user)
 const [isLoading,setIsLoading]=useState(false)
 
@@ -53,7 +53,7 @@ const imageHandler=(e)=>{
 const reloadUser=async()=>{
 
   
-    await axios.post(backendUrl+'/getUser',{
+    await axios.post(process.env.REACT_APP_BACKEND_URL+'/getUser',{
       token:token1
     },{withCredentials: true,headers: {
       'Content-Type': 'multipart/form-data'
@@ -113,7 +113,7 @@ return
 }
 }
 
-    await axios.put(backendUrl+'/updateUser',{
+    await axios.put(process.env.REACT_APP_BACKEND_URL+'/updateUser',{
       ...formData,
       token:token1
     },{

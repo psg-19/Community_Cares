@@ -12,13 +12,13 @@ export const Home = () => {
 
 
 // let ct=0;
-  const {backendUrl,setUser,setToken1,ct,setCt,setIsLogged,setClick}=useContext(AppContext)
+  const {setUser,setToken1,ct,setCt,setIsLogged,setClick}=useContext(AppContext)
 const navigate=useNavigate()
 
   const refreshHandler=async()=>{
       
       
-    await axios.post(backendUrl+'/isLogged',{
+    await axios.post(process.env.REACT_APP_BACKEND_URL+'/isLogged',{
       
     },  {withCredentials: true,headers: {
       'Content-Type': 'multipart/form-data'
@@ -53,7 +53,7 @@ const navigate=useNavigate()
 
 
 const getUser=async()=>{
-  await axios.post(backendUrl+'/getUser',{
+  await axios.post(process.env.REACT_APP_BACKEND_URL+'/getUser',{
     
   },  {withCredentials: true, headers: {
     'Content-Type': 'multipart/form-data'
