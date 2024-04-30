@@ -3,6 +3,7 @@ Join us in our mission to transform leftover food from restaurants into a lifeli
 Together, we're not just reducing wastage; we're nourishing souls and building a brighter, more equitable future. 
 Let's turn every meal into a beacon of hope for those who face hunger daily. Together, we can make a difference, one plate at a time.
 
+<h5><a href="https://community-cares-9y35.vercel.app/">Live Link</a></h5>
 </br>
 <h2>Installation</h2>
 <pre><b>1) </b><i>git clone https://github.com/psg-19/Community_Cares.git</i></pre>
