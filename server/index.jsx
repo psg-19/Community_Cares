@@ -24,7 +24,7 @@ app.use(fileUpload(
     
     app.use(cors({
       // origin: 'http://localhost:3000',
-      origin: process.env.FRONTEND_URL,
+      origin: "*",
       optionsSuccessStatus: 200,
       credentials: true 
     }));
@@ -46,11 +46,6 @@ cloudinary.cloudinaryConnect();
 app.listen(process.env.PORT,()=>{
     console.log(`server started at port ${process.env.PORT}`)
 })
-
-//---------dummy route----------------
-// app.get('/',(req,res)=>{
-//    res.cookie('hii',"yyyy").send("welcome to home page")  
-// });
 
 
 module.exports= app;
