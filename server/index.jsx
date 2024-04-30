@@ -26,11 +26,11 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
     
 
 
+    
     const router=require('./route/routes.jsx')
     
-    
     app.use('/api/v1',router)
-    
+
     app.use(cors({
       // origin: 'http://localhost:3000',
       origin: process.env.FRONTEND_URL,
