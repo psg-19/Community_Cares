@@ -17,6 +17,8 @@ app.use(fileUpload(
     
     app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+
+
     app.use(express.json());
     app.use(cookieParser());
     
@@ -27,13 +29,14 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
     const router=require('./route/routes.jsx')
     
     
+    app.use('/api/v1',router)
+    
     app.use(cors({
       // origin: 'http://localhost:3000',
       origin: process.env.FRONTEND_URL,
       optionsSuccessStatus: 200,
       credentials: true 
     }));
-    app.use('/api/v1',router)
 
 //--------------db connect-----------------
 const dbConnect=require('./config/database.jsx');
