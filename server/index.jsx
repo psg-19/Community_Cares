@@ -24,7 +24,7 @@ app.use(fileUpload(
     
     app.use(cors({
       // origin: 'http://localhost:3000',
-      origin: process.env.FRONTEND_URL,
+      origin: 'https://community-cares-9y35.vercel.app',
       optionsSuccessStatus: 200,
       credentials: true 
     }));
@@ -44,7 +44,7 @@ cloudinary.cloudinaryConnect();
 //-------------server started---------------------
 
 app.listen(process.env.PORT,()=>{
-    console.log(`server started at port ${process.env.PORT}`)
+    // console.log(`server started at port ${process.env.PORT}`)
 })
 
 
