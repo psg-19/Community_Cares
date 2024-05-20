@@ -21,7 +21,7 @@ MAIL_PASS=<mail pass created by enabling two step verification and app in gmail 
 
 
 
-MAIL_PASS=lslhvavigsjptvpl
+
 
 
 FRONTEND_URL=http://localhost:3000
