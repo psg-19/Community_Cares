@@ -9,11 +9,13 @@ import editPostBg from '../assets/update_post.png'
 
 export const EditPost = () => {
 
-    const {currentPostEdit,setCurrentPostEdit,Districts}=useContext(AppContext)
+    const {currentPostEdit,setCurrentPostEdit,click,setClick,Districts}=useContext(AppContext)
 
     const navigate=useNavigate()
 
 const [isLoading,setIsLoading]=useState(false);
+const [initialDistrict,setInitialDistrict]=useState(currentPostEdit.district);
+
     const [formData,setFormData]=useState({
 
         title:currentPostEdit.title,
@@ -32,6 +34,7 @@ const [isLoading,setIsLoading]=useState(false);
       
       
       const changeHandler=(e)=>{
+        setInitialDistrict(e.target.value);
         setFormData((prev)=>({
           ...prev,
           [e.target.name]:e.target.value
@@ -91,6 +94,7 @@ if(formData.image.size>1024*1024*6){
         setCurrentPostEdit(res.data.updatedPost)
         toast.success(res.data.message)
         navigate('/userPosts')
+        setClick('');
       })
       .catch((e)=> toast.error(e.response.data.message))
 
@@ -235,7 +239,7 @@ value={formData.address}
   </label>
  
 <select name='district' className=' border-2 border-black py-1 px-3 bg-input-200
-rounded-lg w-[100%]' id='district' value={currentPostEdit.district}  onChange={(e)=>{
+rounded-lg w-[100%]' id='district' value={initialDistrict}  onChange={(e)=>{
   changeHandler(e)
 }}>
   

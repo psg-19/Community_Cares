@@ -29,6 +29,12 @@ app.use(fileUpload(
       optionsSuccessStatus: 200,
       credentials: true 
     }));
+    // app.use(cors({
+    //   origin: true, // This allows all origins
+    //   optionsSuccessStatus: 200,
+    //   credentials: true
+    // }));
+    
 
     const router=require('./route/routes.jsx')
     

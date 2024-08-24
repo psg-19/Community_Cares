@@ -224,6 +224,10 @@ if(isLoading1){
             Email Address <sup className="text-pink-200">*</sup>
           </p>
 </label>
+
+<form action="" className='flex flex-col gap-y- '>
+
+  
 <input type="email"  className="bg-richblack-800 rounded-[0.5rem] text-richblack-5
         w-full p-[12px]"  placeholder='Enter Email' name='email' onChange={(e)=>changeHandler(e)}/>
 <br />
@@ -231,6 +235,7 @@ if(isLoading1){
 rounded-lg  p-1' onClick={(e)=>sendOtp(e)}>{isLoading1 ? 'Please Wait ...':'Send OTP'}</button>
 
 
+</form>
 </div>
 {/* ---------------------------------------------otp---------------------------------- */}
 

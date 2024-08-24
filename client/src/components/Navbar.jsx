@@ -144,18 +144,18 @@ console.log('logged out ')
 {
    isLogged  ? (<ul className='flex gap-x-4 justify-center items-center'>
 
-   <li className={`border-2 py-1 px-4 rounded-lg  flex items-center justify-center bg-white border-blue-600 font-bold hover:bg-green1-dark `}  onClick={()=>{
-logoutHandler()
-setClick(null)
-}
-}><NavLink to='/' className='font-bold flex justify-center items-center'>
-  {isLoading ? 'Please Wait ...':'Log out'}</NavLink></li>
+  
          
    <li className={` w-14 h-14 rounded-full bg-gradient-to-r from-red-500 to-indigo-600 ${click=='profile' ? (" "):(" animate-pulse ")} `} onClick={()=>{
     setClick('profile')
    }}><NavLink className='font-bold' to='/profile'><img src={imageUrl} className=' rounded-full p-[2px] w-[100%] h-[100%] ' alt="profile"></img></NavLink></li>
 
-
+<li className={`border-2 py-1 px-4 rounded-lg  flex items-center justify-center bg-white border-blue-600 font-bold hover:bg-green1-dark `}  onClick={()=>{
+logoutHandler()
+setClick(null)
+}
+}><NavLink to='/' className='font-bold flex justify-center items-center'>
+  {isLoading ? 'Please Wait ...':'Log out'}</NavLink></li>
      </ul>
     
 

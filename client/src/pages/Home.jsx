@@ -3,7 +3,9 @@ import { AppContext } from '../context/AppContext'
 import axios from 'axios'
 import {toast} from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
-
+import donor_home from '../assets/donor_home.png'
+import reciever_home from '../assets/reciever_home.png'
+import connected_home from '../assets/connected_home.png'
 
 
 
@@ -137,7 +139,7 @@ useEffect(()=>{
 {/* ======================== */}
 
 <div className=' py-12 min-w-[300px] lg:w-[40%] md:w-[40%] sm:w-[90%] all:w-[90%]'>
-  <img src="https://ucarecdn.com/c67f35be-a6be-41c6-9545-8daebe0a085a/" alt="picture" className='h-[100%] w-[100%] '/>
+  <img src={donor_home} alt="picture" className='h-[100%] w-[100%] '/>
 </div>
 
 
@@ -154,7 +156,7 @@ useEffect(()=>{
 
 
 <div className=' py-12 min-w-[300px] lg:w-[40%] md:w-[40%] sm:w-[90%] all:w-[90%]'>
-  <img src="https://ucarecdn.com/c67f35be-a6be-41c6-9545-8daebe0a085a/" alt="picture" className='h-[100%] w-[100%] '/>
+  <img src={reciever_home} alt="picture" className='h-[100%] w-[100%] '/>
 </div>
 
 
@@ -208,7 +210,7 @@ setClick('Connected Posts')}}>
 {/* ======================== */}
 
 <div className=' py-12 min-w-[300px] lg:w-[40%] md:w-[40%] sm:w-[90%] all:w-[90%]'>
-  <img src="https://ucarecdn.com/c67f35be-a6be-41c6-9545-8daebe0a085a/" alt="picture" className='h-[100%] w-[100%] '/>
+  <img src={connected_home} alt="picture" className='h-[100%] w-[100%] '/>
 </div>
 
 

@@ -157,7 +157,8 @@ all:top-[25%] all:left-[37%]
 
 ' >
   
-<div className='flex flex-col '>
+<form className='flex flex-col '>
+
 <p> <b> Email </b></p>
 <input type="text" className=' border-2 border-black py-1 px-3 bg-input-200
 rounded-lg
@@ -165,7 +166,7 @@ rounded-lg
 
 <button className='mt-1 className=bg-transparent hover:bg-cyan-500 text-cyan-700  font-semibold hover:text-white py-2 px-4 border border-cyan-500  hover:border-transparent rounded-lg 
 rounded-lg  p-1' onClick={(e)=>sendOtp(e)}>{isLoading1 ? 'Please Wait ...':'Send OTP'}</button>
-</div>
+</form>
 
 
 

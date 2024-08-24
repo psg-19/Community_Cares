@@ -3,7 +3,7 @@ import { AppContext } from '../context/AppContext'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 import axios from 'axios'
-import loginBg from '../assets/loginbg1.png'
+ 
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 export const Login = () => {
 
