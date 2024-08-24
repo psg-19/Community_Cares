@@ -15,38 +15,21 @@ import { RiDeleteBin6Line } from 'react-icons/ri';
 
 export const DonorPosts = () => {
   const {user,token1,Districts,setCurrentPostEdit}=useContext(AppContext);
- let ct=0;
+ 
 const {donorPosts,setDonorPosts}=useContext(AppContext)
 const navigate=useNavigate()
 
 const [district,setDistrict]=useState('All');
 
 const [isLoading2,setIsLoading2]=useState(false)
+const [fisrtLoad,setFisrtLoad]=useState(false)
 
 const districtHandler=(e)=>{
 setDistrict(e.target.value);
 }
 
 //----------------------------------functions-------------------------------------------------
-  const postCaller=async()=>{
-
-    setIsLoading2(true)
-  try {
-    const response =await axios.get(process.env.REACT_APP_BACKEND_URL+'/getAllDonorPosts',{},{withCredentials: true, headers: {
-      'Content-Type': 'multipart/form-data'
-    },credentials: 'include'});
-    setDonorPosts(response.data.donorPosts);
-  
-    
-    
-  } catch (error) {
-    console.log('cannot fetch donor posts !!!')
-  
-  }
-
-  setIsLoading2(false)
-    // console.log(e.target.value);
-  }
+ 
 
 
 const deleteHandler =async(id)=>{
@@ -92,6 +75,25 @@ try {
 }
 
 
+const postCaller=async()=>{
+  setIsLoading2(true)
+  try {
+    const response =await axios.get(process.env.REACT_APP_BACKEND_URL+'/getAllDonorPosts',{},{withCredentials: true, headers: {
+      'Content-Type': 'multipart/form-data'
+    },credentials: 'include'});
+    setDonorPosts(response.data.donorPosts);
+    
+    
+    
+  } catch (error) {
+    console.log('cannot fetch donor posts !!!')
+    
+  }
+  
+  setFisrtLoad(true);
+  setIsLoading2(false)
+  // console.log(e.target.value);
+}
   //--------------------------------------------------useeffect-------------------------------
   
 
@@ -137,7 +139,8 @@ rounded-lg w-[40%]  border-black' id='districts' onChange={(e)=>{
 
 
 {
-isLoading2 ? (<Spinner/>):(
+(isLoading2&&(!fisrtLoad)) ? (<Spinner/>):(
+ 
   donorPosts=='' ? (<div className='text-white'>No Post's Available</div>):(
   donorPosts.map((data,index)=>{
     return (

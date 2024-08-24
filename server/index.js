@@ -24,6 +24,7 @@ app.use(fileUpload(
     
     app.use(cors({
       origin: "https://community-cares-9y35.vercel.app",
+    //   origin: FRONTEND_URL,
    
       optionsSuccessStatus: 200,
       credentials: true 

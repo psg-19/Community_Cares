@@ -23,7 +23,7 @@ const [isLoading2,setIsLoading2]=useState(false)
   //---------------------------vars------------------------------
   const [district,setDistrict]=useState('All');
 const [recieverPosts,setRecieverPosts]=useState([])
-
+const [fisrtLoad,setFisrtLoad]=useState(false)
 
 
   //-------------------------------------funcs------------------------------------
@@ -53,6 +53,7 @@ const postCaller=async()=>{
     console.log('error while loading recievers post !!!')
   }
 setIsLoading2(false)
+setFisrtLoad(true);
 }
 
 
@@ -180,7 +181,7 @@ rounded-lg w-[40%] ' id='districts' onChange={(e)=>{
 
     {
 
-      isLoading2 ? (<Spinner/>):(
+     ( isLoading2&&(!fisrtLoad)) ? (<Spinner/>):(
       recieverPosts=='' ? (<div className='text-white'>No Post's Available</div>):(
 
         

@@ -235,7 +235,7 @@ value={formData.address}
   </label>
  
 <select name='district' className=' border-2 border-black py-1 px-3 bg-input-200
-rounded-lg w-[100%]' id='district' onChange={(e)=>{
+rounded-lg w-[100%]' id='district' value={currentPostEdit.district}  onChange={(e)=>{
   changeHandler(e)
 }}>
   

@@ -14,6 +14,7 @@ export const ConnectedPosts = () => {
     const {user,token1}=useContext(AppContext)
 
     const [isLoading2,setIsLoading2]=useState(false)
+    const [fisrtLoad,setFisrtLoad]=useState(false)
 
 const navigate=useNavigate()
 
@@ -33,6 +34,7 @@ const postCaller=async()=>{
     }
 
     setIsLoading2(false)
+    setFisrtLoad(true)
 }
 
 
@@ -85,7 +87,7 @@ all:px-10
 <h1 className='text-xl font-bold underline text-white'>Connected Posts</h1>
 
 {
-    isLoading2 ? (<Spinner/>):(
+   ( isLoading2&&(!fisrtLoad)) ? (<Spinner/>):(
       connectedPosts=='' ? (<div className='text-white'>No Post's Available</div>):
     
     //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
