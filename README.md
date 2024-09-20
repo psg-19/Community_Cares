@@ -85,6 +85,3 @@ FOLDER_NAME=
 <pre><b>11)</b> <i>npm run dev</i></pre>
 
 
-<h4>TEAM MEMBERS</h4>
-Pratush Shyam Gupt</br>
-Ashwini Kumar Singh
